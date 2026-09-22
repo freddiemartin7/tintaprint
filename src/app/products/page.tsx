@@ -32,12 +32,12 @@ export default function ProductsPage() {
       <main style={{ paddingTop: '4rem' }}>
 
         <section style={{ padding: '5rem 0 4rem', position: 'relative', overflow: 'hidden' }}>
-          <div aria-hidden="true" style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 80% 60% at 50% 40%, var(--accent-dim) 0%, transparent 70%)', pointerEvents: 'none' }} />
+          <div aria-hidden="true" style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 80% 60% at 50% 40%, rgba(255,255,255,0.06) 0%, transparent 70%)', pointerEvents: 'none' }} />
           <div className="max-w-site" style={{ position: 'relative', zIndex: 2 }}>
             <p className="section-label mb-4">What We Print</p>
             <h1 style={{ fontFamily: D, fontSize: 'clamp(3rem, 8vw, 7rem)', fontWeight: 700, color: '#ffffff', letterSpacing: '0.04em', lineHeight: 0.95, marginBottom: '1.5rem' }}>
               Products &{' '}
-              <span style={{ color: 'var(--accent)', textShadow: '0 0 30px var(--accent-mid)' }}>Services.</span>
+              <span style={{ color: '#ffffff',   }}>Services.</span>
             </h1>
             <p style={{ fontFamily: B, fontWeight: 300, fontSize: '1.125rem', color: 'rgba(255,255,255,0.5)', maxWidth: '560px', lineHeight: 1.65 }}>
               From a single business card to a full exhibition fit-out — we handle it all.
@@ -54,7 +54,7 @@ export default function ProductsPage() {
                   <p style={{ fontFamily: B, fontSize: '0.875rem', color: 'rgba(255,255,255,0.5)', lineHeight: 1.65, flexGrow: 1, marginBottom: '1.25rem' }}>{p.desc}</p>
                   <div className="flex flex-wrap gap-2">
                     {p.tags.map(tag => (
-                      <span key={tag} style={{ fontFamily: B, fontSize: '0.6875rem', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--accent)', border: '1px solid var(--accent-dim)', borderRadius: 4, padding: '0.25rem 0.625rem' }}>
+                      <span key={tag} style={{ fontFamily: B, fontSize: '0.6875rem', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#ffffff', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 4, padding: '0.25rem 0.625rem' }}>
                         {tag}
                       </span>
                     ))}
@@ -65,10 +65,10 @@ export default function ProductsPage() {
           </div>
         </section>
 
-        <section style={{ background: 'rgba(0,0,0,0.3)', borderTop: '1px solid var(--accent-dim)', padding: '5rem 0', textAlign: 'center' }}>
+        <section style={{ background: 'rgba(0,0,0,0.3)', borderTop: '1px solid rgba(255,255,255,0.06)', padding: '5rem 0', textAlign: 'center' }}>
           <div className="max-w-site">
             <h2 style={{ fontFamily: D, fontSize: 'clamp(2.5rem, 6vw, 5rem)', fontWeight: 700, color: '#ffffff', letterSpacing: '0.04em', marginBottom: '2rem' }}>
-              Ready to <span style={{ color: 'var(--accent)', textShadow: '0 0 30px var(--accent-mid)' }}>get started?</span>
+              Ready to <span style={{ color: '#ffffff',   }}>get started?</span>
             </h2>
             <Link href="/contact" className="btn-primary">Get a Quote</Link>
           </div>

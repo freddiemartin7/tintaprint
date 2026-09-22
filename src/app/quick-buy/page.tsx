@@ -71,7 +71,7 @@ export default function QuickBuyPage() {
         <div style={{ position: 'relative', zIndex: 1 }}>
 
         <section style={{ padding: '5rem 0 3rem', position: 'relative', overflow: 'hidden' }}>
-          <div aria-hidden="true" style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 80% 60% at 50% 40%, var(--accent-dim) 0%, transparent 70%)', pointerEvents: 'none' }} />
+          <div aria-hidden="true" style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 80% 60% at 50% 40%, rgba(255,255,255,0.06) 0%, transparent 70%)', pointerEvents: 'none' }} />
           <div className="max-w-site" style={{ position: 'relative', zIndex: 2 }}>
             <p className="section-label mb-5">Coming Soon</p>
             <h1 style={{ fontFamily: D, fontSize: 'clamp(3rem, 8vw, 7rem)', fontWeight: 700, color: '#ffffff', letterSpacing: '0.04em', lineHeight: 0.95, marginBottom: '1.5rem' }}>
@@ -93,7 +93,7 @@ export default function QuickBuyPage() {
               <div key={section.heading}>
                 {/* Section heading with left border accent */}
                 <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
-                  <div style={{ width: 4, height: 28, background: 'var(--accent)', borderRadius: 2, flexShrink: 0 }} />
+                  <div style={{ width: 4, height: 28, background: '#ffffff', borderRadius: 2, flexShrink: 0 }} />
                   <h2 style={{ fontFamily: D, fontSize: 'clamp(1.5rem, 3vw, 2rem)', fontWeight: 700, color: '#ffffff', letterSpacing: '0.04em', margin: 0 }}>
                     {section.heading}
                   </h2>

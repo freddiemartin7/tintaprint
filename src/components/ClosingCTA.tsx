@@ -83,7 +83,7 @@ export default function ClosingCTA() {
           Ready to print{' '}
           <span
             style={{
-              color: 'var(--accent)',
+              color: '#ffffff',
               textShadow: `0 0 60px rgba(${rgb}, 0.5), 0 0 120px rgba(${rgb}, 0.2)`,
             }}
           >
@@ -112,7 +112,7 @@ export default function ClosingCTA() {
               alignItems: 'center',
               gap: 10,
               padding: '18px 48px',
-              background: 'var(--accent)',
+              background: '#ffffff',
               color: '#000000',
               fontFamily: B,
               fontSize: '0.9375rem',

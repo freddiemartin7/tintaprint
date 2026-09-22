@@ -35,12 +35,12 @@ export default function GeometricBackground({
         <rect width="100%" height="100%" fill={`url(#grid-${variant})`} />
 
         {/* Floating accent rectangles */}
-        <rect x="6%" y="12%" width="140" height="55" fill="none" stroke="var(--accent)" strokeWidth="0.8" strokeOpacity="0.15" rx="2"/>
-        <rect x="70%" y="8%" width="90" height="38" fill="none" stroke="var(--accent)" strokeWidth="0.8" strokeOpacity="0.12" rx="2"/>
-        <rect x="42%" y="68%" width="160" height="62" fill="none" stroke="var(--accent)" strokeWidth="0.8" strokeOpacity="0.10" rx="2"/>
-        <rect x="82%" y="52%" width="100" height="42" fill="none" stroke="var(--accent)" strokeWidth="0.8" strokeOpacity="0.13" rx="2"/>
-        <rect x="12%" y="72%" width="75" height="32" fill="none" stroke="var(--accent)" strokeWidth="0.8" strokeOpacity="0.10" rx="2"/>
-        <rect x="58%" y="28%" width="120" height="48" fill="none" stroke="var(--accent)" strokeWidth="0.8" strokeOpacity="0.08" rx="2"/>
+        <rect x="6%" y="12%" width="140" height="55" fill="none" stroke="#ffffff" strokeWidth="0.8" strokeOpacity="0.15" rx="2"/>
+        <rect x="70%" y="8%" width="90" height="38" fill="none" stroke="#ffffff" strokeWidth="0.8" strokeOpacity="0.12" rx="2"/>
+        <rect x="42%" y="68%" width="160" height="62" fill="none" stroke="#ffffff" strokeWidth="0.8" strokeOpacity="0.10" rx="2"/>
+        <rect x="82%" y="52%" width="100" height="42" fill="none" stroke="#ffffff" strokeWidth="0.8" strokeOpacity="0.13" rx="2"/>
+        <rect x="12%" y="72%" width="75" height="32" fill="none" stroke="#ffffff" strokeWidth="0.8" strokeOpacity="0.10" rx="2"/>
+        <rect x="58%" y="28%" width="120" height="48" fill="none" stroke="#ffffff" strokeWidth="0.8" strokeOpacity="0.08" rx="2"/>
 
         {/* Crosshair marks */}
         <line x1="calc(25% - 8px)" y1="33%" x2="calc(25% + 8px)" y2="33%" stroke="rgba(255,255,255,0.09)" strokeWidth="0.8"/>
@@ -51,13 +51,13 @@ export default function GeometricBackground({
         <line x1="50%" y1="calc(18% - 8px)" x2="50%" y2="calc(18% + 8px)" stroke="rgba(255,255,255,0.07)" strokeWidth="0.8"/>
 
         {/* Corner bracket marks — top left */}
-        <path d="M 32 32 L 32 58 M 32 32 L 58 32" fill="none" stroke="var(--accent)" strokeWidth="1" strokeOpacity="0.2"/>
+        <path d="M 32 32 L 32 58 M 32 32 L 58 32" fill="none" stroke="#ffffff" strokeWidth="1" strokeOpacity="0.2"/>
         {/* Corner bracket marks — top right */}
-        <path d="M calc(100% - 32px) 32 L calc(100% - 58px) 32 M calc(100% - 32px) 32 L calc(100% - 32px) 58" fill="none" stroke="var(--accent)" strokeWidth="1" strokeOpacity="0.2"/>
+        <path d="M calc(100% - 32px) 32 L calc(100% - 58px) 32 M calc(100% - 32px) 32 L calc(100% - 32px) 58" fill="none" stroke="#ffffff" strokeWidth="1" strokeOpacity="0.2"/>
         {/* Corner bracket marks — bottom left */}
-        <path d="M 32 calc(100% - 32px) L 32 calc(100% - 58px) M 32 calc(100% - 32px) L 58 calc(100% - 32px)" fill="none" stroke="var(--accent)" strokeWidth="1" strokeOpacity="0.2"/>
+        <path d="M 32 calc(100% - 32px) L 32 calc(100% - 58px) M 32 calc(100% - 32px) L 58 calc(100% - 32px)" fill="none" stroke="#ffffff" strokeWidth="1" strokeOpacity="0.2"/>
         {/* Corner bracket marks — bottom right */}
-        <path d="M calc(100% - 32px) calc(100% - 32px) L calc(100% - 58px) calc(100% - 32px) M calc(100% - 32px) calc(100% - 32px) L calc(100% - 32px) calc(100% - 58px)" fill="none" stroke="var(--accent)" strokeWidth="1" strokeOpacity="0.2"/>
+        <path d="M calc(100% - 32px) calc(100% - 32px) L calc(100% - 58px) calc(100% - 32px) M calc(100% - 32px) calc(100% - 32px) L calc(100% - 32px) calc(100% - 58px)" fill="none" stroke="#ffffff" strokeWidth="1" strokeOpacity="0.2"/>
 
         {/* Diagonal accent lines */}
         <line x1="0" y1="100%" x2="30%" y2="60%" stroke="rgba(255,255,255,0.02)" strokeWidth="1"/>

@@ -75,7 +75,7 @@ export default function DeliveryPage() {
       <main style={{ paddingTop: '4rem' }}>
 
         <section style={{ padding: '5rem 0 4rem', position: 'relative', overflow: 'hidden' }}>
-          <div aria-hidden="true" style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 80% 60% at 50% 40%, var(--accent-dim) 0%, transparent 70%)', pointerEvents: 'none' }} />
+          <div aria-hidden="true" style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 80% 60% at 50% 40%, rgba(255,255,255,0.06) 0%, transparent 70%)', pointerEvents: 'none' }} />
           <div className="max-w-site" style={{ position: 'relative', zIndex: 2 }}>
             <p className="section-label mb-5">Shipping</p>
             <h1 style={{ fontFamily: D, fontSize: 'clamp(3rem, 8vw, 7rem)', fontWeight: 700, color: '#ffffff', letterSpacing: '0.04em', lineHeight: 0.95, marginBottom: '1.5rem' }}>
@@ -98,7 +98,7 @@ export default function DeliveryPage() {
                   <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: '0.625rem' }}>
                     {s.items.map(item => (
                       <li key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem', fontFamily: B, fontSize: '0.9rem', color: 'rgba(255,255,255,0.6)', lineHeight: 1.6 }}>
-                        <span style={{ color: 'var(--accent)', flexShrink: 0, marginTop: '0.3rem', fontSize: '0.5rem' }}>●</span>
+                        <span style={{ color: '#ffffff', flexShrink: 0, marginTop: '0.3rem', fontSize: '0.5rem' }}>●</span>
                         {item}
                       </li>
                     ))}
@@ -107,7 +107,7 @@ export default function DeliveryPage() {
               ))}
             </div>
 
-            <div style={{ marginTop: '3rem', padding: '2rem', background: 'var(--accent-dim)', border: '1px solid var(--accent-mid)', borderRadius: 12, display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '2rem', flexWrap: 'wrap' }}>
+            <div style={{ marginTop: '3rem', padding: '2rem', background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.18)', borderRadius: 12, display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '2rem', flexWrap: 'wrap' }}>
               <p style={{ fontFamily: B, fontSize: '0.9375rem', color: 'rgba(255,255,255,0.6)', lineHeight: 1.65, margin: 0 }}>
                 Have a question about your delivery? Get in touch and we&apos;ll sort it.
               </p>

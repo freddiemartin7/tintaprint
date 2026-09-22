@@ -15,10 +15,10 @@ const stages = [
     body: 'Choose your product, tell us your spec, submit via our quote form or Quick Buy',
     icon: (
       <svg width="44" height="44" viewBox="0 0 44 44" fill="none" aria-hidden="true">
-        <rect x="8" y="6" width="28" height="32" rx="3" stroke="var(--accent)" strokeWidth="1.8" />
-        <path d="M14 14h16M14 20h16M14 26h10" stroke="var(--accent)" strokeWidth="1.8" strokeLinecap="round" />
-        <circle cx="34" cy="34" r="6" fill="#000000" stroke="var(--accent)" strokeWidth="1.5" />
-        <path d="M31 34l2 2 4-4" stroke="var(--accent)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        <rect x="8" y="6" width="28" height="32" rx="3" stroke="#ffffff" strokeWidth="1.8" />
+        <path d="M14 14h16M14 20h16M14 26h10" stroke="#ffffff" strokeWidth="1.8" strokeLinecap="round" />
+        <circle cx="34" cy="34" r="6" fill="#000000" stroke="#ffffff" strokeWidth="1.5" />
+        <path d="M31 34l2 2 4-4" stroke="#ffffff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
     ),
   },
@@ -28,10 +28,10 @@ const stages = [
     body: 'Our team reviews your artwork — we\'ll flag any issues before anything goes to print',
     icon: (
       <svg width="44" height="44" viewBox="0 0 44 44" fill="none" aria-hidden="true">
-        <rect x="10" y="4" width="24" height="30" rx="3" stroke="var(--accent)" strokeWidth="1.8" />
-        <path d="M16 12h12M16 18h12M16 24h8" stroke="var(--accent)" strokeWidth="1.8" strokeLinecap="round" />
-        <path d="M10 8h24" stroke="var(--accent)" strokeWidth="1.8" strokeOpacity="0.3" />
-        <rect x="10" y="8" width="24" height="3" fill="var(--accent-dim)" />
+        <rect x="10" y="4" width="24" height="30" rx="3" stroke="#ffffff" strokeWidth="1.8" />
+        <path d="M16 12h12M16 18h12M16 24h8" stroke="#ffffff" strokeWidth="1.8" strokeLinecap="round" />
+        <path d="M10 8h24" stroke="#ffffff" strokeWidth="1.8" strokeOpacity="0.3" />
+        <rect x="10" y="8" width="24" height="3" fill="rgba(255,255,255,0.06)" />
       </svg>
     ),
   },
@@ -41,10 +41,10 @@ const stages = [
     body: 'Your job is processed and printed to the highest standard',
     icon: (
       <svg width="44" height="44" viewBox="0 0 44 44" fill="none" aria-hidden="true">
-        <rect x="6" y="16" width="32" height="16" rx="3" stroke="var(--accent)" strokeWidth="1.8" />
-        <path d="M12 16V10a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v6" stroke="var(--accent)" strokeWidth="1.8" />
-        <rect x="14" y="26" width="16" height="8" rx="1.5" stroke="var(--accent)" strokeWidth="1.5" />
-        <circle cx="33" cy="22" r="2" fill="var(--accent)" />
+        <rect x="6" y="16" width="32" height="16" rx="3" stroke="#ffffff" strokeWidth="1.8" />
+        <path d="M12 16V10a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v6" stroke="#ffffff" strokeWidth="1.8" />
+        <rect x="14" y="26" width="16" height="8" rx="1.5" stroke="#ffffff" strokeWidth="1.5" />
+        <circle cx="33" cy="22" r="2" fill="#ffffff" />
       </svg>
     ),
   },
@@ -54,9 +54,9 @@ const stages = [
     body: 'Carefully packed and prepared for dispatch',
     icon: (
       <svg width="44" height="44" viewBox="0 0 44 44" fill="none" aria-hidden="true">
-        <path d="M8 16l14-8 14 8v16l-14 8L8 32V16z" stroke="var(--accent)" strokeWidth="1.8" strokeLinejoin="round" />
-        <path d="M22 8v24M8 16l14 8 14-8" stroke="var(--accent)" strokeWidth="1.8" strokeLinejoin="round" />
-        <path d="M15 12l14 8" stroke="var(--accent)" strokeWidth="1.5" strokeOpacity="0.4" />
+        <path d="M8 16l14-8 14 8v16l-14 8L8 32V16z" stroke="#ffffff" strokeWidth="1.8" strokeLinejoin="round" />
+        <path d="M22 8v24M8 16l14 8 14-8" stroke="#ffffff" strokeWidth="1.8" strokeLinejoin="round" />
+        <path d="M15 12l14 8" stroke="#ffffff" strokeWidth="1.5" strokeOpacity="0.4" />
       </svg>
     ),
   },
@@ -66,11 +66,11 @@ const stages = [
     body: 'Fast, tracked delivery direct to you anywhere in the UK',
     icon: (
       <svg width="44" height="44" viewBox="0 0 44 44" fill="none" aria-hidden="true">
-        <path d="M4 28h24V14H4v14z" stroke="var(--accent)" strokeWidth="1.8" strokeLinejoin="round" />
-        <path d="M28 20h8l4 8v4h-4" stroke="var(--accent)" strokeWidth="1.8" strokeLinejoin="round" />
-        <circle cx="11" cy="32" r="4" stroke="var(--accent)" strokeWidth="1.8" />
-        <circle cx="33" cy="32" r="4" stroke="var(--accent)" strokeWidth="1.8" />
-        <path d="M4 24h24" stroke="var(--accent)" strokeWidth="1.5" strokeOpacity="0.3" />
+        <path d="M4 28h24V14H4v14z" stroke="#ffffff" strokeWidth="1.8" strokeLinejoin="round" />
+        <path d="M28 20h8l4 8v4h-4" stroke="#ffffff" strokeWidth="1.8" strokeLinejoin="round" />
+        <circle cx="11" cy="32" r="4" stroke="#ffffff" strokeWidth="1.8" />
+        <circle cx="33" cy="32" r="4" stroke="#ffffff" strokeWidth="1.8" />
+        <path d="M4 24h24" stroke="#ffffff" strokeWidth="1.5" strokeOpacity="0.3" />
       </svg>
     ),
   },
@@ -106,7 +106,7 @@ export default function HowItWorksPage() {
 
         {/* Hero */}
         <section style={{ padding: '1rem 0 4rem', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
-          <div aria-hidden="true" style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 80% 60% at 50% 40%, var(--accent-dim) 0%, transparent 70%)', pointerEvents: 'none' }} />
+          <div aria-hidden="true" style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 80% 60% at 50% 40%, rgba(255,255,255,0.06) 0%, transparent 70%)', pointerEvents: 'none' }} />
           <div className="max-w-site" style={{ position: 'relative', zIndex: 2 }}>
             <p className="section-label mb-5">The Process</p>
             <h1 style={{ fontFamily: D, fontSize: 'clamp(3rem, 8vw, 7rem)', fontWeight: 700, color: '#ffffff', letterSpacing: '0.04em', lineHeight: 0.95, marginBottom: '1.5rem' }}>
@@ -137,17 +137,17 @@ export default function HowItWorksPage() {
                       height: 80,
                       borderRadius: '50%',
                       background: 'rgba(0,0,0,0.4)',
-                      border: '1px solid var(--accent-dim)',
+                      border: '1px solid rgba(255,255,255,0.06)',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      boxShadow: '0 0 24px var(--accent-dim)',
+                      boxShadow: '0 0 24px rgba(255,255,255,0.06)',
                       flexShrink: 0,
                     }}>
                       {stage.icon}
                     </div>
                     {/* Stage number */}
-                    <div style={{ fontFamily: B, fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.16em', color: 'var(--accent)', textTransform: 'uppercase' }}>
+                    <div style={{ fontFamily: B, fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.16em', color: '#ffffff', textTransform: 'uppercase' }}>
                       {String(stage.n).padStart(2, '0')}
                     </div>
                     {/* Title */}
@@ -167,7 +167,7 @@ export default function HowItWorksPage() {
                         <path
                           ref={el => { lineRefs.current[i] = el }}
                           d="M0 10 H40"
-                          stroke="var(--accent-mid)"
+                          stroke="rgba(255,255,255,0.18)"
                           strokeWidth="1.5"
                           strokeDasharray="5 4"
                           className="pipeline-line"
@@ -183,7 +183,7 @@ export default function HowItWorksPage() {
         </section>
 
         {/* CTA */}
-        <section style={{ padding: '5rem 0 6rem', background: 'rgba(0,0,0,0.2)', borderTop: '1px solid var(--accent-dim)', textAlign: 'center' }}>
+        <section style={{ padding: '5rem 0 6rem', background: 'rgba(0,0,0,0.2)', borderTop: '1px solid rgba(255,255,255,0.06)', textAlign: 'center' }}>
           <div className="max-w-site">
             <h2 style={{ fontFamily: D, fontSize: 'clamp(2.5rem, 6vw, 5rem)', fontWeight: 700, color: '#ffffff', letterSpacing: '0.04em', lineHeight: 0.95, marginBottom: '2.5rem' }}>
               Ready to order?

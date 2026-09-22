@@ -58,7 +58,7 @@ function FAQItem({ q, a, open, onToggle }: { q: string; a: string; open: boolean
         style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '1.5rem 0', background: 'none', border: 'none', cursor: 'pointer', textAlign: 'left', gap: '1.5rem' }}
       >
         <span style={{ fontFamily: D, fontSize: '1.0625rem', fontWeight: 600, color: '#ffffff', letterSpacing: '0.02em', lineHeight: 1.3 }}>{q}</span>
-        <span style={{ color: 'var(--accent)', fontWeight: 300, flexShrink: 0, lineHeight: 1, width: 28, height: 28, border: '1.5px solid var(--accent-mid)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.1rem' }}>
+        <span style={{ color: '#ffffff', fontWeight: 300, flexShrink: 0, lineHeight: 1, width: 28, height: 28, border: '1.5px solid rgba(255,255,255,0.18)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.1rem' }}>
           {open ? '−' : '+'}
         </span>
       </button>
@@ -81,7 +81,7 @@ export default function FAQPage() {
 
         {/* Hero */}
         <section style={{ padding: '5rem 0 4rem', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
-          <div aria-hidden="true" style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 80% 60% at 50% 40%, var(--accent-dim) 0%, transparent 70%)', pointerEvents: 'none' }} />
+          <div aria-hidden="true" style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 80% 60% at 50% 40%, rgba(255,255,255,0.06) 0%, transparent 70%)', pointerEvents: 'none' }} />
           <div className="max-w-site" style={{ position: 'relative', zIndex: 2 }}>
             <p className="section-label mb-5">Help</p>
             <h1 style={{ fontFamily: D, fontSize: 'clamp(3rem, 8vw, 7rem)', fontWeight: 700, color: '#ffffff', letterSpacing: '0.04em', lineHeight: 0.95, marginBottom: '1.5rem' }}>
@@ -109,7 +109,7 @@ export default function FAQPage() {
         </section>
 
         {/* CTA */}
-        <section style={{ padding: '4rem 0 6rem', background: 'rgba(0,0,0,0.2)', borderTop: '1px solid var(--accent-dim)', textAlign: 'center' }}>
+        <section style={{ padding: '4rem 0 6rem', background: 'rgba(0,0,0,0.2)', borderTop: '1px solid rgba(255,255,255,0.06)', textAlign: 'center' }}>
           <div className="max-w-site">
             <p style={{ fontFamily: B, fontSize: '1rem', color: 'rgba(255,255,255,0.5)', marginBottom: '1.5rem' }}>
               Still have a question?

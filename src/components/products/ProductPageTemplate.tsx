@@ -34,7 +34,7 @@ export default function ProductPageTemplate({ data }: { data: ProductData }) {
         {/* Hero */}
         <section style={{ padding: '6rem 0 4rem', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
           {data.backgroundType && <ProductBackground type={data.backgroundType} />}
-          <div aria-hidden="true" style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 80% 60% at 50% 40%, var(--accent-dim) 0%, transparent 70%)', pointerEvents: 'none', zIndex: 2 }} />
+          <div aria-hidden="true" style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 80% 60% at 50% 40%, rgba(255,255,255,0.06) 0%, transparent 70%)', pointerEvents: 'none', zIndex: 2 }} />
           <div className="max-w-site" style={{ position: 'relative', zIndex: 3 }}>
             <p className="section-label mb-5">Tinta Print</p>
             <RevealWrapper direction="wide">
@@ -70,8 +70,8 @@ export default function ProductPageTemplate({ data }: { data: ProductData }) {
             </div>
             {data.quickSpecs && data.quickSpecs.length > 0 && (
               <RevealWrapper direction="right" delay={0.1}>
-                <div style={{ background: 'rgba(0,0,0,0.35)', border: '1px solid var(--accent-mid)', borderRadius: 16, padding: '2rem' }}>
-                  <h3 style={{ fontFamily: B, fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '1.25rem' }}>
+                <div style={{ background: 'rgba(0,0,0,0.35)', border: '1px solid rgba(255,255,255,0.18)', borderRadius: 16, padding: '2rem' }}>
+                  <h3 style={{ fontFamily: B, fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#ffffff', marginBottom: '1.25rem' }}>
                     Quick Specs
                   </h3>
                   <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: '0.875rem' }}>
@@ -101,13 +101,13 @@ export default function ProductPageTemplate({ data }: { data: ProductData }) {
               {data.columns.map((col, ci) => (
                 <RevealWrapper key={col.heading} direction="up" delay={ci * 0.08}>
                   <div className="product-card" style={{ padding: '2rem' }}>
-                    <h3 style={{ fontFamily: D, fontSize: '1rem', fontWeight: 600, color: 'var(--accent)', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '1rem' }}>
+                    <h3 style={{ fontFamily: D, fontSize: '1rem', fontWeight: 600, color: '#ffffff', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '1rem' }}>
                       {col.heading}
                     </h3>
                     <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: '0.625rem' }}>
                       {col.items.map(item => (
                         <li key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.625rem', fontFamily: B, fontSize: '0.875rem', color: 'rgba(255,255,255,0.6)' }}>
-                          <span style={{ color: 'var(--accent)', marginTop: '0.25rem', flexShrink: 0 }}>—</span>
+                          <span style={{ color: '#ffffff', marginTop: '0.25rem', flexShrink: 0 }}>—</span>
                           {item}
                         </li>
                       ))}
@@ -132,7 +132,7 @@ export default function ProductPageTemplate({ data }: { data: ProductData }) {
               {steps.map((step, i) => (
                 <RevealWrapper key={step.title} direction="up" delay={i * 0.1}>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                    <div style={{ width: 48, height: 48, borderRadius: '50%', background: 'var(--accent)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, boxShadow: '0 0 20px var(--accent-mid)' }}>
+                    <div style={{ width: 48, height: 48, borderRadius: '50%', background: '#ffffff', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, boxShadow: '0 0 20px rgba(255,255,255,0.18)' }}>
                       <span style={{ fontFamily: D, fontSize: '1.125rem', fontWeight: 700, color: '#000000' }}>{i + 1}</span>
                     </div>
                     <div>
@@ -154,11 +154,11 @@ export default function ProductPageTemplate({ data }: { data: ProductData }) {
         <section style={{ padding: '5rem 0 6rem' }}>
           <div className="max-w-site">
             <RevealWrapper direction="wide">
-              <div style={{ background: 'rgba(0,0,0,0.5)', border: '1px solid var(--accent-mid)', borderRadius: 24, padding: 'clamp(2.5rem, 6vw, 4rem)', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
-                <div aria-hidden="true" style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 80% 60% at 50% 50%, var(--accent-dim) 0%, transparent 70%)', pointerEvents: 'none' }} />
+              <div style={{ background: 'rgba(0,0,0,0.5)', border: '1px solid rgba(255,255,255,0.18)', borderRadius: 24, padding: 'clamp(2.5rem, 6vw, 4rem)', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
+                <div aria-hidden="true" style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 80% 60% at 50% 50%, rgba(255,255,255,0.06) 0%, transparent 70%)', pointerEvents: 'none' }} />
                 <h2 style={{ fontFamily: D, fontSize: 'clamp(2.5rem, 6vw, 5rem)', fontWeight: 700, color: '#ffffff', letterSpacing: '0.04em', lineHeight: 0.95, marginBottom: '2rem', position: 'relative' }}>
                   Ready to order?<br />
-                  <span style={{ color: 'var(--accent)', textShadow: '0 0 30px var(--accent-mid)' }}>Let&apos;s talk.</span>
+                  <span style={{ color: '#ffffff',   }}>Let&apos;s talk.</span>
                 </h2>
                 <Link href="/contact" className="btn-primary" style={{ position: 'relative' }}>
                   Get a Free Quote

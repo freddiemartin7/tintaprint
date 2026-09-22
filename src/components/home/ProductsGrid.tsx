@@ -80,7 +80,7 @@ export default function ProductsGrid() {
                   <p style={{ fontFamily: B, fontSize: '0.875rem', color: 'rgba(255,255,255,0.5)', lineHeight: 1.65, flexGrow: 1 }}>
                     {p.desc}
                   </p>
-                  <div className="flex items-center gap-2 mt-5" style={{ color: 'var(--accent)', fontFamily: B, fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase' }}>
+                  <div className="flex items-center gap-2 mt-5" style={{ color: '#ffffff', fontFamily: B, fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase' }}>
                     Learn more
                     <svg width="14" height="10" viewBox="0 0 14 10" fill="none">
                       <path d="M1 5h12M9 1l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>

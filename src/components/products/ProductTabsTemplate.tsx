@@ -81,11 +81,11 @@ export default function ProductTabsTemplate({ data }: { data: ProductTabData }) 
                     fontWeight: 600,
                     letterSpacing: '0.08em',
                     textTransform: 'uppercase',
-                    color: isActive || isHovered ? 'var(--accent)' : 'rgba(255,255,255,0.35)',
-                    textShadow: isHovered && !isActive ? '0 0 20px var(--accent)' : 'none',
+                    color: isActive || isHovered ? '#ffffff' : 'rgba(255,255,255,0.35)',
+                    textShadow: isHovered && !isActive ? '0 0 20px #ffffff' : 'none',
                     background: 'none',
                     border: 'none',
-                    borderBottom: isActive || isHovered ? '2px solid var(--accent)' : '2px solid transparent',
+                    borderBottom: isActive || isHovered ? '2px solid #ffffff' : '2px solid transparent',
                     cursor: 'pointer',
                     transition: 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
                     marginBottom: -1,
@@ -131,7 +131,7 @@ export default function ProductTabsTemplate({ data }: { data: ProductTabData }) 
                   {tab.specs.map((spec, si) => (
                     <RevealWrapper key={spec} direction="left" delay={si * 0.06}>
                       <li style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem', fontFamily: B, fontSize: '0.9375rem', color: 'rgba(255,255,255,0.7)', lineHeight: 1.55 }}>
-                        <span style={{ color: 'var(--accent)', flexShrink: 0, marginTop: '0.3rem', fontSize: '0.55rem' }}>●</span>
+                        <span style={{ color: '#ffffff', flexShrink: 0, marginTop: '0.3rem', fontSize: '0.55rem' }}>●</span>
                         {spec}
                       </li>
                     </RevealWrapper>
@@ -139,12 +139,12 @@ export default function ProductTabsTemplate({ data }: { data: ProductTabData }) 
                 </ul>
                 {tab.noteBox && (
                   <RevealWrapper direction="up" delay={0.15}>
-                    <div style={{ marginTop: '2rem', background: 'var(--accent-dim)', border: '1px solid var(--accent-mid)', borderRadius: 12, padding: '1.25rem 1.5rem' }}>
-                      <p style={{ fontFamily: B, fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '0.75rem' }}>{tab.noteBox.title}</p>
+                    <div style={{ marginTop: '2rem', background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.18)', borderRadius: 12, padding: '1.25rem 1.5rem' }}>
+                      <p style={{ fontFamily: B, fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: '#ffffff', marginBottom: '0.75rem' }}>{tab.noteBox.title}</p>
                       <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                         {tab.noteBox.items.map(item => (
                           <li key={item} style={{ fontFamily: B, fontSize: '0.875rem', color: 'rgba(255,255,255,0.55)', lineHeight: 1.6, paddingLeft: '1rem', position: 'relative' }}>
-                            <span style={{ position: 'absolute', left: 0, color: 'var(--accent)' }}>—</span>
+                            <span style={{ position: 'absolute', left: 0, color: '#ffffff' }}>—</span>
                             {item}
                           </li>
                         ))}
@@ -157,7 +157,7 @@ export default function ProductTabsTemplate({ data }: { data: ProductTabData }) 
               {/* Right col */}
               <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
                 <RevealWrapper direction="right" delay={0.05}>
-                  <div style={{ background: 'rgba(0,0,0,0.35)', border: '1px solid var(--accent-mid)', borderRadius: 12, padding: '1.5rem' }}>
+                  <div style={{ background: 'rgba(0,0,0,0.35)', border: '1px solid rgba(255,255,255,0.18)', borderRadius: 12, padding: '1.5rem' }}>
                     <p style={{ fontFamily: B, fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', marginBottom: '1rem' }}>Order</p>
                     <div style={{ display: 'flex', gap: '0.75rem' }}>
                       <Link href="/quick-buy" className="btn-outline" style={{ fontSize: '0.8125rem', flex: 1, justifyContent: 'center' }}>Quick Buy</Link>
@@ -193,7 +193,7 @@ export default function ProductTabsTemplate({ data }: { data: ProductTabData }) 
             {howItWorksSteps.map((step, i) => (
               <RevealWrapper key={step.title} direction="up" delay={i * 0.1}>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                  <div style={{ width: 48, height: 48, borderRadius: '50%', background: 'var(--accent)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 0 20px var(--accent-mid)', flexShrink: 0 }}>
+                  <div style={{ width: 48, height: 48, borderRadius: '50%', background: '#ffffff', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 0 20px rgba(255,255,255,0.18)', flexShrink: 0 }}>
                     <span style={{ fontFamily: D, fontSize: '1.125rem', fontWeight: 700, color: '#000000' }}>{i + 1}</span>
                   </div>
                   <div>
@@ -211,8 +211,8 @@ export default function ProductTabsTemplate({ data }: { data: ProductTabData }) 
       <section style={{ padding: '5rem 0 6rem' }}>
         <div className="max-w-site">
           <RevealWrapper direction="wide">
-            <div style={{ background: 'rgba(0,0,0,0.5)', border: '1px solid var(--accent-mid)', borderRadius: 24, padding: 'clamp(2.5rem, 6vw, 4rem)', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
-              <div aria-hidden="true" style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 80% 60% at 50% 50%, var(--accent-dim) 0%, transparent 70%)', pointerEvents: 'none' }} />
+            <div style={{ background: 'rgba(0,0,0,0.5)', border: '1px solid rgba(255,255,255,0.18)', borderRadius: 24, padding: 'clamp(2.5rem, 6vw, 4rem)', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
+              <div aria-hidden="true" style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 80% 60% at 50% 50%, rgba(255,255,255,0.06) 0%, transparent 70%)', pointerEvents: 'none' }} />
               <h2 style={{ fontFamily: D, fontSize: 'clamp(2.5rem, 5vw, 4.5rem)', fontWeight: 700, color: '#ffffff', letterSpacing: '0.04em', lineHeight: 0.95, marginBottom: '1rem', position: 'relative' }}>
                 Ready to order?
               </h2>

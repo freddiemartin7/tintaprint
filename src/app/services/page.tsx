@@ -38,7 +38,7 @@ export default function ServicesPage() {
         <div style={{ position: 'relative', zIndex: 1 }}>
 
         <section style={{ padding: '6rem 0 4rem', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
-          <div aria-hidden="true" style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 80% 60% at 50% 40%, var(--accent-dim) 0%, transparent 70%)', pointerEvents: 'none' }} />
+          <div aria-hidden="true" style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 80% 60% at 50% 40%, rgba(255,255,255,0.06) 0%, transparent 70%)', pointerEvents: 'none' }} />
           <div className="max-w-site" style={{ position: 'relative', zIndex: 2 }}>
             <p className="section-label mb-5">Tinta Print</p>
             <h1 style={{ fontFamily: D, fontSize: 'clamp(3rem, 8vw, 7rem)', fontWeight: 700, color: '#ffffff', letterSpacing: '0.04em', lineHeight: 0.95, marginBottom: '1.5rem' }}>
@@ -65,7 +65,7 @@ export default function ServicesPage() {
                   <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: '0.5rem', borderTop: '1px solid rgba(255,255,255,0.06)', paddingTop: '1.25rem' }}>
                     {s.details.map(d => (
                       <li key={d} style={{ display: 'flex', alignItems: 'center', gap: '0.625rem', fontFamily: B, fontSize: '0.8125rem', color: 'rgba(255,255,255,0.45)' }}>
-                        <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--accent)', flexShrink: 0 }} />
+                        <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#ffffff', flexShrink: 0 }} />
                         {d}
                       </li>
                     ))}
@@ -76,11 +76,11 @@ export default function ServicesPage() {
           </div>
         </section>
 
-        <section style={{ padding: '4rem 0 6rem', textAlign: 'center', background: 'rgba(0,0,0,0.2)', borderTop: '1px solid var(--accent-dim)' }}>
+        <section style={{ padding: '4rem 0 6rem', textAlign: 'center', background: 'rgba(0,0,0,0.2)', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
           <div className="max-w-site">
             <h2 style={{ fontFamily: D, fontSize: 'clamp(2.5rem, 6vw, 5rem)', fontWeight: 700, color: '#ffffff', letterSpacing: '0.04em', lineHeight: 0.95, marginBottom: '2rem' }}>
               Let&apos;s talk about<br />
-              <span style={{ color: 'var(--accent)', textShadow: '0 0 30px var(--accent-mid)' }}>your project.</span>
+              <span style={{ color: '#ffffff',   }}>your project.</span>
             </h2>
             <Link href="/contact" className="btn-primary">Get a Free Quote</Link>
           </div>

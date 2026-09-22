@@ -7,7 +7,7 @@ const items = [
 export default function MarqueeStrip() {
   const repeated = [...items, ...items]
   return (
-    <div style={{ background: 'var(--accent)', overflow: 'hidden' }}>
+    <div style={{ background: '#ffffff', overflow: 'hidden' }}>
       <div className="marquee-track" aria-hidden="true">
         {repeated.map((item, i) => (
           <span

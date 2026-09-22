@@ -41,7 +41,7 @@ export default function ContactPage() {
           <div className="max-w-site">
             <p className="section-label mb-4">Contact Us</p>
             <h1 style={{ fontFamily: D, fontSize: 'clamp(3rem, 8vw, 7rem)', fontWeight: 700, color: '#ffffff', letterSpacing: '0.04em', lineHeight: 0.95 }}>
-              Get a <span style={{ color: 'var(--accent)', textShadow: '0 0 30px var(--accent-mid)' }}>Quote.</span>
+              Get a <span style={{ color: '#ffffff',   }}>Quote.</span>
             </h1>
           </div>
         </div>
@@ -73,10 +73,10 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              <div style={{ background: 'var(--accent-dim)', border: '1px solid var(--accent-mid)', padding: '1.25rem' }}>
+              <div style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.18)', padding: '1.25rem' }}>
                 <div className="flex items-center gap-2 mb-2">
-                  <div style={{ width: 7, height: 7, borderRadius: '50%', background: 'var(--accent)', boxShadow: '0 0 8px var(--accent-mid)', flexShrink: 0 }} />
-                  <p style={{ fontFamily: B, fontSize: '0.7rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--accent)', fontWeight: 700 }}>Response Times</p>
+                  <div style={{ width: 7, height: 7, borderRadius: '50%', background: '#ffffff', boxShadow: '0 0 8px rgba(255,255,255,0.18)', flexShrink: 0 }} />
+                  <p style={{ fontFamily: B, fontSize: '0.7rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: '#ffffff', fontWeight: 700 }}>Response Times</p>
                 </div>
                 <p style={{ fontFamily: B, fontSize: '0.9375rem', color: 'rgba(240,240,236,0.6)', lineHeight: 1.6 }}>
                   We aim to respond the same working day.
@@ -87,10 +87,10 @@ export default function ContactPage() {
             {/* Right — form */}
             <div className="lg:col-span-3">
               {submitted ? (
-                <div style={{ padding: '4rem 2rem', border: '1px solid var(--accent-dim)', background: 'var(--accent-dim)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', minHeight: '400px' }}>
-                  <div style={{ width: 56, height: 56, borderRadius: '50%', background: 'var(--accent-dim)', border: '1px solid var(--accent-mid)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.5rem', boxShadow: '0 0 20px var(--accent-dim)' }}>
+                <div style={{ padding: '4rem 2rem', border: '1px solid rgba(255,255,255,0.06)', background: 'rgba(255,255,255,0.06)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', minHeight: '400px' }}>
+                  <div style={{ width: 56, height: 56, borderRadius: '50%', background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.18)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.5rem', boxShadow: '0 0 20px rgba(255,255,255,0.06)' }}>
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                      <path d="M5 12l5 5 9-9" stroke="var(--accent)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      <path d="M5 12l5 5 9-9" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                   </div>
                   <h3 style={{ fontFamily: D, fontSize: '2rem', fontWeight: 700, color: '#f0f0ec', letterSpacing: '0.04em', marginBottom: '0.75rem' }}>Message Sent!</h3>

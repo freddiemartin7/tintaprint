@@ -24,7 +24,7 @@ export default function AboutStrip() {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', borderTop: '1px solid rgba(240,240,236,0.08)' }}>
             {stats.map((stat, i) => (
               <div key={stat.label} style={{ padding: '2rem 1.5rem', borderRight: i < stats.length - 1 ? '1px solid rgba(240,240,236,0.08)' : 'none', textAlign: 'center' }}>
-                <div style={{ fontFamily: D, fontSize: 'clamp(2rem, 4vw, 3.5rem)', fontWeight: 700, color: 'var(--accent)', letterSpacing: '0.04em', lineHeight: 1, marginBottom: '0.5rem', textShadow: '0 0 20px var(--accent-dim)' }}>
+                <div style={{ fontFamily: D, fontSize: 'clamp(2rem, 4vw, 3.5rem)', fontWeight: 700, color: '#ffffff', letterSpacing: '0.04em', lineHeight: 1, marginBottom: '0.5rem',   }}>
                   {stat.value}
                 </div>
                 <div style={{ fontFamily: B, fontSize: '0.75rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(240,240,236,0.4)', fontWeight: 500 }}>

@@ -81,7 +81,7 @@ export default function RadiantPromptInput({
           disabled={!hasValue}
           aria-label="Submit"
           style={{
-            background: hasValue ? 'var(--accent)' : 'rgba(255,255,255,0.08)',
+            background: hasValue ? '#ffffff' : 'rgba(255,255,255,0.08)',
             border: 'none',
             borderRadius: '50%',
             width: size === 'small' ? 28 : 32,
@@ -91,7 +91,7 @@ export default function RadiantPromptInput({
             justifyContent: 'center',
             cursor: hasValue ? 'pointer' : 'not-allowed',
             flexShrink: 0,
-            color: hasValue ? '#021408' : 'rgba(255,255,255,0.25)',
+            color: hasValue ? '#000000' : 'rgba(255,255,255,0.25)',
             transition: 'background 0.2s, color 0.2s',
           }}
         >

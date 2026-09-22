@@ -29,9 +29,9 @@ const moreLinks = [
 
 const colHeadingStyle = {
   fontFamily: B,
-  fontWeight: 500,
+  fontWeight: 700,
   fontSize: 12,
-  color: 'var(--accent)',
+  color: '#ffffff',
   textTransform: 'uppercase' as const,
   letterSpacing: '0.15em',
   marginBottom: '1rem',
@@ -55,8 +55,8 @@ function FooterLinks({ links }: { links: { label: string; href: string }[] }) {
           <Link
             href={l.href}
             style={linkStyle}
-            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = 'var(--accent)' }}
-            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.6)' }}
+            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = '#ffffff' }}
+            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.55)' }}
           >
             {l.label}
           </Link>

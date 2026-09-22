@@ -25,7 +25,7 @@ export default function PrivacyPolicyPage() {
       <main style={{ paddingTop: '4rem' }}>
 
         <section style={{ padding: '5rem 0 4rem', position: 'relative', overflow: 'hidden' }}>
-          <div aria-hidden="true" style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 80% 60% at 50% 40%, var(--accent-dim) 0%, transparent 70%)', pointerEvents: 'none' }} />
+          <div aria-hidden="true" style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 80% 60% at 50% 40%, rgba(255,255,255,0.06) 0%, transparent 70%)', pointerEvents: 'none' }} />
           <div className="max-w-site" style={{ position: 'relative', zIndex: 2 }}>
             <p className="section-label mb-5">Legal</p>
             <h1 style={{ fontFamily: D, fontSize: 'clamp(2.5rem, 6vw, 5rem)', fontWeight: 700, color: '#ffffff', letterSpacing: '0.04em', lineHeight: 0.95, marginBottom: '1rem' }}>
@@ -48,7 +48,7 @@ export default function PrivacyPolicyPage() {
               <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                 {['Full name', 'Email address', 'Phone number (optional)', 'Company name (optional)', 'Details of your enquiry or order'].map(item => (
                   <li key={item} style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                    <span style={{ color: 'var(--accent)', fontSize: '0.5rem' }}>●</span>
+                    <span style={{ color: '#ffffff', fontSize: '0.5rem' }}>●</span>
                     {item}
                   </li>
                 ))}
@@ -60,7 +60,7 @@ export default function PrivacyPolicyPage() {
               <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                 {['Responding to your enquiry', 'Processing and fulfilling your order', 'Communicating with you about your order or enquiry'].map(item => (
                   <li key={item} style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                    <span style={{ color: 'var(--accent)', fontSize: '0.5rem' }}>●</span>
+                    <span style={{ color: '#ffffff', fontSize: '0.5rem' }}>●</span>
                     {item}
                   </li>
                 ))}
@@ -93,7 +93,7 @@ export default function PrivacyPolicyPage() {
                   'The right to data portability',
                 ].map(item => (
                   <li key={item} style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                    <span style={{ color: 'var(--accent)', fontSize: '0.5rem' }}>●</span>
+                    <span style={{ color: '#ffffff', fontSize: '0.5rem' }}>●</span>
                     {item}
                   </li>
                 ))}

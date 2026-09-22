@@ -145,22 +145,21 @@ export default function AIAssistant() {
             width: 56,
             height: 56,
             borderRadius: '50%',
-            background: '#00c060',
+            background: '#ffffff',
             border: 'none',
             cursor: 'pointer',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            animation: 'assistantPulse 2.5s ease-in-out infinite',
           }}
         >
           <svg width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true">
-            <circle cx="13" cy="9" r="5" stroke="#021408" strokeWidth="1.5" />
-            <circle cx="11" cy="8" r="0.9" fill="#021408" />
-            <circle cx="15" cy="8" r="0.9" fill="#021408" />
-            <circle cx="13" cy="10.5" r="1" fill="#021408" />
-            <path d="M7 15h12v5a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2v-5z" stroke="#021408" strokeWidth="1.5" />
-            <path d="M5 17.5h2M19 17.5h2" stroke="#021408" strokeWidth="1.5" strokeLinecap="round" />
+            <circle cx="13" cy="9" r="5" stroke="#000000" strokeWidth="1.5" />
+            <circle cx="11" cy="8" r="0.9" fill="#000000" />
+            <circle cx="15" cy="8" r="0.9" fill="#000000" />
+            <circle cx="13" cy="10.5" r="1" fill="#000000" />
+            <path d="M7 15h12v5a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2v-5z" stroke="#000000" strokeWidth="1.5" />
+            <path d="M5 17.5h2M19 17.5h2" stroke="#000000" strokeWidth="1.5" strokeLinecap="round" />
           </svg>
         </button>
       ) : (
@@ -171,13 +170,13 @@ export default function AIAssistant() {
             maxWidth: 'calc(100vw - 2rem)',
             height: 520,
             maxHeight: 'calc(100vh - 5rem)',
-            background: '#0a1f0f',
-            border: '1px solid rgba(0,192,96,0.2)',
+            background: '#0a0a0a',
+            border: '1px solid rgba(255,255,255,0.12)',
             borderRadius: 16,
             display: 'flex',
             flexDirection: 'column',
             overflow: 'hidden',
-            boxShadow: '0 20px 60px rgba(0,0,0,0.5), 0 0 40px rgba(0,192,96,0.06)',
+            boxShadow: '0 20px 60px rgba(0,0,0,0.5), 0 0 40px rgba(255,255,255,0.03)',
           }}
         >
           <style>{`.ai-panel .radiant-input-field,.ai-panel .radiant-input-field::placeholder{font-family:'Arya',sans-serif;}`}</style>
@@ -201,8 +200,8 @@ export default function AIAssistant() {
                   width: 7,
                   height: 7,
                   borderRadius: '50%',
-                  background: '#00c060',
-                  boxShadow: '0 0 6px rgba(0,192,96,0.8)',
+                  background: '#ffffff',
+                  boxShadow: '0 0 6px rgba(255,255,255,0.6)',
                 }}
               />
             </div>
@@ -244,8 +243,8 @@ export default function AIAssistant() {
                 <div
                   style={{
                     maxWidth: '82%',
-                    background: msg.role === 'user' ? '#00c060' : '#0d2414',
-                    color: msg.role === 'user' ? '#021408' : 'rgba(255,255,255,0.85)',
+                    background: msg.role === 'user' ? '#ffffff' : '#1a1a1a',
+                    color: msg.role === 'user' ? '#000000' : 'rgba(255,255,255,0.85)',
                     borderRadius:
                       msg.role === 'user'
                         ? '16px 16px 4px 16px'
@@ -265,7 +264,7 @@ export default function AIAssistant() {
               <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
                 <div
                   style={{
-                    background: '#0d2414',
+                    background: '#1a1a1a',
                     borderRadius: '16px 16px 16px 4px',
                     padding: '0.75rem 1rem',
                     display: 'flex',
@@ -280,7 +279,7 @@ export default function AIAssistant() {
                         width: 6,
                         height: 6,
                         borderRadius: '50%',
-                        background: '#00c060',
+                        background: '#ffffff',
                         display: 'inline-block',
                         animation: `dotBounce 1.2s ease-in-out ${i * 0.2}s infinite`,
                       }}

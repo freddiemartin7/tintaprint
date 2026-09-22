@@ -30,7 +30,7 @@ export default function Hero() {
           width: '80px',
           height: '96px',
           background: 'transparent',
-          border: '2px solid rgba(0,192,96,0.3)',
+          border: '2px solid rgba(255,255,255,0.15)',
           borderRadius: '50% 50% 50% 50% / 60% 60% 40% 40%',
           display: 'flex',
           alignItems: 'center',
@@ -40,7 +40,7 @@ export default function Hero() {
             fontFamily: 'Switzer, sans-serif',
             fontSize: '36px',
             fontWeight: 700,
-            color: '#00c060',
+            color: '#ffffff',
           }}>t</span>
         </div>
 
@@ -53,7 +53,7 @@ export default function Hero() {
           lineHeight: 1,
         }}>
           <span style={{ color: '#ffffff' }}>TINTA </span>
-          <span style={{ color: '#00c060' }}>PRINT</span>
+          <span style={{ color: '#ffffff' }}>PRINT</span>
         </div>
       </div>
 

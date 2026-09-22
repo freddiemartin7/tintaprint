@@ -149,9 +149,9 @@ export default function BuilderPackagePage() {
         <Nav />
         <main style={{ paddingTop: '4rem', minHeight: '80vh', display: 'flex', alignItems: 'center' }}>
           <div className="max-w-site" style={{ textAlign: 'center', padding: '6rem 0' }}>
-            <div style={{ width: 72, height: 72, borderRadius: '50%', background: 'var(--accent-dim)', border: '2px solid var(--accent)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 2rem' }}>
+            <div style={{ width: 72, height: 72, borderRadius: '50%', background: 'rgba(255,255,255,0.06)', border: '2px solid #ffffff', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 2rem' }}>
               <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                <path d="M6 16l8 8 12-14" stroke="var(--accent)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M6 16l8 8 12-14" stroke="#ffffff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </div>
             <h1 style={{ fontFamily: D, fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: 700, color: '#ffffff', letterSpacing: '0.04em', marginBottom: '1rem' }}>
@@ -175,7 +175,7 @@ export default function BuilderPackagePage() {
         <GeometricBackground />
 
         <section style={{ padding: '5rem 0 4rem', position: 'relative', overflow: 'hidden', zIndex: 1 }}>
-          <div aria-hidden="true" style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 80% 60% at 50% 40%, var(--accent-dim) 0%, transparent 70%)', pointerEvents: 'none' }} />
+          <div aria-hidden="true" style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 80% 60% at 50% 40%, rgba(255,255,255,0.06) 0%, transparent 70%)', pointerEvents: 'none' }} />
           <div className="max-w-site" style={{ position: 'relative', zIndex: 2 }}>
             <nav className="breadcrumb">
               <Link href="/">Home</Link><span className="breadcrumb-sep">›</span>
@@ -197,7 +197,7 @@ export default function BuilderPackagePage() {
             {/* Progress bar */}
             <div style={{ marginBottom: '2.5rem' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.625rem' }}>
-                <span style={{ fontFamily: B, fontSize: '0.75rem', fontWeight: 600, color: 'var(--accent)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
+                <span style={{ fontFamily: B, fontSize: '0.75rem', fontWeight: 600, color: '#ffffff', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
                   Step {step} of {totalSteps}
                 </span>
                 <span style={{ fontFamily: B, fontSize: '0.75rem', color: 'rgba(255,255,255,0.3)' }}>
@@ -205,7 +205,7 @@ export default function BuilderPackagePage() {
                 </span>
               </div>
               <div style={{ height: 3, background: 'rgba(255,255,255,0.08)', borderRadius: 2 }}>
-                <div style={{ height: '100%', width: `${(step / totalSteps) * 100}%`, background: 'var(--accent)', borderRadius: 2, transition: 'width 0.4s ease' }} />
+                <div style={{ height: '100%', width: `${(step / totalSteps) * 100}%`, background: '#ffffff', borderRadius: 2, transition: 'width 0.4s ease' }} />
               </div>
             </div>
 
@@ -234,12 +234,12 @@ export default function BuilderPackagePage() {
                           style={{
                             textAlign: 'left',
                             padding: 36,
-                            background: selected ? 'var(--accent-dim)' : 'rgba(255,255,255,0.02)',
-                            border: `1px solid ${selected ? 'var(--accent)' : 'rgba(255,255,255,0.07)'}`,
+                            background: selected ? 'rgba(255,255,255,0.06)' : 'rgba(255,255,255,0.02)',
+                            border: `1px solid ${selected ? '#ffffff' : 'rgba(255,255,255,0.07)'}`,
                             borderRadius: 16,
                             cursor: 'pointer',
                             transition: 'all 0.4s cubic-bezier(0.16,1,0.3,1)',
-                            boxShadow: selected ? '0 0 32px var(--accent-mid)' : 'none',
+                            boxShadow: selected ? '0 0 32px rgba(255,255,255,0.18)' : 'none',
                           }}
                           onMouseEnter={e => {
                             if (form.packageType !== pkg.id) {
@@ -258,18 +258,18 @@ export default function BuilderPackagePage() {
                             }
                           }}
                         >
-                          <div style={{ fontSize: 28, color: 'var(--accent)', opacity: 0.7, marginBottom: 20 }}>{pkg.icon}</div>
+                          <div style={{ fontSize: 28, color: '#ffffff', opacity: 0.7, marginBottom: 20 }}>{pkg.icon}</div>
                           <div style={{ fontFamily: D, fontSize: 24, fontWeight: 700, color: '#ffffff', marginBottom: 10 }}>{pkg.title}</div>
                           <p style={{ fontFamily: B, fontSize: 15, fontWeight: 300, color: 'rgba(255,255,255,0.5)', lineHeight: 1.6, marginBottom: 20 }}>{pkg.description}</p>
                           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
                             {pkg.items.map(item => (
                               <span key={item} style={{
                                 fontFamily: B, fontSize: 11, fontWeight: 500,
-                                color: 'var(--accent)',
-                                border: '1px solid var(--accent-mid)',
+                                color: '#ffffff',
+                                border: '1px solid rgba(255,255,255,0.18)',
                                 borderRadius: 9999,
                                 padding: '4px 12px',
-                                background: 'var(--accent-dim)',
+                                background: 'rgba(255,255,255,0.06)',
                               }}>{item}</span>
                             ))}
                           </div>
@@ -339,8 +339,8 @@ export default function BuilderPackagePage() {
                             alignItems: 'center',
                             gap: '1rem',
                             padding: '1rem 1.25rem',
-                            background: checked ? 'var(--accent-dim)' : 'rgba(0,0,0,0.3)',
-                            border: `1.5px solid ${checked ? 'var(--accent)' : 'rgba(255,255,255,0.08)'}`,
+                            background: checked ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.3)',
+                            border: `1.5px solid ${checked ? '#ffffff' : 'rgba(255,255,255,0.08)'}`,
                             borderRadius: 10,
                             cursor: 'pointer',
                             transition: 'border-color 0.2s, background 0.2s',
@@ -350,8 +350,8 @@ export default function BuilderPackagePage() {
                           <div style={{
                             width: 20, height: 20,
                             borderRadius: 5,
-                            border: `1.5px solid ${checked ? 'var(--accent)' : 'rgba(255,255,255,0.25)'}`,
-                            background: checked ? 'var(--accent)' : 'transparent',
+                            border: `1.5px solid ${checked ? '#ffffff' : 'rgba(255,255,255,0.25)'}`,
+                            background: checked ? '#ffffff' : 'transparent',
                             display: 'flex', alignItems: 'center', justifyContent: 'center',
                             flexShrink: 0,
                           }}>

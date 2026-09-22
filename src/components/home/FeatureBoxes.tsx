@@ -11,10 +11,10 @@ const features = [
     href: '/popular-products',
     icon: (
       <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-        <rect x="8" y="4" width="16" height="10" rx="1.5" stroke="var(--accent)" strokeWidth="1.5"/>
-        <rect x="4" y="11" width="24" height="13" rx="2" stroke="var(--accent)" strokeWidth="1.5"/>
-        <rect x="8" y="18" width="16" height="7" rx="1" stroke="var(--accent)" strokeWidth="1.5"/>
-        <circle cx="24" cy="17" r="1.5" fill="var(--accent)"/>
+        <rect x="8" y="4" width="16" height="10" rx="1.5" stroke="#ffffff" strokeWidth="1.5"/>
+        <rect x="4" y="11" width="24" height="13" rx="2" stroke="#ffffff" strokeWidth="1.5"/>
+        <rect x="8" y="18" width="16" height="7" rx="1" stroke="#ffffff" strokeWidth="1.5"/>
+        <circle cx="24" cy="17" r="1.5" fill="#ffffff"/>
       </svg>
     ),
   },
@@ -24,8 +24,8 @@ const features = [
     href: '/contact',
     icon: (
       <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-        <path d="M5 7a3 3 0 0 1 3-3h16a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H12l-7 4V7z" stroke="var(--accent)" strokeWidth="1.5" strokeLinejoin="round"/>
-        <path d="M10 12h12M10 17h7" stroke="var(--accent)" strokeWidth="1.5" strokeLinecap="round"/>
+        <path d="M5 7a3 3 0 0 1 3-3h16a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H12l-7 4V7z" stroke="#ffffff" strokeWidth="1.5" strokeLinejoin="round"/>
+        <path d="M10 12h12M10 17h7" stroke="#ffffff" strokeWidth="1.5" strokeLinecap="round"/>
       </svg>
     ),
   },
@@ -35,8 +35,8 @@ const features = [
     desc: 'Everything you need, bundled together. Packages for business, events, salons, and weddings.',
     icon: (
       <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-        <path d="M4 10l12-6 12 6v12l-12 6L4 22V10z" stroke="var(--accent)" strokeWidth="1.5" strokeLinejoin="round"/>
-        <path d="M16 4v20M4 10l12 6 12-6" stroke="var(--accent)" strokeWidth="1.5" strokeLinejoin="round"/>
+        <path d="M4 10l12-6 12 6v12l-12 6L4 22V10z" stroke="#ffffff" strokeWidth="1.5" strokeLinejoin="round"/>
+        <path d="M16 4v20M4 10l12 6 12-6" stroke="#ffffff" strokeWidth="1.5" strokeLinejoin="round"/>
       </svg>
     ),
   },

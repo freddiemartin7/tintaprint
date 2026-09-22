@@ -15,17 +15,17 @@ interface PackageCardProps {
 
 function PackageCard({ name, items, featured }: PackageCardProps) {
   return (
-    <div style={{ background: 'rgba(0,0,0,0.35)', border: `1px solid ${featured ? 'var(--accent-mid)' : 'rgba(255,255,255,0.08)'}`, borderRadius: 16, padding: '2.5rem', display: 'flex', flexDirection: 'column', gap: '1.25rem', position: 'relative', boxShadow: featured ? '0 0 50px var(--accent-dim)' : 'none' }}>
+    <div style={{ background: 'rgba(0,0,0,0.35)', border: `1px solid ${featured ? 'rgba(255,255,255,0.18)' : 'rgba(255,255,255,0.08)'}`, borderRadius: 16, padding: '2.5rem', display: 'flex', flexDirection: 'column', gap: '1.25rem', position: 'relative', boxShadow: featured ? '0 0 50px rgba(255,255,255,0.06)' : 'none' }}>
       {featured && (
-        <div style={{ position: 'absolute', top: -13, left: '50%', transform: 'translateX(-50%)', background: 'var(--accent)', color: '#000000', fontFamily: B, fontSize: '0.65rem', fontWeight: 800, letterSpacing: '0.15em', textTransform: 'uppercase', padding: '0.3rem 1rem', borderRadius: 20, whiteSpace: 'nowrap' }}>
+        <div style={{ position: 'absolute', top: -13, left: '50%', transform: 'translateX(-50%)', background: '#ffffff', color: '#000000', fontFamily: B, fontSize: '0.65rem', fontWeight: 800, letterSpacing: '0.15em', textTransform: 'uppercase', padding: '0.3rem 1rem', borderRadius: 20, whiteSpace: 'nowrap' }}>
           Most Popular
         </div>
       )}
-      <h2 style={{ fontFamily: D, fontSize: '1.5rem', fontWeight: 700, color: featured ? 'var(--accent)' : '#ffffff', letterSpacing: '0.08em', textShadow: featured ? '0 0 20px var(--accent-mid)' : 'none' }}>{name}</h2>
+      <h2 style={{ fontFamily: D, fontSize: '1.5rem', fontWeight: 700, color: featured ? '#ffffff' : '#ffffff', letterSpacing: '0.08em', textShadow: featured ? '0 0 20px rgba(255,255,255,0.18)' : 'none' }}>{name}</h2>
       <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: '0.625rem', flexGrow: 1 }}>
         {items.map(item => (
           <li key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem', fontFamily: B, fontSize: '0.9rem', color: 'rgba(255,255,255,0.65)', lineHeight: 1.5 }}>
-            <span style={{ color: 'var(--accent)', flexShrink: 0, marginTop: '0.3rem', fontSize: '0.5rem' }}>●</span>
+            <span style={{ color: '#ffffff', flexShrink: 0, marginTop: '0.3rem', fontSize: '0.5rem' }}>●</span>
             {item}
           </li>
         ))}
@@ -49,7 +49,7 @@ export default function BusinessPackagesPage() {
 
         <section style={{ padding: '5rem 0 4rem', position: 'relative', overflow: 'hidden' }}>
           <ProductBackground type="data-stream" />
-          <div aria-hidden="true" style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 80% 60% at 50% 40%, var(--accent-dim) 0%, transparent 70%)', pointerEvents: 'none' }} />
+          <div aria-hidden="true" style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 80% 60% at 50% 40%, rgba(255,255,255,0.06) 0%, transparent 70%)', pointerEvents: 'none' }} />
           <div className="max-w-site" style={{ position: 'relative', zIndex: 2 }}>
             <nav className="breadcrumb">
               <Link href="/">Home</Link><span className="breadcrumb-sep">›</span>
@@ -103,7 +103,7 @@ export default function BusinessPackagesPage() {
 
             <p style={{ fontFamily: B, fontSize: '0.9rem', color: 'rgba(255,255,255,0.35)', textAlign: 'center', marginTop: '2.5rem' }}>
               Want something specific?{' '}
-              <Link href="/packages/builder" style={{ color: 'var(--accent)', textDecoration: 'none' }}>Use our package builder</Link>
+              <Link href="/packages/builder" style={{ color: '#ffffff', textDecoration: 'none' }}>Use our package builder</Link>
               {' '}to create your own.
             </p>
           </div>

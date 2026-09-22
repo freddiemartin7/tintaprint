@@ -1,5 +1,5 @@
 export const ACCENT_COLORS = [
-  '#00c060', // brand green
+  '#ffffff', // brand green
   '#00e5ff', // cyan
   '#7c3aed', // purple
   '#ec4899', // pink
@@ -8,7 +8,7 @@ export const ACCENT_COLORS = [
   '#1a3aff', // dark blue
 ]
 
-export const AI_GREEN = '#00c060'
+export const AI_GREEN = '#ffffff'
 
 const SESSION_KEY = 'tinta-accent'
 

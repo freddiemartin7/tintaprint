@@ -50,7 +50,7 @@ export default function StickersPage() {
                 <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
                   {specs.map(spec => (
                     <li key={spec} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.875rem', fontFamily: B, fontSize: '0.9375rem', color: 'rgba(255,255,255,0.65)', lineHeight: 1.55 }}>
-                      <span style={{ color: 'var(--accent)', flexShrink: 0, marginTop: '0.35rem', fontSize: '0.5rem' }}>●</span>
+                      <span style={{ color: '#ffffff', flexShrink: 0, marginTop: '0.35rem', fontSize: '0.5rem' }}>●</span>
                       {spec}
                     </li>
                   ))}
@@ -58,7 +58,7 @@ export default function StickersPage() {
               </div>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-                <div style={{ background: 'rgba(0,0,0,0.35)', border: '1px solid var(--accent-dim)', borderRadius: 12, padding: '1.5rem' }}>
+                <div style={{ background: 'rgba(0,0,0,0.35)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 12, padding: '1.5rem' }}>
                   <p style={{ fontFamily: B, fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', marginBottom: '1rem' }}>Order</p>
                   <div style={{ display: 'flex', gap: '0.75rem' }}>
                     <Link href="/quick-buy" className="btn-outline" style={{ fontSize: '0.8125rem', flex: 1, justifyContent: 'center' }}>Quick Buy</Link>
@@ -86,8 +86,8 @@ export default function StickersPage() {
                 { title: 'Printed & Delivered', body: 'Your stickers are printed to the highest standard, then dispatched for fast, tracked delivery to your door.' },
               ].map((step, i) => (
                 <div key={step.title} className="product-card" style={{ padding: '2rem' }}>
-                  <div style={{ width: 40, height: 40, borderRadius: '50%', background: 'var(--accent-dim)', border: '1px solid var(--accent-mid)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1rem' }}>
-                    <span style={{ fontFamily: B, fontSize: '0.8rem', fontWeight: 700, color: 'var(--accent)' }}>0{i + 1}</span>
+                  <div style={{ width: 40, height: 40, borderRadius: '50%', background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.18)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1rem' }}>
+                    <span style={{ fontFamily: B, fontSize: '0.8rem', fontWeight: 700, color: '#ffffff' }}>0{i + 1}</span>
                   </div>
                   <h3 style={{ fontFamily: D, fontSize: '1rem', fontWeight: 700, color: '#ffffff', letterSpacing: '0.04em', marginBottom: '0.5rem' }}>{step.title}</h3>
                   <p style={{ fontFamily: B, fontSize: '0.875rem', color: 'rgba(255,255,255,0.5)', lineHeight: 1.65, margin: 0 }}>{step.body}</p>

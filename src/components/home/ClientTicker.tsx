@@ -23,7 +23,7 @@ export default function ClientTicker() {
               fontSize: 'clamp(1.75rem, 4vw, 3rem)',
               fontWeight: 600,
               letterSpacing: '0.04em',
-              color: (i % sectors.length === 0 && i > 0) ? 'var(--accent)' : 'rgba(240,240,236,0.12)',
+              color: (i % sectors.length === 0 && i > 0) ? '#ffffff' : 'rgba(240,240,236,0.12)',
               padding: '0 2.5rem',
               whiteSpace: 'nowrap',
               display: 'inline-flex',
@@ -32,7 +32,7 @@ export default function ClientTicker() {
             }}
           >
             {sector}
-            <span aria-hidden="true" style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--accent-dim)', display: 'inline-block', flexShrink: 0 }} />
+            <span aria-hidden="true" style={{ width: 6, height: 6, borderRadius: '50%', background: 'rgba(255,255,255,0.06)', display: 'inline-block', flexShrink: 0 }} />
           </span>
         ))}
       </div>

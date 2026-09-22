@@ -70,8 +70,8 @@ function GeometricCanvas({ accent }: { accent: string }) {
       ctx.clearRect(0, 0, W, H)
 
       const accentRgb = hexToRgb(accent)
-      const dim = accentRgb ? `rgba(${accentRgb},0.06)` : 'rgba(0,192,96,0.06)'
-      const mid = accentRgb ? `rgba(${accentRgb},0.15)` : 'rgba(0,192,96,0.15)'
+      const dim = accentRgb ? `rgba(${accentRgb},0.06)` : 'rgba(255,255,255,0.04)'
+      const mid = accentRgb ? `rgba(${accentRgb},0.15)` : 'rgba(255,255,255,0.15)'
 
       // Perspective grid
       const vp = { x: W * 0.5, y: H * 0.35 - parallax * 0.3 }
@@ -160,7 +160,7 @@ function ProductCard({ product, index }: { product: typeof PRODUCTS[0]; index: n
           flexDirection: 'column',
           padding: '2rem 2rem 1.75rem',
           textDecoration: 'none',
-          borderTop: '3px solid var(--accent)',
+          borderTop: '3px solid #ffffff',
           borderLeft: '1px solid rgba(255,255,255,0.06)',
           borderRight: '1px solid rgba(255,255,255,0.06)',
           borderBottom: '1px solid rgba(255,255,255,0.06)',
@@ -171,7 +171,7 @@ function ProductCard({ product, index }: { product: typeof PRODUCTS[0]; index: n
           height: '100%',
         }}
       >
-        <p style={{ fontFamily: B, fontSize: '0.625rem', fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: 8, opacity: 0.8 }}>
+        <p style={{ fontFamily: B, fontSize: '0.625rem', fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: '#ffffff', marginBottom: 8, opacity: 0.8 }}>
           {product.category}
         </p>
         <h3 style={{ fontFamily: D, fontSize: '1.1875rem', fontWeight: 600, color: '#ffffff', letterSpacing: '0.02em', marginBottom: '0.75rem', lineHeight: 1.2 }}>
@@ -186,7 +186,7 @@ function ProductCard({ product, index }: { product: typeof PRODUCTS[0]; index: n
             alignItems: 'center',
             gap: 8,
             marginTop: 20,
-            color: 'var(--accent)',
+            color: '#ffffff',
             fontFamily: B,
             fontSize: '0.75rem',
             fontWeight: 700,
@@ -216,7 +216,7 @@ export default function ProductsGrid() {
       <GeometricCanvas accent={accent} />
       <div style={{ position: 'relative', zIndex: 1 }} className="max-w-site">
         <RevealWrapper direction="up">
-          <p style={{ fontFamily: B, fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: 16 }}>
+          <p style={{ fontFamily: B, fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#ffffff', marginBottom: 16 }}>
             What we print
           </p>
           <h2 style={{ fontFamily: D, fontSize: 'clamp(2.5rem, 5vw, 5rem)', fontWeight: 700, color: '#ffffff', letterSpacing: '0.02em', marginBottom: '3rem', lineHeight: 1 }}>

@@ -64,25 +64,25 @@ export default function OrdersOfServicePage() {
                 <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: '0.75rem', marginBottom: '2rem' }}>
                   {specs.map(spec => (
                     <li key={spec} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.875rem', fontFamily: B, fontSize: '0.9375rem', color: 'rgba(255,255,255,0.65)', lineHeight: 1.55 }}>
-                      <span style={{ color: 'var(--accent)', flexShrink: 0, marginTop: '0.35rem', fontSize: '0.5rem' }}>●</span>
+                      <span style={{ color: '#ffffff', flexShrink: 0, marginTop: '0.35rem', fontSize: '0.5rem' }}>●</span>
                       {spec}
                     </li>
                   ))}
                 </ul>
 
-                <div style={{ background: 'var(--accent-dim)', border: '1px solid var(--accent-dim)', borderRadius: 12, padding: '1.25rem 1.5rem', marginBottom: '1.5rem' }}>
-                  <p style={{ fontFamily: B, fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '0.75rem' }}>File Requirements</p>
+                <div style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 12, padding: '1.25rem 1.5rem', marginBottom: '1.5rem' }}>
+                  <p style={{ fontFamily: B, fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: '#ffffff', marginBottom: '0.75rem' }}>File Requirements</p>
                   <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                     {fileRequirements.map(item => (
                       <li key={item} style={{ fontFamily: B, fontSize: '0.875rem', color: 'rgba(255,255,255,0.55)', lineHeight: 1.6, paddingLeft: '1rem', position: 'relative' }}>
-                        <span style={{ position: 'absolute', left: 0, color: 'var(--accent)' }}>—</span>
+                        <span style={{ position: 'absolute', left: 0, color: '#ffffff' }}>—</span>
                         {item}
                       </li>
                     ))}
                   </ul>
                 </div>
 
-                <div style={{ background: 'rgba(0,0,0,0.35)', border: '1px solid var(--accent-dim)', borderRadius: 12, padding: '1.5rem' }}>
+                <div style={{ background: 'rgba(0,0,0,0.35)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 12, padding: '1.5rem' }}>
                   <p style={{ fontFamily: B, fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', marginBottom: '1rem' }}>Order</p>
                   <div style={{ display: 'flex', gap: '0.75rem' }}>
                     <Link href="/quick-buy" className="btn-outline" style={{ fontSize: '0.8125rem', flex: 1, justifyContent: 'center' }}>Quick Buy</Link>
