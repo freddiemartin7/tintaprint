@@ -1,7 +1,7 @@
 'use client'
 import Link from 'next/link'
-import { useState, useEffect } from 'react'
-import { usePathname } from 'next/navigation'
+import { useState, useEffect, useRef } from 'react'
+import { usePathname, useRouter } from 'next/navigation'
 
 const products = [
   { label: 'Business Cards',           href: '/products/business-cards' },
@@ -82,12 +82,23 @@ const chevron = (
 export default function Nav() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [openSubmenu, setOpenSubmenu] = useState<string | null>(null)
+  const [searchQuery, setSearchQuery] = useState('')
   const pathname = usePathname()
+  const router = useRouter()
+  const searchRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
     setMobileOpen(false)
     setOpenSubmenu(null)
   }, [pathname])
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault()
+    const q = searchQuery.trim()
+    router.push(q ? `/products?q=${encodeURIComponent(q)}` : '/products')
+    setSearchQuery('')
+    searchRef.current?.blur()
+  }
 
   return (
     <>
@@ -99,15 +110,30 @@ export default function Nav() {
         }}
         className="fixed top-0 left-0 right-0 h-16"
       >
-        <div className="max-w-site h-full flex items-center justify-between">
+        <div className="max-w-site h-full flex items-center gap-6">
 
-          {/* Wordmark */}
-          <Link href="/" style={{ fontFamily: D, fontSize: '1.375rem', fontWeight: 700, letterSpacing: '0.06em', color: '#ffffff', textDecoration: 'none', flexShrink: 0 }}>
-            TINTA PRINT
-          </Link>
+          {/* Search bar with rainbow glow */}
+          <form onSubmit={handleSearch} style={{ flex: 1, maxWidth: 500, position: 'relative' }}>
+            <div className="rainbow-glow-wrapper" style={{ borderRadius: 9999 }}>
+              <div className="rainbow-glow-ring" style={{ borderRadius: 9999 }} />
+              <div style={{ position: 'relative', zIndex: 1, display: 'flex', alignItems: 'center', background: '#0a0a0a', borderRadius: 9999, height: 40, padding: '0 1rem', gap: '0.5rem' }}>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.4)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={{ flexShrink: 0 }}>
+                  <circle cx="11" cy="11" r="8" /><path d="m21 21-4.35-4.35" />
+                </svg>
+                <input
+                  ref={searchRef}
+                  type="text"
+                  value={searchQuery}
+                  onChange={e => setSearchQuery(e.target.value)}
+                  placeholder="Search products..."
+                  style={{ flex: 1, background: 'none', border: 'none', outline: 'none', color: '#ffffff', fontFamily: B, fontSize: '0.875rem', fontWeight: 400 }}
+                />
+              </div>
+            </div>
+          </form>
 
           {/* Desktop nav */}
-          <div className="hidden lg:flex items-center gap-8">
+          <div className="hidden lg:flex items-center gap-8" style={{ flexShrink: 0 }}>
 
             <div className="nav-parent">
               <Link href="/products" style={navLinkStyle}

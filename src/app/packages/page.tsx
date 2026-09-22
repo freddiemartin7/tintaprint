@@ -1,88 +1,174 @@
+'use client'
+import { useState } from 'react'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import Link from 'next/link'
-import GeometricBackground from '@/components/ui/GeometricBackground'
 
 const D = '"Aeonik Pro", sans-serif'
 const B = '"Switzer", sans-serif'
 
-const packageTypes = [
+const packageData = [
   {
-    title: 'Business Packages',
-    desc: 'Everything a business needs to get noticed — from launch essentials to full brand collateral.',
-    href: '/packages/business',
-    tags: ['Business cards', 'Flyers', 'Banners', 'Brochures'],
+    name: 'Business',
+    tagline: 'Launch and grow with confidence.',
+    desc: 'Everything a business needs to look professional, consistent, and memorable — from first impressions to everyday stationery.',
+    items: ['Business cards', 'Flyers', 'Letterheads', 'Compliment slips'],
+    price: 'From £49',
+    href: '/contact',
   },
   {
-    title: 'Event Packages',
-    desc: 'From intimate gatherings to large-scale celebrations — all your event print in one place.',
-    href: '/packages/events',
-    tags: ['Invitations', 'Menus', 'Signage', 'Place cards'],
+    name: 'Events',
+    tagline: 'Print that makes the moment.',
+    desc: 'Complete print solutions for events of every size, from intimate gatherings to large-scale productions.',
+    items: ['Posters', 'Banners', 'Flyers', 'Programmes'],
+    price: 'From £79',
+    href: '/contact',
   },
   {
-    title: 'Wedding Packages',
-    desc: 'Every detail, perfectly printed. From save the dates to on-the-day signage — all in one package.',
-    href: '/packages/weddings',
-    tags: ['Invitations', 'Order of service', 'Signage', 'Thank you cards'],
+    name: 'Salon & Beauty',
+    tagline: 'Look the part, every day.',
+    desc: 'Designed for salons, spas and beauty businesses who want to make a lasting impression on every client.',
+    items: ['Loyalty cards', 'Appointment cards', 'Flyers', 'Gift vouchers'],
+    price: 'From £59',
+    href: '/contact',
   },
   {
-    title: 'Salon & Beauty Packages',
-    desc: 'Designed for salons, spas, and beauty businesses. Everything you need to look the part.',
-    href: '/packages/salon',
-    tags: ['Business cards', 'Price lists', 'Flyers', 'Loyalty cards'],
-  },
-  {
-    title: 'Build Your Own',
-    desc: "Can't find what you need? Put together a bespoke package with exactly the products you want.",
-    href: '/packages/builder',
-    tags: ['Custom', 'Any products', 'Any quantities'],
+    name: 'Wedding',
+    tagline: 'Every detail, perfectly printed.',
+    desc: "From save the dates to on-the-day stationery — your wedding print, beautifully produced and all in one place.",
+    items: ['Invitations', 'Order of service', 'Place cards', 'Menus'],
+    price: 'From £99',
+    href: '/contact',
   },
 ]
 
-export const metadata = {
-  title: 'Print Packages | Tinta Print',
-  description: 'Print packages for business, events, weddings, salons, and more. Everything you need, bundled together.',
+function PackageRow({ pkg }: { pkg: typeof packageData[number] }) {
+  const [expanded, setExpanded] = useState(false)
+
+  return (
+    <div style={{ borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
+      <button
+        onClick={() => setExpanded(e => !e)}
+        style={{
+          width: '100%',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          padding: '2.5rem 0',
+          background: 'none',
+          border: 'none',
+          cursor: 'pointer',
+          textAlign: 'left',
+          gap: '2rem',
+        }}
+      >
+        <div style={{ flex: 1 }}>
+          <div style={{ display: 'flex', alignItems: 'baseline', gap: '1.5rem', flexWrap: 'wrap', marginBottom: '0.5rem' }}>
+            <h2 style={{ fontFamily: D, fontWeight: 700, fontSize: 'clamp(1.75rem, 4vw, 3rem)', color: '#ffffff', margin: 0, letterSpacing: '0.04em', lineHeight: 1.05 }}>
+              {pkg.name}
+            </h2>
+            <span style={{ fontFamily: B, fontSize: '0.8125rem', fontWeight: 500, color: 'rgba(255,255,255,0.4)', letterSpacing: '0.06em' }}>
+              {pkg.price}
+            </span>
+          </div>
+          <p style={{ fontFamily: B, fontSize: '1rem', color: 'rgba(255,255,255,0.55)', margin: 0, lineHeight: 1.6 }}>
+            {pkg.tagline}
+          </p>
+        </div>
+        <span style={{
+          width: 40,
+          height: 40,
+          borderRadius: '50%',
+          border: '1px solid rgba(255,255,255,0.2)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          flexShrink: 0,
+          color: '#ffffff',
+          fontSize: '1.25rem',
+          lineHeight: 1,
+          fontWeight: 300,
+          transition: 'transform 0.25s ease',
+          transform: expanded ? 'rotate(45deg)' : 'none',
+        }}>
+          +
+        </span>
+      </button>
+
+      <div style={{
+        maxHeight: expanded ? 600 : 0,
+        overflow: 'hidden',
+        transition: 'max-height 0.35s ease, opacity 0.3s ease',
+        opacity: expanded ? 1 : 0,
+      }}>
+        <div style={{ paddingBottom: '2.5rem', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3rem', alignItems: 'start' }}>
+          <div>
+            <p style={{ fontFamily: B, fontSize: '0.9375rem', color: 'rgba(255,255,255,0.65)', lineHeight: 1.7, margin: '0 0 1.5rem' }}>
+              {pkg.desc}
+            </p>
+            <Link href={pkg.href} className="btn-primary" style={{ height: 44, minHeight: 44, fontSize: '0.8125rem' }}>
+              Get a Quote
+            </Link>
+          </div>
+          <div>
+            <p style={{ fontFamily: B, fontWeight: 600, fontSize: '0.6875rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.4)', margin: '0 0 1.25rem' }}>
+              What&apos;s included
+            </p>
+            <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: '0.875rem' }}>
+              {pkg.items.map(item => (
+                <li key={item} style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', fontFamily: B, fontSize: '1rem', color: '#ffffff' }}>
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                    <circle cx="8" cy="8" r="7" stroke="rgba(255,255,255,0.2)" strokeWidth="1" />
+                    <path d="M5 8l2 2 4-4" stroke="#ffffff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
 }
 
 export default function PackagesPage() {
   return (
     <>
       <Nav />
-      <main style={{ paddingTop: '4rem', position: 'relative', overflow: 'hidden' }}>
-        <GeometricBackground />
-        <div style={{ position: 'relative', zIndex: 1 }}>
+      <main style={{ paddingTop: '4rem' }}>
 
-        <section style={{ padding: '5rem 0 4rem', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
-          <div aria-hidden="true" style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 80% 60% at 50% 40%, rgba(255,255,255,0.06) 0%, transparent 70%)', pointerEvents: 'none' }} />
-          <div className="max-w-site" style={{ position: 'relative', zIndex: 2 }}>
-            <p className="section-label mb-5">Bundles</p>
+        <section style={{ padding: '5rem 0 4rem', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
+          <div className="max-w-site">
+            <p className="section-label" style={{ marginBottom: '1.25rem' }}>Bundles</p>
             <h1 style={{ fontFamily: D, fontSize: 'clamp(3rem, 8vw, 7rem)', fontWeight: 700, color: '#ffffff', letterSpacing: '0.04em', lineHeight: 0.95, marginBottom: '1.5rem' }}>
-              Print Packages
+              Print Packages.
             </h1>
-            <p style={{ fontFamily: B, fontSize: 'clamp(1rem, 2vw, 1.2rem)', color: 'rgba(255,255,255,0.5)', maxWidth: '540px', margin: '0 auto', lineHeight: 1.65 }}>
-              Everything you need, bundled together. Designed to give you exactly what you need without the hassle of ordering everything separately.
+            <p style={{ fontFamily: B, fontSize: 'clamp(1rem, 2vw, 1.2rem)', color: 'rgba(255,255,255,0.5)', maxWidth: '560px', lineHeight: 1.65 }}>
+              Everything you need, bundled together. Designed to save you time and give you consistency across every touchpoint.
             </p>
           </div>
         </section>
 
-        <section style={{ padding: '3rem 0 6rem' }}>
+        <section style={{ padding: '0 0 6rem' }}>
           <div className="max-w-site">
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.25rem' }}>
-              {packageTypes.map(p => (
-                <Link key={p.title} href={p.href} className="product-card" style={{ display: 'flex', flexDirection: 'column', gap: '1rem', padding: '2.5rem', textDecoration: 'none' }}>
-                  <h2 style={{ fontFamily: D, fontSize: '1.375rem', fontWeight: 700, color: '#ffffff', letterSpacing: '0.04em', lineHeight: 1.1 }}>{p.title}</h2>
-                  <p style={{ fontFamily: B, fontSize: '0.9rem', color: 'rgba(255,255,255,0.5)', lineHeight: 1.65, flexGrow: 1 }}>{p.desc}</p>
-                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', paddingTop: '0.5rem', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
-                    {p.tags.map(tag => (
-                      <span key={tag} style={{ fontFamily: B, fontSize: '0.6875rem', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#ffffff', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 4, padding: '0.2rem 0.5rem' }}>{tag}</span>
-                    ))}
-                  </div>
-                </Link>
-              ))}
-            </div>
+            {packageData.map(pkg => (
+              <PackageRow key={pkg.name} pkg={pkg} />
+            ))}
           </div>
         </section>
-        </div>
+
+        <section style={{ padding: '5rem 0', background: '#111111', textAlign: 'center' }}>
+          <div className="max-w-site">
+            <h2 style={{ fontFamily: D, fontWeight: 700, fontSize: 'clamp(2rem, 5vw, 4rem)', color: '#ffffff', letterSpacing: '0.04em', margin: '0 0 1rem', lineHeight: 1.05 }}>
+              Need something bespoke?
+            </h2>
+            <p style={{ fontFamily: B, fontSize: '1rem', color: 'rgba(255,255,255,0.5)', margin: '0 0 2.5rem', maxWidth: 480, marginLeft: 'auto', marginRight: 'auto', lineHeight: 1.65 }}>
+              Can&apos;t find exactly what you need? Get in touch and we&apos;ll put together a custom package just for you.
+            </p>
+            <Link href="/contact" className="btn-primary">Build Your Own</Link>
+          </div>
+        </section>
 
       </main>
       <Footer />

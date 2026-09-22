@@ -56,7 +56,7 @@ export default function AIAssistant() {
     {
       role: 'assistant',
       content:
-        "Hi! I'm the Tinta Print AI assistant. How can I help you today?",
+        "Hi! I'm the Tinta Ai assistant. How can I help you today?",
     },
   ])
   const [loading, setLoading] = useState(false)
@@ -138,30 +138,29 @@ export default function AIAssistant() {
   return (
     <div style={{ position: 'fixed', bottom: '1.5rem', right: '1.5rem', zIndex: 9999 }}>
       {!open ? (
-        <button
-          onClick={() => setOpen(true)}
-          aria-label="Open Tinta AI assistant"
-          style={{
-            width: 56,
-            height: 56,
-            borderRadius: '50%',
-            background: '#ffffff',
-            border: 'none',
-            cursor: 'pointer',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}
-        >
-          <svg width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true">
-            <circle cx="13" cy="9" r="5" stroke="#000000" strokeWidth="1.5" />
-            <circle cx="11" cy="8" r="0.9" fill="#000000" />
-            <circle cx="15" cy="8" r="0.9" fill="#000000" />
-            <circle cx="13" cy="10.5" r="1" fill="#000000" />
-            <path d="M7 15h12v5a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2v-5z" stroke="#000000" strokeWidth="1.5" />
-            <path d="M5 17.5h2M19 17.5h2" stroke="#000000" strokeWidth="1.5" strokeLinecap="round" />
-          </svg>
-        </button>
+        <div className="rainbow-glow-wrapper" style={{ width: 56, height: 56, borderRadius: '50%' }}>
+          <div className="rainbow-glow-ring" style={{ borderRadius: '50%' }} />
+          <button
+            onClick={() => setOpen(true)}
+            aria-label="Open Tinta Ai assistant"
+            style={{
+              width: 56,
+              height: 56,
+              borderRadius: '50%',
+              background: '#ffffff',
+              border: 'none',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              position: 'relative',
+              zIndex: 1,
+            }}
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/images/logo-white-blackoutline.svg" alt="" style={{ width: 28, height: 28, objectFit: 'contain' }} />
+          </button>
+        </div>
       ) : (
         <div
           className="ai-panel"
@@ -193,7 +192,7 @@ export default function AIAssistant() {
           >
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.625rem' }}>
               <span style={{ fontFamily: A, fontSize: '1rem', fontWeight: 700, color: '#fff' }}>
-                Tinta AI
+                Tinta Ai
               </span>
               <span
                 style={{
@@ -291,7 +290,7 @@ export default function AIAssistant() {
             <div ref={messagesEndRef} />
           </div>
 
-          {/* Input */}
+          {/* Input with rainbow glow */}
           <div
             style={{
               padding: '0.75rem',
@@ -299,11 +298,14 @@ export default function AIAssistant() {
               flexShrink: 0,
             }}
           >
-            <RadiantPromptInput
-              placeholder="Ask anything about print..."
-              onSubmit={handleSubmit}
-              size="small"
-            />
+            <div className="rainbow-glow-wrapper" style={{ borderRadius: 9999 }}>
+              <div className="rainbow-glow-ring" />
+              <RadiantPromptInput
+                placeholder="Ask anything about print..."
+                onSubmit={handleSubmit}
+                size="small"
+              />
+            </div>
           </div>
         </div>
       )}

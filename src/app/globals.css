@@ -112,6 +112,7 @@ a, button {
   cursor: pointer;
   border: none;
   text-decoration: none;
+  border-radius: 9999px;
 }
 
 .btn-outline {
@@ -131,6 +132,7 @@ a, button {
   border: 1.5px solid #ffffff;
   cursor: pointer;
   text-decoration: none;
+  border-radius: 9999px;
 }
 
 /* ── Nav dropdowns ── */
@@ -187,6 +189,7 @@ a, button {
   border: 1px solid rgba(255, 255, 255, 0.12);
   background: #000000;
   overflow: hidden;
+  border-radius: 12px;
 }
 .product-card:hover {
   box-shadow: 8px 8px 0 0 rgba(255, 255, 255, 0.12);
@@ -286,6 +289,36 @@ select.form-field option { background: #000000; color: #ffffff; }
 .accordion-body {}
 .tab-panel-active {}
 .wizard-step {}
+
+/* ── Rainbow glow animation ── */
+@property --rainbow-rotation {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+@keyframes rainbow-spin {
+  from { --rainbow-rotation: 0deg; }
+  to   { --rainbow-rotation: 360deg; }
+}
+.rainbow-glow-wrapper {
+  position: relative;
+  border-radius: 9999px;
+  animation: rainbow-spin 3s linear infinite;
+}
+.rainbow-glow-ring {
+  position: absolute;
+  inset: -2px;
+  border-radius: 9999px;
+  background: conic-gradient(from var(--rainbow-rotation), #ff0080, #ff8c00, #ffe100, #00cf72, #00b4d8, #7b2ff7, #ff0080);
+  filter: blur(6px);
+  opacity: 0.85;
+  z-index: 0;
+  pointer-events: none;
+}
+.rainbow-glow-wrapper > * {
+  position: relative;
+  z-index: 1;
+}
 
 /* ── Pipeline (how it works page) ── */
 .pipeline-line { stroke-dasharray: 8 5; }
