@@ -2,149 +2,126 @@
 import { useState } from 'react'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
-import GeometricBackground from '@/components/ui/GeometricBackground'
 
 const D = '"Aeonik Pro", sans-serif'
 const B = '"Switzer", sans-serif'
 
-const productOptions = [
-  'Business Cards', 'Flyers & Leaflets', 'Brochures & Books', 'Posters',
-  'Stickers & Labels', 'Vinyl Banners', 'Roller Banners', 'Canvas Prints',
-  'Signs & Boards', 'Window Graphics', 'Exhibition Panels', 'Wedding Invitations',
-  'Event Stationery', 'Event Signage', 'Design & Artwork', 'Finishing & Binding', 'Something Else',
-]
+const products = ['Business Cards','Flyers','Posters','Banners','Brochures','Stickers','Signage','Digital Products','Installation','Design & Artwork','Other']
+const enquiryTypes = ['General Enquiry','Quote Request','Order Update','Design Query','Partnership','Complaint','Other']
 
 export default function ContactPage() {
-  const [submitted, setSubmitted] = useState(false)
-  const [submitting, setSubmitting] = useState(false)
+  const [status, setStatus] = useState<'idle'|'loading'|'success'|'error'>('idle')
+  const [form, setForm] = useState({ name:'', ref:'', email:'', phone:'', product:'', enquiry:'', requirements:'' })
 
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  const set = (k: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement|HTMLSelectElement|HTMLTextAreaElement>) =>
+    setForm(f => ({ ...f, [k]: e.target.value }))
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setSubmitting(true)
+    setStatus('loading')
     try {
       const res = await fetch('https://formspree.io/f/mnjevgqq', {
         method: 'POST',
-        body: new FormData(e.currentTarget),
-        headers: { Accept: 'application/json' },
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({ ...form, _subject: `Contact — ${form.enquiry || 'New Enquiry'}` }),
       })
-      if (res.ok) setSubmitted(true)
-    } catch { /* silently fail */ } finally { setSubmitting(false) }
+      setStatus(res.ok ? 'success' : 'error')
+      if (res.ok) setForm({ name:'', ref:'', email:'', phone:'', product:'', enquiry:'', requirements:'' })
+    } catch { setStatus('error') }
   }
+
+  const inputStyle: React.CSSProperties = {
+    width: '100%', background: 'transparent', border: '1px solid rgba(255,255,255,0.15)',
+    color: '#ffffff', fontFamily: B, fontSize: '0.9375rem', padding: '0.875rem 1rem',
+    outline: 'none', borderRadius: 8,
+  }
+  const selectStyle: React.CSSProperties = { ...inputStyle, WebkitAppearance: 'none' as const }
+  const lbl = (text: string) => (
+    <label style={{ display: 'block', fontFamily: B, fontSize: '0.75rem', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase' as const, color: 'rgba(255,255,255,0.45)', marginBottom: '0.5rem' }}>{text}</label>
+  )
 
   return (
     <>
       <Nav />
-      <main style={{ paddingTop: '4rem', position: 'relative', overflow: 'hidden' }}>
-        <GeometricBackground />
-        <div style={{ position: 'relative', zIndex: 1 }}>
-        <div className="grain-overlay" style={{ borderBottom: '1px solid rgba(255,255,255,0.06)', padding: '5rem 0 4rem' }}>
-          <div className="max-w-site">
-            <p className="section-label mb-4">Contact Us</p>
-            <h1 style={{ fontFamily: D, fontSize: 'clamp(3rem, 8vw, 7rem)', fontWeight: 700, color: '#ffffff', letterSpacing: '0.04em', lineHeight: 0.95 }}>
-              Get a <span style={{ color: '#ffffff',   }}>Quote.</span>
+      <main style={{ paddingTop: '4rem', background: '#000000', minHeight: '100vh' }}>
+
+        <div style={{ padding: '5rem 0 3rem', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
+          <div className="max-w-site" style={{ textAlign: 'right' }}>
+            <p className="section-label" style={{ marginBottom: '1rem' }}>Get in Touch</p>
+            <h1 style={{ fontFamily: D, fontWeight: 700, fontSize: 'clamp(3rem, 8vw, 7rem)', color: '#ffffff', letterSpacing: '0.04em', lineHeight: 0.95, margin: 0 }}>
+              Contact Us.
             </h1>
           </div>
         </div>
 
-        <div className="max-w-site py-16">
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-16">
-            {/* Left */}
-            <div className="lg:col-span-2">
-              <h2 style={{ fontFamily: D, fontSize: '2.25rem', fontWeight: 700, color: '#f0f0ec', letterSpacing: '0.04em', marginBottom: '2rem' }}>Get in touch.</h2>
-
-              <div style={{ borderBottom: '1px solid rgba(240,240,236,0.06)', paddingBottom: '1.5rem', marginBottom: '1.5rem', display: 'flex', alignItems: 'flex-start', gap: '0.875rem' }}>
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" style={{ marginTop: 2, flexShrink: 0, opacity: 0.35 }}>
-                  <rect x="1" y="4" width="18" height="13" rx="2" stroke="#f0f0ec" strokeWidth="1.5"/>
-                  <path d="M1 7l9 6 9-6" stroke="#f0f0ec" strokeWidth="1.5"/>
-                </svg>
-                <div>
-                  <p style={{ fontFamily: B, fontSize: '0.7rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(240,240,236,0.3)', fontWeight: 500, marginBottom: '0.25rem' }}>Email</p>
-                  <p style={{ fontFamily: B, fontSize: '0.9375rem', color: 'rgba(240,240,236,0.35)' }}>Coming soon</p>
+        <div style={{ padding: '3rem 0', borderBottom: '1px solid rgba(255,255,255,0.08)', background: '#0a0a0a' }}>
+          <div className="max-w-site">
+            <p style={{ fontFamily: B, fontWeight: 600, fontSize: '0.6875rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', marginBottom: '1.5rem' }}>Our Details</p>
+            <div className="details-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '2rem' }}>
+              {[
+                { label: 'Hours', val: '9am – 5pm' },
+                { label: 'Days', val: 'Monday – Friday' },
+                { label: 'Email', val: 'hello@tintaprint.uk' },
+                { label: 'Phone', val: 'Placeholder' },
+              ].map(d => (
+                <div key={d.label}>
+                  <p style={{ fontFamily: B, fontSize: '0.75rem', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', margin: '0 0 0.375rem' }}>{d.label}</p>
+                  <p style={{ fontFamily: D, fontWeight: 700, fontSize: '1.0625rem', color: '#ffffff', margin: 0, letterSpacing: '0.04em' }}>{d.val}</p>
                 </div>
-              </div>
-
-              <div style={{ borderBottom: '1px solid rgba(240,240,236,0.06)', paddingBottom: '1.5rem', marginBottom: '2rem', display: 'flex', alignItems: 'flex-start', gap: '0.875rem' }}>
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" style={{ marginTop: 2, flexShrink: 0, opacity: 0.35 }}>
-                  <path d="M3 2h4l2 5-2.5 1.5a11 11 0 0 0 5 5L13 11l5 2v4a1 1 0 0 1-1 1C6 18 2 7 2 3a1 1 0 0 1 1-1z" stroke="#f0f0ec" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-                <div>
-                  <p style={{ fontFamily: B, fontSize: '0.7rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(240,240,236,0.3)', fontWeight: 500, marginBottom: '0.25rem' }}>Phone</p>
-                  <p style={{ fontFamily: B, fontSize: '0.9375rem', color: 'rgba(240,240,236,0.35)' }}>Coming soon</p>
-                </div>
-              </div>
-
-              <div style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.18)', padding: '1.25rem' }}>
-                <div className="flex items-center gap-2 mb-2">
-                  <div style={{ width: 7, height: 7, borderRadius: '50%', background: '#ffffff', boxShadow: '0 0 8px rgba(255,255,255,0.18)', flexShrink: 0 }} />
-                  <p style={{ fontFamily: B, fontSize: '0.7rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: '#ffffff', fontWeight: 700 }}>Response Times</p>
-                </div>
-                <p style={{ fontFamily: B, fontSize: '0.9375rem', color: 'rgba(240,240,236,0.6)', lineHeight: 1.6 }}>
-                  We aim to respond the same working day.
-                </p>
-              </div>
-            </div>
-
-            {/* Right — form */}
-            <div className="lg:col-span-3">
-              {submitted ? (
-                <div style={{ padding: '4rem 2rem', border: '1px solid rgba(255,255,255,0.06)', background: 'rgba(255,255,255,0.06)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', minHeight: '400px' }}>
-                  <div style={{ width: 56, height: 56, borderRadius: '50%', background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.18)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.5rem', boxShadow: '0 0 20px rgba(255,255,255,0.06)' }}>
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                      <path d="M5 12l5 5 9-9" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  </div>
-                  <h3 style={{ fontFamily: D, fontSize: '2rem', fontWeight: 700, color: '#f0f0ec', letterSpacing: '0.04em', marginBottom: '0.75rem' }}>Message Sent!</h3>
-                  <p style={{ fontFamily: B, color: 'rgba(240,240,236,0.55)', maxWidth: '360px', lineHeight: 1.6 }}>
-                    We&apos;ll be in touch — usually the same day.
-                  </p>
-                </div>
-              ) : (
-                <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                  <input type="hidden" name="_subject" value="New Quote Enquiry — Tinta Print" />
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <label style={{ display: 'block', fontFamily: B, fontSize: '0.7rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(240,240,236,0.45)', fontWeight: 600, marginBottom: '0.5rem' }}>Your Name *</label>
-                      <input type="text" name="name" required placeholder="Jane Smith" className="form-field" />
-                    </div>
-                    <div>
-                      <label style={{ display: 'block', fontFamily: B, fontSize: '0.7rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(240,240,236,0.45)', fontWeight: 600, marginBottom: '0.5rem' }}>Company</label>
-                      <input type="text" name="company" placeholder="Acme Ltd" className="form-field" />
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <label style={{ display: 'block', fontFamily: B, fontSize: '0.7rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(240,240,236,0.45)', fontWeight: 600, marginBottom: '0.5rem' }}>Email Address *</label>
-                      <input type="email" name="email" required placeholder="jane@acme.com" className="form-field" />
-                    </div>
-                    <div>
-                      <label style={{ display: 'block', fontFamily: B, fontSize: '0.7rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(240,240,236,0.45)', fontWeight: 600, marginBottom: '0.5rem' }}>Phone Number</label>
-                      <input type="tel" name="phone" placeholder="+44 7700 000000" className="form-field" />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label style={{ display: 'block', fontFamily: B, fontSize: '0.7rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(240,240,236,0.45)', fontWeight: 600, marginBottom: '0.5rem' }}>What Do You Need?</label>
-                    <select name="product" className="form-field" style={{ cursor: 'pointer' }}>
-                      <option value="">Select a product or service…</option>
-                      {productOptions.map(opt => <option key={opt} value={opt}>{opt}</option>)}
-                    </select>
-                  </div>
-
-                  <div>
-                    <label style={{ display: 'block', fontFamily: B, fontSize: '0.7rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(240,240,236,0.45)', fontWeight: 600, marginBottom: '0.5rem' }}>Tell Us More *</label>
-                    <textarea name="message" required rows={5} placeholder="Quantities, sizes, turnaround needed, any special requirements…" className="form-field" style={{ resize: 'vertical', minHeight: '120px' }} />
-                  </div>
-
-                  <button type="submit" disabled={submitting} className="btn-primary" style={{ width: '100%', opacity: submitting ? 0.7 : 1 }}>
-                    {submitting ? 'Sending…' : 'Send Enquiry →'}
-                  </button>
-                </form>
-              )}
+              ))}
             </div>
           </div>
+          <style>{`@media (max-width: 640px) { .details-grid { grid-template-columns: repeat(2, 1fr) !important; } }`}</style>
         </div>
+
+        <div style={{ padding: '4rem 0 6rem' }}>
+          <div className="max-w-site">
+            <p style={{ fontFamily: B, fontWeight: 600, fontSize: '0.6875rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', marginBottom: '2.5rem' }}>Your Contact Information &amp; Request</p>
+
+            {status === 'success' ? (
+              <div style={{ maxWidth: 560, border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, padding: '3rem', textAlign: 'center' }}>
+                <div style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>✓</div>
+                <h3 style={{ fontFamily: D, fontWeight: 700, fontSize: '1.5rem', color: '#ffffff', marginBottom: '0.75rem' }}>Message sent!</h3>
+                <p style={{ fontFamily: B, fontSize: '0.9375rem', color: 'rgba(255,255,255,0.55)', lineHeight: 1.65, marginBottom: '2rem' }}>
+                  We&apos;ll be in touch within one working day.
+                </p>
+                <button className="btn-outline" style={{ height: 44, minHeight: 44, fontSize: '0.8125rem' }} onClick={() => setStatus('idle')}>Send Another</button>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} style={{ maxWidth: 780 }}>
+                <div className="form-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.25rem', marginBottom: '1.25rem' }}>
+                  <div>{lbl('Name *')}<input required type="text" value={form.name} onChange={set('name')} style={inputStyle} placeholder="Your full name" /></div>
+                  <div>{lbl('Reference')}<input type="text" value={form.ref} onChange={set('ref')} style={inputStyle} placeholder="Order or quote ref (optional)" /></div>
+                </div>
+                <div className="form-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.25rem', marginBottom: '1.25rem' }}>
+                  <div>{lbl('Email *')}<input required type="email" value={form.email} onChange={set('email')} style={inputStyle} placeholder="you@example.com" /></div>
+                  <div>{lbl('Phone')}<input type="tel" value={form.phone} onChange={set('phone')} style={inputStyle} placeholder="+44..." /></div>
+                </div>
+                <div className="form-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.25rem', marginBottom: '1.25rem' }}>
+                  <div>{lbl('Product / Service')}<select value={form.product} onChange={set('product')} style={selectStyle}><option value="">Select…</option>{products.map(p=><option key={p} value={p} style={{background:'#000'}}>{p}</option>)}</select></div>
+                  <div>{lbl('Enquiry Type')}<select value={form.enquiry} onChange={set('enquiry')} style={selectStyle}><option value="">Select…</option>{enquiryTypes.map(p=><option key={p} value={p} style={{background:'#000'}}>{p}</option>)}</select></div>
+                </div>
+                <div style={{ marginBottom: '2rem' }}>
+                  {lbl('Requirements')}
+                  <textarea value={form.requirements} onChange={set('requirements')} rows={6} style={{ ...inputStyle, resize: 'vertical' }} placeholder="Tell us about your print requirements, quantities, and any special finishes…" />
+                </div>
+                {status === 'error' && <p style={{ fontFamily: B, fontSize: '0.875rem', color: '#ff6b6b', marginBottom: '1rem' }}>Something went wrong. Please try again or email hello@tintaprint.uk.</p>}
+                <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                  <button type="submit" disabled={status === 'loading'} className="btn-primary" style={{ opacity: status === 'loading' ? 0.6 : 1 }}>
+                    {status === 'loading' ? 'Sending…' : 'Send Message'}
+                  </button>
+                </div>
+                <p style={{ fontFamily: B, fontSize: '0.75rem', color: 'rgba(255,255,255,0.3)', marginTop: '1.5rem', lineHeight: 1.6 }}>
+                  This site is protected by reCAPTCHA and the Google{' '}
+                  <a href="https://policies.google.com/privacy" target="_blank" rel="noreferrer" style={{ color: 'rgba(255,255,255,0.4)' }}>Privacy Policy</a>{' '}
+                  and{' '}
+                  <a href="https://policies.google.com/terms" target="_blank" rel="noreferrer" style={{ color: 'rgba(255,255,255,0.4)' }}>Terms of Service</a>{' '}
+                  apply.
+                </p>
+              </form>
+            )}
+          </div>
+          <style>{`@media (max-width: 640px) { .form-row { grid-template-columns: 1fr !important; } }`}</style>
         </div>
       </main>
       <Footer />

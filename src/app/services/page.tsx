@@ -1,94 +1,72 @@
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import Link from 'next/link'
-import GeometricBackground from '@/components/ui/GeometricBackground'
 
 const D = '"Aeonik Pro", sans-serif'
 const B = '"Switzer", sans-serif'
 
-const services = [
+const sections = [
   {
     title: 'Design & Artwork',
-    desc: 'Our design team can create print-ready artwork from scratch or adapt your existing brand assets. Logos, layouts, brochures and more.',
-    details: ['Brand identity', 'Print-ready file prep', 'Layout design', 'Artwork corrections'],
+    copy: 'Our designers create professional, print-ready files from scratch or using your existing assets. From business cards to large-format banners — we handle it all.',
+    cta: 'Find Out More',
+    href: '/services/design-artwork',
+    imageRight: false,
   },
   {
-    title: 'File Submission & Proofing',
-    desc: "Upload your artwork and we'll run a full prepress check — bleed, resolution, colour mode, and more — before anything goes to press.",
-    details: ['Prepress artwork checks', 'Digital soft proofs', 'Hard copy proofing available', 'CMYK colour advice'],
+    title: 'File Submission, Proofing & AI Image Policies',
+    copy: "We review every print file before it goes to press. Upload via WeTransfer, supply your specs, and we'll catch any issues before production starts.",
+    cta: 'Find Out More',
+    href: '/services/file-submission',
+    imageRight: true,
   },
   {
-    title: 'Large Format Installation',
-    desc: 'Beyond printing, we can arrange professional installation of large-format graphics — wall murals, window graphics, and exhibition stands.',
-    details: ['Wall & window graphics', 'Exhibition stand builds', 'Nationwide installation'],
+    title: 'Installation',
+    copy: 'Large-format print installed professionally on-site. Vinyl wraps, display systems, window graphics — fully fitted by our installation team across the UK.',
+    cta: 'Request Quote',
+    href: '/contact',
+    imageRight: false,
   },
 ]
 
 export const metadata = {
   title: 'Services | Tinta Print',
-  description: 'Design, prepress, and large-format installation services from Tinta Print.',
+  description: 'Design, file submission, proofing and installation services from Tinta Print.',
 }
 
 export default function ServicesPage() {
   return (
     <>
       <Nav />
-      <main style={{ paddingTop: '4rem', position: 'relative', overflow: 'hidden' }}>
-        <GeometricBackground />
-        <div style={{ position: 'relative', zIndex: 1 }}>
-
-        <section style={{ padding: '6rem 0 4rem', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
-          <div aria-hidden="true" style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 80% 60% at 50% 40%, rgba(255,255,255,0.06) 0%, transparent 70%)', pointerEvents: 'none' }} />
-          <div className="max-w-site" style={{ position: 'relative', zIndex: 2 }}>
-            <p className="section-label mb-5">Tinta Print</p>
-            <h1 style={{ fontFamily: D, fontSize: 'clamp(3rem, 8vw, 7rem)', fontWeight: 700, color: '#ffffff', letterSpacing: '0.04em', lineHeight: 0.95, marginBottom: '1.5rem' }}>
-              Services
+      <main style={{ paddingTop: '4rem', background: '#000000' }}>
+        <div style={{ padding: '5rem 0 4rem', borderBottom: '1px solid rgba(255,255,255,0.08)', textAlign: 'right' }}>
+          <div className="max-w-site">
+            <p className="section-label" style={{ marginBottom: '1rem' }}>What We Do</p>
+            <h1 style={{ fontFamily: D, fontWeight: 700, fontSize: 'clamp(3rem, 8vw, 7rem)', color: '#ffffff', letterSpacing: '0.04em', lineHeight: 0.95, margin: 0 }}>
+              Services.
             </h1>
-            <p style={{ fontFamily: B, fontSize: 'clamp(1rem, 2vw, 1.2rem)', color: 'rgba(255,255,255,0.5)', maxWidth: '560px', margin: '0 auto 2.5rem', lineHeight: 1.65 }}>
-              Everything around the print — design, proofing, and installation. We handle the whole job.
-            </p>
-            <Link href="/contact" className="btn-primary">Get a Quote</Link>
           </div>
-        </section>
-
-        <section style={{ padding: '5rem 0 6rem' }}>
-          <div className="max-w-site">
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem' }}>
-              {services.map(s => (
-                <div key={s.title} className="product-card" style={{ padding: '2.5rem', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-                  <h2 style={{ fontFamily: D, fontSize: '1.5rem', fontWeight: 700, color: '#ffffff', letterSpacing: '0.04em', lineHeight: 1.1 }}>
-                    {s.title}
-                  </h2>
-                  <p style={{ fontFamily: B, fontSize: '0.9rem', color: 'rgba(255,255,255,0.5)', lineHeight: 1.7, flexGrow: 1 }}>
-                    {s.desc}
-                  </p>
-                  <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: '0.5rem', borderTop: '1px solid rgba(255,255,255,0.06)', paddingTop: '1.25rem' }}>
-                    {s.details.map(d => (
-                      <li key={d} style={{ display: 'flex', alignItems: 'center', gap: '0.625rem', fontFamily: B, fontSize: '0.8125rem', color: 'rgba(255,255,255,0.45)' }}>
-                        <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#ffffff', flexShrink: 0 }} />
-                        {d}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section style={{ padding: '4rem 0 6rem', textAlign: 'center', background: 'rgba(0,0,0,0.2)', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
-          <div className="max-w-site">
-            <h2 style={{ fontFamily: D, fontSize: 'clamp(2.5rem, 6vw, 5rem)', fontWeight: 700, color: '#ffffff', letterSpacing: '0.04em', lineHeight: 0.95, marginBottom: '2rem' }}>
-              Let&apos;s talk about<br />
-              <span style={{ color: '#ffffff',   }}>your project.</span>
-            </h2>
-            <Link href="/contact" className="btn-primary">Get a Free Quote</Link>
-          </div>
-        </section>
         </div>
 
+        {sections.map((s) => (
+          <div key={s.title} style={{ borderBottom: '1px solid rgba(255,255,255,0.06)', padding: '6rem 0' }}>
+            <div className="max-w-site">
+              <div className="services-section" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '5rem', alignItems: 'center', direction: s.imageRight ? 'rtl' : 'ltr' }}>
+                <div style={{ direction: 'ltr' }}>
+                  <h2 style={{ fontFamily: D, fontWeight: 700, fontSize: 'clamp(1.75rem, 3.5vw, 2.75rem)', color: '#ffffff', letterSpacing: '0.04em', lineHeight: 1.1, margin: '0 0 1.25rem' }}>{s.title}</h2>
+                  <p style={{ fontFamily: B, fontSize: '1rem', color: 'rgba(255,255,255,0.55)', lineHeight: 1.75, margin: '0 0 2rem' }}>{s.copy}</p>
+                  <Link href={s.href} className="btn-primary" style={{ height: 44, minHeight: 44, fontSize: '0.8125rem' }}>{s.cta}</Link>
+                </div>
+                <div style={{ direction: 'ltr', height: 320, background: 'rgba(255,255,255,0.04)', borderRadius: 8, display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1px solid rgba(255,255,255,0.06)' }}>
+                  <span style={{ fontFamily: B, fontSize: '0.75rem', color: 'rgba(255,255,255,0.15)' }}>Image placeholder</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
       </main>
       <Footer />
+      <style>{`@media (max-width: 768px) { .services-section { grid-template-columns: 1fr !important; direction: ltr !important; } }`}</style>
     </>
   )
 }

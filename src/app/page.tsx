@@ -1,378 +1,384 @@
 'use client'
-import { useState, useEffect, useRef } from 'react'
+import { useState } from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
 import Nav from '@/components/Nav'
+import Footer from '@/components/Footer'
 import RadiantPromptInput from '@/components/RadiantPromptInput'
 
 const D = '"Aeonik Pro", sans-serif'
 const B = '"Switzer", sans-serif'
 
-const heroSlides = [
-  { name: 'Business Cards',    description: 'Premium finishes, fast turnaround' },
-  { name: 'Flyers & Leaflets', description: 'Eye-catching print for any campaign' },
-  { name: 'Posters',           description: 'Bold print that commands attention' },
-  { name: 'Banners',           description: 'Large format for maximum impact' },
-  { name: 'Stickers',          description: 'Custom shapes, any size' },
-  { name: 'Brochures',         description: 'Folded and bound marketing material' },
-  { name: 'Wedding Print',     description: 'Elegant stationery for your big day' },
-  { name: 'Swatch Book',       description: 'Feel the quality before you order' },
+const PACKAGES = [
+  {
+    id: 'wedding',
+    label: 'Weddings',
+    animDuration: '3.2s',
+    color: '#ffffff',
+    href: '/packages#wedding',
+    tiers: ['Classic', 'Elegant', 'Luxury'],
+    icon: (
+      <svg width="52" height="52" viewBox="0 0 52 52" fill="none" aria-hidden="true">
+        <circle cx="18" cy="10" r="6" stroke="#ffffff" strokeWidth="1.5" vectorEffect="non-scaling-stroke" fill="none"/>
+        <path d="M8 36 C8 24 28 24 28 36 L28 44 L8 44 Z" stroke="#ffffff" strokeWidth="1.5" vectorEffect="non-scaling-stroke" fill="none"/>
+        <circle cx="36" cy="10" r="5" stroke="#ffffff" strokeWidth="1.5" vectorEffect="non-scaling-stroke" fill="none"/>
+        <path d="M28 36 C28 26 44 26 44 36 L44 44 L28 44 Z" stroke="#ffffff" strokeWidth="1.5" vectorEffect="non-scaling-stroke" fill="none"/>
+      </svg>
+    ),
+  },
+  {
+    id: 'salon',
+    label: 'Salon & Beauty',
+    animDuration: '2.8s',
+    color: '#00bcd4',
+    href: '/packages#salon',
+    tiers: ['Starter', 'Studio', 'Deluxe'],
+    icon: (
+      <svg width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+        <circle cx="12" cy="36" r="5" stroke="#00bcd4" strokeWidth="1.5" vectorEffect="non-scaling-stroke" fill="none"/>
+        <circle cx="12" cy="12" r="5" stroke="#00bcd4" strokeWidth="1.5" vectorEffect="non-scaling-stroke" fill="none"/>
+        <line x1="16" y1="15" x2="36" y2="36" stroke="#00bcd4" strokeWidth="1.5" vectorEffect="non-scaling-stroke"/>
+        <line x1="16" y1="33" x2="36" y2="12" stroke="#00bcd4" strokeWidth="1.5" vectorEffect="non-scaling-stroke"/>
+      </svg>
+    ),
+  },
+  {
+    id: 'events',
+    label: 'Events',
+    animDuration: '4s',
+    color: '#ffffff',
+    href: '/packages#events',
+    tiers: ['Essentials', 'Complete', 'Signature'],
+    icon: (
+      <svg width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+        <path d="M20 8 L20 32 M20 32 C20 35.3 17.3 38 14 38 C10.7 38 8 35.3 8 32 C8 28.7 10.7 26 14 26 C17.3 26 20 28.7 20 32 Z" stroke="#ffffff" strokeWidth="1.5" vectorEffect="non-scaling-stroke" fill="none"/>
+        <path d="M20 8 L34 4 L34 20 M34 28 C34 31.3 31.3 34 28 34 C24.7 34 22 31.3 22 28" stroke="#ffffff" strokeWidth="1.5" vectorEffect="non-scaling-stroke" fill="none"/>
+        <rect x="38" y="10" width="6" height="14" rx="3" stroke="#ffffff" strokeWidth="1.5" vectorEffect="non-scaling-stroke" fill="none"/>
+        <line x1="41" y1="24" x2="41" y2="30" stroke="#ffffff" strokeWidth="1.5" vectorEffect="non-scaling-stroke"/>
+        <line x1="38" y1="30" x2="44" y2="30" stroke="#ffffff" strokeWidth="1.5" vectorEffect="non-scaling-stroke"/>
+      </svg>
+    ),
+  },
+  {
+    id: 'business',
+    label: 'Business',
+    animDuration: '3.6s',
+    color: '#ffffff',
+    href: '/packages#business',
+    tiers: ['Launch', 'Grow', 'Tinta'],
+    icon: (
+      <svg width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+        <rect x="4" y="10" width="24" height="16" rx="2" stroke="#ffffff" strokeWidth="1.5" vectorEffect="non-scaling-stroke" fill="none"/>
+        <line x1="4" y1="30" x2="28" y2="30" stroke="#ffffff" strokeWidth="1.5" vectorEffect="non-scaling-stroke"/>
+        <line x1="16" y1="30" x2="16" y2="36" stroke="#ffffff" strokeWidth="1.5" vectorEffect="non-scaling-stroke"/>
+        <line x1="10" y1="36" x2="22" y2="36" stroke="#ffffff" strokeWidth="1.5" vectorEffect="non-scaling-stroke"/>
+        <rect x="32" y="6" width="12" height="38" rx="1" stroke="#ffffff" strokeWidth="1.5" vectorEffect="non-scaling-stroke" fill="none"/>
+        <line x1="34" y1="12" x2="42" y2="12" stroke="#ffffff" strokeWidth="1.5" vectorEffect="non-scaling-stroke"/>
+        <line x1="34" y1="17" x2="42" y2="17" stroke="#ffffff" strokeWidth="1.5" vectorEffect="non-scaling-stroke"/>
+        <line x1="34" y1="22" x2="42" y2="22" stroke="#ffffff" strokeWidth="1.5" vectorEffect="non-scaling-stroke"/>
+        <rect x="35" y="34" width="6" height="8" stroke="#ffffff" strokeWidth="1.5" vectorEffect="non-scaling-stroke" fill="none"/>
+      </svg>
+    ),
+  },
 ]
 
-const productGrid = [
-  { name: 'Business Cards', desc: 'Professional cards for every occasion',    href: '/products/business-cards' },
-  { name: 'Flyers',         desc: 'Eye-catching flyers and leaflets',          href: '/products/flyers-leaflets' },
-  { name: 'Posters',        desc: 'High-impact print for any space',           href: '/products/posters' },
-  { name: 'Stickers',       desc: 'Custom stickers and labels',                href: '/products/stickers' },
-  { name: 'Banners',        desc: 'Large format display printing',             href: '/products/banners' },
-  { name: 'Brochures',      desc: 'Folded and bound marketing material',       href: '/products/brochures-books' },
-]
-
-const packages = [
-  { name: 'Business',      desc: 'Everything your business needs to look professional.', items: ['Business cards', 'Flyers', 'Letterheads', 'Compliment slips'], href: '/packages/business' },
-  { name: 'Events',        desc: 'Complete print for events of any size.',                items: ['Posters', 'Banners', 'Flyers', 'Programmes'],                    href: '/packages/events' },
-  { name: 'Salon & Beauty', desc: 'Branded print for salons and beauty businesses.',      items: ['Loyalty cards', 'Appointment cards', 'Flyers', 'Gift vouchers'], href: '/packages/salon' },
-  { name: 'Wedding',       desc: 'Beautiful stationery for your most important day.',     items: ['Invitations', 'Order of service', 'Place cards', 'Menus'],       href: '/packages/weddings' },
-]
-
-const featureBoxes = [
-  { title: 'Swatch Book',  desc: 'Order a physical sample of our papers and finishes.',  cta: 'Order Now',     href: '/swatch-book' },
-  { title: 'Eco Printing', desc: 'Our commitment to sustainable print production.',       cta: 'Find Out More', href: '/eco' },
-  { title: 'About Us',     desc: 'The story behind Tinta Print.',                         cta: 'Meet Us',       href: '/about' },
-]
-
-const footerProducts = [
-  { label: 'Business Cards',    href: '/products/business-cards' },
-  { label: 'Flyers & Leaflets', href: '/products/flyers-leaflets' },
-  { label: 'Brochures',         href: '/products/brochures-books' },
-  { label: 'Banners',           href: '/products/banners' },
-  { label: 'Posters',           href: '/products/posters' },
-  { label: 'Signs & Boards',    href: '/products/signs-boards' },
-  { label: 'Stickers',          href: '/products/stickers' },
-  { label: 'Cards',             href: '/products/cards' },
-  { label: 'Letterheads',       href: '/products/letterheads-compliment-slips' },
-  { label: 'Orders of Service', href: '/products/orders-of-service' },
-  { label: 'Event Print',       href: '/products/events' },
-  { label: 'Wedding Print',     href: '/products/weddings' },
-]
-
-const Arrow = () => (
-  <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
-    <path d="M3 9h12M9 3l6 6-6 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-)
-
-function HeroSlideshow() {
-  const [slide, setSlide] = useState(0)
-  const pointerStartX = useRef<number | null>(null)
-
-  useEffect(() => {
-    const timer = setInterval(() => setSlide(s => (s + 1) % heroSlides.length), 8000)
-    return () => clearInterval(timer)
-  }, [])
-
-  const onPointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
-    pointerStartX.current = e.clientX
-    e.currentTarget.setPointerCapture(e.pointerId)
-  }
-  const onPointerUp = (e: React.PointerEvent<HTMLDivElement>) => {
-    if (pointerStartX.current === null) return
-    const dx = e.clientX - pointerStartX.current
-    if (Math.abs(dx) > 40) {
-      setSlide(s => dx < 0 ? (s + 1) % heroSlides.length : (s - 1 + heroSlides.length) % heroSlides.length)
-    }
-    pointerStartX.current = null
-  }
-
-  return (
-    <div
-      style={{ position: 'relative', width: '100%', height: '100%', background: '#111111', overflow: 'hidden', cursor: 'grab', userSelect: 'none' }}
-      onPointerDown={onPointerDown}
-      onPointerUp={onPointerUp}
-      onPointerCancel={() => { pointerStartX.current = null }}
-    >
-      {heroSlides.map((s, i) => (
-        <div
-          key={i}
-          style={{
-            position: 'absolute',
-            inset: 0,
-            background: i % 2 === 0 ? '#111111' : '#161616',
-            opacity: i === slide ? 1 : 0,
-            transition: 'opacity 0.6s ease',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'flex-end',
-            padding: '2rem',
-            pointerEvents: 'none',
-          }}
-        >
-          <p style={{ fontFamily: D, fontWeight: 700, fontSize: 'clamp(1.5rem, 3vw, 2.25rem)', color: '#ffffff', margin: 0, letterSpacing: '0.04em' }}>{s.name}</p>
-          <p style={{ fontFamily: B, fontWeight: 400, fontSize: '0.9375rem', color: 'rgba(255,255,255,0.55)', margin: '0.375rem 0 0' }}>{s.description}</p>
-        </div>
-      ))}
-      {/* Dot indicators */}
-      <div style={{ position: 'absolute', bottom: '1.25rem', right: '1.25rem', display: 'flex', gap: '0.4rem', zIndex: 10, pointerEvents: 'auto' }}>
-        {heroSlides.map((_, i) => (
-          <button
-            key={i}
-            onClick={() => setSlide(i)}
-            aria-label={`Slide ${i + 1}`}
-            style={{ width: 7, height: 7, borderRadius: '50%', background: i === slide ? '#ffffff' : 'rgba(255,255,255,0.25)', border: 'none', cursor: 'pointer', padding: 0 }}
-          />
-        ))}
-      </div>
-    </div>
-  )
-}
-
-function PackageCard({ pkg }: { pkg: typeof packages[number] }) {
+function PackageIcon({ pkg }: { pkg: typeof PACKAGES[number] }) {
   const [hovered, setHovered] = useState(false)
   return (
     <div
+      style={{ textAlign: 'center', cursor: 'pointer', position: 'relative' }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      style={{
-        width: 400,
-        height: 500,
-        flexShrink: 0,
-        scrollSnapAlign: 'start',
-        border: '1px solid rgba(255,255,255,0.15)',
-        borderRadius: 12,
-        background: '#000000',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'flex-end',
-        padding: '2.5rem',
-        position: 'relative',
-        overflow: 'hidden',
-        cursor: 'pointer',
-      }}
     >
-      {/* Hover reveal overlay */}
-      <div style={{
-        position: 'absolute',
-        inset: 0,
-        background: 'rgba(0,0,0,0.88)',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        padding: '2.5rem',
-        opacity: hovered ? 1 : 0,
-        transition: 'opacity 0.25s ease',
-        pointerEvents: hovered ? 'auto' : 'none',
-      }}>
-        <p style={{ fontFamily: B, fontWeight: 600, fontSize: '0.6875rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.5)', margin: '0 0 1.25rem' }}>
-          What&apos;s included
-        </p>
-        <ul style={{ listStyle: 'none', margin: '0 0 2rem', padding: 0, display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-          {pkg.items.map(item => (
-            <li key={item} style={{ fontFamily: B, fontSize: '1rem', color: '#ffffff', display: 'flex', alignItems: 'center', gap: '0.625rem' }}>
-              <span style={{ width: 5, height: 5, borderRadius: '50%', background: '#ffffff', flexShrink: 0 }} />
-              {item}
-            </li>
+      <Link href={pkg.href} style={{ textDecoration: 'none' }}>
+        <div style={{ animationName: pkg.id === 'wedding' ? 'float-a' : pkg.id === 'salon' ? 'float-b' : pkg.id === 'events' ? 'float-c' : 'float-d', animationDuration: pkg.animDuration, animationTimingFunction: 'ease-in-out', animationIterationCount: 'infinite', display: 'inline-block' }}>
+          <p style={{ fontFamily: D, fontWeight: 700, fontSize: '0.875rem', color: '#ffffff', margin: '0 0 0.625rem', letterSpacing: '0.04em', whiteSpace: 'nowrap' }}>{pkg.label}</p>
+          <div style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 80, height: 80, borderRadius: '50%', border: `1.5px solid ${pkg.color}`, opacity: hovered ? 0.4 : 1, transition: 'opacity 0.25s ease' }}>
+            {pkg.icon}
+          </div>
+        </div>
+      </Link>
+      {hovered && (
+        <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', background: 'rgba(0,0,0,0.88)', border: '1px solid rgba(255,255,255,0.15)', borderRadius: 12, padding: '1.25rem 1.5rem', zIndex: 10, minWidth: 160, backdropFilter: 'blur(8px)' }}>
+          <p style={{ fontFamily: B, fontWeight: 600, fontSize: '0.6875rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.45)', margin: '0 0 0.75rem' }}>Tiers</p>
+          {pkg.tiers.map(t => (
+            <p key={t} style={{ fontFamily: D, fontWeight: 700, fontSize: '1rem', color: '#ffffff', margin: '0 0 0.375rem', letterSpacing: '0.04em' }}>{t}</p>
           ))}
-        </ul>
-        <Link href={pkg.href} className="btn-primary" style={{ alignSelf: 'flex-start', height: 42, minHeight: 42, fontSize: '0.75rem' }}>
-          Get a Quote
-        </Link>
-      </div>
-
-      {/* Default content */}
-      <div style={{ opacity: hovered ? 0 : 1, transition: 'opacity 0.25s ease' }}>
-        <p style={{ fontFamily: D, fontWeight: 700, fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', color: '#ffffff', margin: '0 0 1rem', letterSpacing: '0.04em', lineHeight: 1.05 }}>
-          {pkg.name}
-        </p>
-        <p style={{ fontFamily: B, fontSize: '0.9375rem', color: 'rgba(255,255,255,0.55)', lineHeight: 1.65, margin: 0 }}>
-          {pkg.desc}
-        </p>
-      </div>
+        </div>
+      )}
     </div>
   )
 }
 
 export default function HomePage() {
-  const fireAI = (msg: string) => {
-    window.dispatchEvent(new CustomEvent('openTintaAI', { detail: { message: msg } }))
-  }
+  const [, setAiInput] = useState('')
 
   return (
     <>
       <Nav />
-      <main style={{ paddingTop: 64 }}>
+      <main>
 
-        {/* ── Hero ── */}
-        <section style={{ minHeight: 'calc(100vh - 64px)', background: '#000000', display: 'flex', alignItems: 'stretch' }}>
-          <div className="hero-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', width: '100%' }}>
-
-            {/* Left: logo + tagline + CTAs */}
-            <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: 'clamp(2rem, 5vw, 6rem)' }}>
-              <Image
-                src="/images/logo-green-whiteoutline.svg"
-                alt="Tinta Print"
-                width={220}
-                height={310}
-                priority
-                style={{ width: 'clamp(140px, 18vw, 220px)', height: 'auto', marginBottom: '2.5rem' }}
-              />
-              <p style={{ fontFamily: B, fontWeight: 400, fontSize: 'clamp(0.9375rem, 1.4vw, 1.125rem)', color: 'rgba(255,255,255,0.7)', margin: '0 0 2.5rem', lineHeight: 1.6, maxWidth: 360 }}>
-                Premium print. Fast turnaround. UK-wide delivery.
-              </p>
-              <div style={{ display: 'flex', gap: '0.875rem', flexWrap: 'wrap' }}>
-                <Link href="/contact" className="btn-primary">Get a Quote</Link>
-                <Link href="/products" className="btn-outline">View Products</Link>
+        {/* ── Section 1: Product Showcase Strip ── */}
+        <section style={{ paddingTop: 64, background: '#000000' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', minHeight: '70vh' }} className="showcase-grid">
+            {[
+              { name: 'Business Cards', isNew: false },
+              { name: 'Banners', isNew: false },
+              { name: 'Flyers', isNew: false },
+              { name: 'Digital Products', isNew: true },
+            ].map((product, i) => (
+              <div key={product.name} style={{
+                borderRight: i < 3 ? '1px solid rgba(255,255,255,0.07)' : 'none',
+                display: 'flex',
+                flexDirection: 'column',
+                padding: '2rem 1.5rem',
+                gap: '1.25rem',
+              }}>
+                <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between' }}>
+                  <h2 style={{ fontFamily: D, fontWeight: 700, fontSize: 'clamp(1.125rem, 1.8vw, 1.5rem)', color: '#ffffff', margin: 0, letterSpacing: '0.03em', lineHeight: 1.2 }}>
+                    {product.name}
+                  </h2>
+                  {product.isNew && (
+                    <span style={{ fontFamily: B, fontWeight: 700, fontSize: '0.625rem', letterSpacing: '0.15em', textTransform: 'uppercase', background: '#ffffff', color: '#000000', padding: '2px 7px', borderRadius: 9999, flexShrink: 0, marginTop: 2 }}>
+                      NEW!
+                    </span>
+                  )}
+                </div>
+                <div style={{ flex: 1, background: 'rgba(255,255,255,0.04)', borderRadius: 8, minHeight: 280, display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1px dashed rgba(255,255,255,0.08)' }}>
+                  <span style={{ fontFamily: B, fontSize: '0.75rem', color: 'rgba(255,255,255,0.15)' }}>Ad image</span>
+                </div>
+                <Link href={product.name === 'Digital Products' ? '/digital-products' : `/products/${product.name.toLowerCase().replace(/ /g, '-')}`} className="btn-outline" style={{ height: 40, minHeight: 40, fontSize: '0.75rem', alignSelf: 'flex-start', padding: '0 1.25rem' }}>
+                  Shop
+                </Link>
               </div>
-            </div>
-
-            {/* Right: slideshow */}
-            <div style={{ minHeight: 'calc(100vh - 64px)' }}>
-              <HeroSlideshow />
-            </div>
+            ))}
           </div>
+          <style>{`@media (max-width: 768px) { .showcase-grid { grid-template-columns: repeat(2, 1fr) !important; } }`}</style>
         </section>
-        <style>{`
-          @media (max-width: 768px) {
-            .hero-grid { grid-template-columns: 1fr !important; }
-            .hero-grid > div:last-child { min-height: 60vw !important; }
-          }
-        `}</style>
 
-        {/* ── AI Section ── */}
-        <section style={{ background: '#000000', padding: '6rem 0', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
+        {/* ── Section 2: AI Assistant ── */}
+        <section id="ai-section" style={{ background: 'linear-gradient(135deg, #00c060 0%, #000000 100%)', padding: '6rem 0' }}>
           <div className="max-w-site">
-            <div className="ai-section-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1px 1fr', alignItems: 'center' }}>
-              <div className="ai-left" style={{ paddingRight: '4rem' }}>
-                <h2 style={{ fontFamily: D, fontWeight: 700, fontSize: 'clamp(2rem, 4vw, 3rem)', color: '#ffffff', margin: '0 0 1.25rem', lineHeight: 1.1 }}>
+            <div className="ai-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'start', borderBottom: '1px solid rgba(255,255,255,0.15)', paddingBottom: '4rem', marginBottom: '4rem' }}>
+              <div>
+                <h2 style={{ fontFamily: D, fontWeight: 700, fontSize: 'clamp(2.5rem, 5vw, 4.5rem)', color: '#ffffff', margin: '0 0 1.25rem', letterSpacing: '0.04em', lineHeight: 1 }}>
                   Ask Tinta Ai
                 </h2>
-                <p style={{ fontFamily: B, fontWeight: 400, fontSize: '1rem', color: '#ffffff', lineHeight: 1.75, margin: 0, opacity: 0.8 }}>
-                  Have a question about specifications, turnaround times, pricing or materials?
-                  Ask our AI assistant anything about your print project — available 24/7.
+                <p style={{ fontFamily: B, fontSize: '1.0625rem', color: 'rgba(255,255,255,0.7)', lineHeight: 1.7, margin: '0 0 2.5rem', maxWidth: 420 }}>
+                  Get instant answers on pricing, turnarounds, file specs and more. Our AI assistant knows print inside out.
                 </p>
+                <div>
+                  <p style={{ fontFamily: B, fontWeight: 600, fontSize: '0.875rem', color: '#ffffff', margin: '0 0 0.625rem', letterSpacing: '0.06em' }}>5 Star Service</p>
+                  <div style={{ display: 'flex', gap: '0.25rem' }}>
+                    {[1,2,3,4,5].map(i => (
+                      <svg key={i} width="20" height="20" viewBox="0 0 20 20" fill="#FFD700" aria-hidden="true">
+                        <path d="M10 1l2.5 5 5.5.8-4 3.9.9 5.3L10 13.4l-4.9 2.6.9-5.3L2 7.8l5.5-.8z"/>
+                      </svg>
+                    ))}
+                  </div>
+                </div>
               </div>
-              <div className="ai-divider" style={{ background: 'rgba(255,255,255,0.15)', alignSelf: 'stretch', minHeight: 120 }} />
-              <div className="ai-right" style={{ paddingLeft: '4rem' }}>
-                <div className="rainbow-glow-wrapper" style={{ borderRadius: 9999 }}>
-                  <div className="rainbow-glow-ring" />
+              <div className="ai-right" style={{ borderLeft: '1px solid rgba(255,255,255,0.15)', paddingLeft: '4rem' }}>
+                <div className="rainbow-glow-wrapper" style={{ marginBottom: '1.25rem' }}>
+                  <div className="rainbow-glow-ring" aria-hidden="true" />
                   <RadiantPromptInput
-                    placeholder="Ask anything about print..."
-                    onSubmit={fireAI}
+                    placeholder="What size should my business cards be?"
+                    onSubmit={v => setAiInput(v)}
                   />
                 </div>
-                <p style={{ fontFamily: B, fontWeight: 400, fontSize: '0.8125rem', color: 'rgba(255,255,255,0.4)', margin: '0.875rem 0 0' }}>
-                  Turnaround times, file specs, pricing, delivery and more.
+                <p style={{ fontFamily: B, fontSize: '0.8125rem', color: 'rgba(255,255,255,0.45)', margin: 0, lineHeight: 1.6 }}>
+                  Ask about pricing, file formats, turnaround times, or anything print-related.
                 </p>
               </div>
+            </div>
+            <div style={{ textAlign: 'center', maxWidth: 620, margin: '0 auto' }}>
+              <h3 style={{ fontFamily: D, fontWeight: 700, fontSize: 'clamp(1.5rem, 3vw, 2rem)', color: '#ffffff', margin: '0 0 1rem', letterSpacing: '0.04em' }}>
+                About Tinta
+              </h3>
+              <p style={{ fontFamily: B, fontSize: '1rem', color: 'rgba(255,255,255,0.65)', lineHeight: 1.75, margin: 0 }}>
+                Tinta Print is a modern, AI-powered print brokerage based in Kent. We make professional print accessible to everyone — fast turnarounds, premium quality, delivered to your door. Powered by technology, driven by people.
+              </p>
             </div>
           </div>
           <style>{`
             @media (max-width: 768px) {
-              .ai-section-grid { grid-template-columns: 1fr !important; }
-              .ai-divider { display: none !important; }
-              .ai-left { padding-right: 0 !important; padding-bottom: 2.5rem; }
-              .ai-right { padding-left: 0 !important; }
+              #ai-section .ai-grid { grid-template-columns: 1fr !important; gap: 2.5rem !important; }
+              #ai-section .ai-right { border-left: none !important; padding-left: 0 !important; }
             }
           `}</style>
         </section>
 
-        {/* ── Products Grid ── */}
-        <section style={{ background: '#ffffff', padding: '6rem 0', borderBottom: '1px solid rgba(0,0,0,0.08)' }}>
+        {/* ── Section 3: Our Products ── */}
+        <section style={{ padding: '6rem 0', background: '#000000', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
           <div className="max-w-site">
-            <h2 style={{ fontFamily: D, fontWeight: 700, fontSize: 'clamp(2rem, 4vw, 3rem)', color: '#000000', margin: '0 0 3rem', lineHeight: 1.1 }}>
-              Our Products
-            </h2>
-            <div className="products-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.25rem' }}>
-              {productGrid.map(p => (
-                <Link key={p.name} href={p.href} style={{ textDecoration: 'none' }}>
-                  <div style={{ background: '#ffffff', borderRadius: 12, boxShadow: '0 4px 24px rgba(0,0,0,0.10)', overflow: 'hidden', cursor: 'pointer', transition: 'box-shadow 0.2s ease' }}
-                    onMouseEnter={e => { (e.currentTarget as HTMLDivElement).style.boxShadow = '0 8px 40px rgba(0,0,0,0.18)' }}
-                    onMouseLeave={e => { (e.currentTarget as HTMLDivElement).style.boxShadow = '0 4px 24px rgba(0,0,0,0.10)' }}
-                  >
-                    <div style={{ background: '#f3f3f3', aspectRatio: '16/9', width: '100%' }} />
-                    <div style={{ padding: '1.25rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '1rem' }}>
-                      <div style={{ flex: 1, minWidth: 0 }}>
-                        <p style={{ fontFamily: D, fontWeight: 700, fontSize: '0.9375rem', color: '#000000', margin: 0 }}>{p.name}</p>
-                        <p style={{ fontFamily: B, fontWeight: 400, fontSize: '0.8125rem', color: 'rgba(0,0,0,0.55)', margin: '0.3rem 0 0', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{p.desc}</p>
-                      </div>
-                      <span style={{ color: '#000000', flexShrink: 0 }}><Arrow /></span>
-                    </div>
-                  </div>
-                </Link>
-              ))}
-            </div>
-            <div style={{ textAlign: 'center', marginTop: '2.5rem' }}>
-              <Link href="/products" style={{ fontFamily: B, fontSize: '0.9375rem', fontWeight: 600, color: '#000000', textDecoration: 'underline', textUnderlineOffset: 3 }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '3rem', flexWrap: 'wrap', gap: '1rem' }}>
+              <div>
+                <p className="section-label" style={{ marginBottom: '0.75rem' }}>What We Print</p>
+                <h2 style={{ fontFamily: D, fontWeight: 700, fontSize: 'clamp(2rem, 5vw, 3.5rem)', color: '#ffffff', margin: 0, letterSpacing: '0.04em', lineHeight: 1.05 }}>
+                  Our Products.
+                </h2>
+              </div>
+              <Link href="/products" style={{ fontFamily: B, fontSize: '0.875rem', color: 'rgba(255,255,255,0.5)', textDecoration: 'none', whiteSpace: 'nowrap' }}>
                 View All Products →
               </Link>
             </div>
-          </div>
-          <style>{`
-            @media (max-width: 1024px) { .products-grid { grid-template-columns: repeat(2, 1fr) !important; } }
-            @media (max-width: 640px)  { .products-grid { grid-template-columns: 1fr !important; } }
-          `}</style>
-        </section>
-
-        {/* ── Packages ── */}
-        <section style={{ background: '#000000', padding: '6rem 0', borderBottom: '1px solid rgba(255,255,255,0.08)', overflow: 'hidden' }}>
-          <div className="max-w-site" style={{ marginBottom: '2.5rem' }}>
-            <h2 style={{ fontFamily: D, fontWeight: 700, fontSize: 'clamp(2rem, 4vw, 3rem)', color: '#ffffff', margin: 0, lineHeight: 1.1 }}>
-              Print Packages
-            </h2>
-          </div>
-          <div style={{ paddingLeft: 'clamp(1.5rem, 3rem, calc((100vw - 1280px) / 2 + 3rem))', paddingRight: '1.5rem' }}>
-            <div style={{ display: 'flex', gap: '1.25rem', overflowX: 'auto', scrollSnapType: 'x mandatory', paddingBottom: '1rem', WebkitOverflowScrolling: 'touch' }}>
-              {packages.map(pkg => <PackageCard key={pkg.name} pkg={pkg} />)}
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1px', background: 'rgba(255,255,255,0.06)' }} className="products-grid">
+              {[
+                { name: 'Business Cards', href: '/products/business-cards' },
+                { name: 'Flyers', href: '/products/flyers-leaflets' },
+                { name: 'Posters', href: '/products/posters' },
+                { name: 'Stickers', href: '/products/stickers' },
+                { name: 'Banners', href: '/products/banners' },
+                { name: 'Brochures', href: '/products/brochures-books' },
+              ].map(product => (
+                <Link key={product.name} href={product.href} style={{
+                  background: '#ffffff',
+                  padding: '2.5rem',
+                  textDecoration: 'none',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '2rem',
+                  filter: 'drop-shadow(0 4px 24px rgba(0,0,0,0.10))',
+                  transition: 'filter 0.2s ease',
+                }}
+                onMouseEnter={e => (e.currentTarget.style.filter = 'drop-shadow(0 8px 32px rgba(0,0,0,0.18))')}
+                onMouseLeave={e => (e.currentTarget.style.filter = 'drop-shadow(0 4px 24px rgba(0,0,0,0.10))')}>
+                  <div style={{ height: 160, background: 'rgba(0,0,0,0.04)', borderRadius: 6, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <span style={{ fontFamily: B, fontSize: '0.75rem', color: 'rgba(0,0,0,0.2)' }}>Image</span>
+                  </div>
+                  <h3 style={{ fontFamily: D, fontWeight: 700, fontSize: '1.25rem', color: '#000000', margin: 0, letterSpacing: '0.04em' }}>
+                    {product.name}
+                  </h3>
+                </Link>
+              ))}
             </div>
           </div>
+          <style>{`@media (max-width: 768px) { .products-grid { grid-template-columns: repeat(2, 1fr) !important; } }`}</style>
         </section>
 
-        {/* ── Social ── */}
-        <section style={{ background: '#000000', padding: '5rem 1.5rem', borderBottom: '1px solid rgba(255,255,255,0.08)', textAlign: 'center' }}>
-          <h2 style={{ fontFamily: D, fontWeight: 700, fontSize: 'clamp(2rem, 4vw, 3rem)', color: '#ffffff', margin: '0 0 2.5rem', lineHeight: 1.1 }}>
-            Follow Us
-          </h2>
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '2rem', alignItems: 'center', flexWrap: 'wrap' }}>
-            {/* Placeholder rect left */}
-            <div style={{ width: 180, height: 280, background: '#1a1a1a', borderRadius: 8, flexShrink: 0 }} />
-
-            {/* Icons column */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', alignItems: 'center' }}>
-              <a href="#" aria-label="Instagram" style={{ color: '#ffffff', display: 'flex' }}>
-                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-                </svg>
-              </a>
-              <a href="#" aria-label="Facebook" style={{ color: '#ffffff', display: 'flex' }}>
-                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
-                </svg>
-              </a>
-              <a href="#" aria-label="TikTok" style={{ color: '#ffffff', display: 'flex' }}>
-                <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.15 8.15 0 0 0 4.77 1.52V6.76a4.85 4.85 0 0 1-1-.07z" />
-                </svg>
-              </a>
-            </div>
-
-            {/* Placeholder rect right */}
-            <div style={{ width: 180, height: 280, background: '#1a1a1a', borderRadius: 8, flexShrink: 0 }} />
-          </div>
-        </section>
-
-        {/* ── Feature Boxes ── */}
-        <section style={{ background: '#000000', padding: '6rem 0', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
+        {/* ── Section 4: Packages ── */}
+        <section style={{ padding: '7rem 0', background: '#000000', borderTop: '1px solid rgba(255,255,255,0.06)', overflow: 'hidden' }}>
           <div className="max-w-site">
-            <div className="features-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.25rem' }}>
-              {featureBoxes.map(box => (
-                <div key={box.title} style={{ border: '1px solid rgba(255,255,255,0.15)', background: '#000000', overflow: 'hidden', borderRadius: 12 }}>
-                  <div style={{ background: '#111111', height: 200, width: '100%' }} />
+            <p className="section-label" style={{ marginBottom: '1rem' }}>Print Bundles</p>
+            <h2 style={{ fontFamily: D, fontWeight: 700, fontSize: 'clamp(2rem, 5vw, 3.5rem)', color: '#ffffff', margin: '0 0 5rem', letterSpacing: '0.04em', lineHeight: 1 }}>
+              Packages.
+            </h2>
+
+            <div style={{ position: 'relative', height: 480, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '4rem' }}>
+              <div className="box-3d-scene">
+                <div className="box-3d">
+                  {(['box-front','box-back','box-left','box-right','box-top','box-bottom'] as const).map(face => (
+                    <div key={face} className={`box-3d-face ${face}`}>
+                      {face === 'box-front' && (
+                        /* eslint-disable-next-line @next/next/no-img-element */
+                        <img src="/images/logo-magenta-whiteoutline.svg" alt="" style={{ width: 90, height: 90, objectFit: 'contain' }} />
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div style={{ position: 'absolute', top: '5%', left: '50%', transform: 'translateX(-50%)' }}>
+                <PackageIcon pkg={PACKAGES[0]} />
+              </div>
+              <div style={{ position: 'absolute', top: '50%', right: '8%', transform: 'translateY(-50%)' }}>
+                <PackageIcon pkg={PACKAGES[1]} />
+              </div>
+              <div style={{ position: 'absolute', bottom: '8%', left: '12%' }}>
+                <PackageIcon pkg={PACKAGES[2]} />
+              </div>
+              <div style={{ position: 'absolute', bottom: '8%', right: '12%' }}>
+                <PackageIcon pkg={PACKAGES[3]} />
+              </div>
+            </div>
+
+            <div style={{ textAlign: 'right', marginBottom: '4rem' }}>
+              <Link href="/build-your-own" className="btn-outline" style={{ height: 44, minHeight: 44, fontSize: '0.8125rem' }}>
+                Build Your Own Package →
+              </Link>
+            </div>
+
+            <div style={{ textAlign: 'center', maxWidth: 680, margin: '0 auto' }}>
+              <h3 style={{ fontFamily: D, fontWeight: 700, fontSize: 'clamp(1.5rem, 3vw, 2.25rem)', color: '#ffffff', margin: '0 0 1.25rem', letterSpacing: '0.04em' }}>
+                Packages.
+              </h3>
+              <p style={{ fontFamily: B, fontSize: '1rem', color: 'rgba(255,255,255,0.55)', lineHeight: 1.8, margin: 0 }}>
+                Ordering individual products is fine. But when you bundle them together, the real value appears — consistent branding across every touchpoint, better pricing, and a single point of contact for your entire print run. Our packages are designed around how real businesses actually operate, not how print suppliers prefer to sell.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* ── Section 5: Follow Us + Feature Boxes ── */}
+        <section className="section-gradient-yellow-white" style={{ padding: '6rem 0' }}>
+          <div className="max-w-site">
+
+            <div style={{ marginBottom: '5rem' }}>
+              <div className="follow-grid" style={{ display: 'grid', gridTemplateColumns: '1fr auto 1fr', gap: '3rem', alignItems: 'center' }}>
+                <div style={{ height: 260, background: 'rgba(0,0,0,0.08)', borderRadius: 12, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <span style={{ fontFamily: B, fontSize: '0.75rem', color: 'rgba(0,0,0,0.3)' }}>Instagram posts</span>
+                </div>
+
+                <div style={{ textAlign: 'center', minWidth: 200 }}>
+                  <h2 style={{ fontFamily: D, fontWeight: 700, fontSize: 'clamp(2rem, 4vw, 3rem)', color: '#000000', margin: '0 0 1.5rem', letterSpacing: '0.04em' }}>
+                    Follow Us.
+                  </h2>
+                  <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', marginBottom: '1.5rem' }}>
+                    <a href="https://instagram.com" target="_blank" rel="noreferrer" style={{ width: 52, height: 52, borderRadius: '50%', background: '#000000', display: 'flex', alignItems: 'center', justifyContent: 'center', textDecoration: 'none' }}>
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                        <rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="#ffffff" stroke="none"/>
+                      </svg>
+                    </a>
+                    <a href="https://facebook.com" target="_blank" rel="noreferrer" style={{ width: 52, height: 52, borderRadius: '50%', background: '#000000', display: 'flex', alignItems: 'center', justifyContent: 'center', textDecoration: 'none' }}>
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                      </svg>
+                    </a>
+                    <a href="https://tiktok.com" target="_blank" rel="noreferrer" style={{ width: 52, height: 52, borderRadius: '50%', background: '#000000', display: 'flex', alignItems: 'center', justifyContent: 'center', textDecoration: 'none' }}>
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="#ffffff">
+                        <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/>
+                      </svg>
+                    </a>
+                  </div>
+                  <p style={{ fontFamily: B, fontSize: '0.8125rem', color: 'rgba(0,0,0,0.5)', margin: 0 }}>
+                    Click <Link href="/contact" style={{ color: '#000000', fontWeight: 600 }}>here</Link> to contact us about social media partnerships
+                  </p>
+                </div>
+
+                <div style={{ height: 260, background: 'rgba(0,0,0,0.08)', borderRadius: 12, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <span style={{ fontFamily: B, fontSize: '0.75rem', color: 'rgba(0,0,0,0.3)' }}>Video</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="feature-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem' }}>
+              {[
+                { title: 'Swatch Book', btn: 'Order Now', href: '/swatch-book' },
+                { title: 'Eco', btn: 'Find Out More', href: '/eco' },
+                { title: 'About Us', btn: 'Meet Us', href: '/about' },
+              ].map(card => (
+                <div key={card.title} style={{
+                  background: '#ffffff',
+                  border: '1px solid rgba(0,0,0,0.1)',
+                  borderRadius: 12,
+                  overflow: 'hidden',
+                  boxShadow: '0 4px 24px rgba(0,0,0,0.08)',
+                  display: 'flex',
+                  flexDirection: 'column',
+                }}>
+                  <div style={{ height: 200, background: 'rgba(0,0,0,0.06)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <span style={{ fontFamily: B, fontSize: '0.75rem', color: 'rgba(0,0,0,0.25)' }}>Image</span>
+                  </div>
                   <div style={{ padding: '1.75rem' }}>
-                    <p style={{ fontFamily: D, fontWeight: 700, fontSize: '1.25rem', color: '#ffffff', margin: '0 0 0.625rem' }}>{box.title}</p>
-                    <p style={{ fontFamily: B, fontWeight: 400, fontSize: '0.9375rem', color: '#ffffff', margin: '0 0 1.5rem', lineHeight: 1.65, opacity: 0.8 }}>{box.desc}</p>
-                    <Link href={box.href} className="btn-outline" style={{ height: 42, minHeight: 42, fontSize: '0.75rem', padding: '0 1.5rem' }}>
-                      {box.cta}
+                    <h3 style={{ fontFamily: D, fontWeight: 700, fontSize: '1.375rem', color: '#000000', margin: '0 0 1.25rem', letterSpacing: '0.04em' }}>
+                      {card.title}
+                    </h3>
+                    <Link href={card.href} style={{
+                      display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+                      background: '#000000', color: '#ffffff', fontFamily: B, fontWeight: 700,
+                      fontSize: '0.75rem', letterSpacing: '0.1em', textTransform: 'uppercase',
+                      padding: '0 1.25rem', height: 40, borderRadius: 9999, textDecoration: 'none',
+                    }}>
+                      {card.btn}
                     </Link>
                   </div>
                 </div>
@@ -380,111 +386,27 @@ export default function HomePage() {
             </div>
           </div>
           <style>{`
-            @media (max-width: 900px) { .features-grid { grid-template-columns: 1fr !important; } }
+            @media (max-width: 900px) { .follow-grid { grid-template-columns: 1fr !important; } }
+            @media (max-width: 768px) { .feature-grid { grid-template-columns: 1fr !important; } }
           `}</style>
         </section>
 
-        {/* ── Contact CTA ── */}
-        <section style={{ background: '#000000', padding: '5rem 1.5rem', textAlign: 'center', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
-          <Link href="/contact" className="btn-outline" style={{ fontSize: '1rem', height: 56, minHeight: 56, padding: '0 3rem' }}>
-            Contact Us
-          </Link>
-        </section>
-
-        {/* ── Footer ── */}
-        <footer style={{ background: '#000000', borderTop: '1px solid rgba(255,255,255,0.1)', padding: '60px 0 40px' }}>
+        {/* ── Section 6: Contact CTA ── */}
+        <section style={{ padding: '6rem 0', background: '#000000', textAlign: 'center', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
           <div className="max-w-site">
-            <div className="footer-cols" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '3rem', marginBottom: 48 }}>
-
-              <div>
-                <p style={{ fontFamily: D, fontWeight: 700, fontSize: '0.8125rem', color: '#ffffff', margin: '0 0 1rem', textTransform: 'uppercase', letterSpacing: '0.12em' }}>Products</p>
-                <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: 7 }}>
-                  {footerProducts.map(l => (
-                    <li key={l.label}><Link href={l.href} className="footer-link">{l.label}</Link></li>
-                  ))}
-                </ul>
-              </div>
-
-              <div>
-                <p style={{ fontFamily: D, fontWeight: 700, fontSize: '0.8125rem', color: '#ffffff', margin: '0 0 1rem', textTransform: 'uppercase', letterSpacing: '0.12em' }}>Services</p>
-                <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: 7 }}>
-                  {[
-                    { label: 'Packages',         href: '/packages' },
-                    { label: 'Build Your Own',   href: '/packages/builder' },
-                    { label: 'Quick Buy',        href: '/quick-buy' },
-                    { label: 'Design & Artwork', href: '/services' },
-                  ].map(l => (
-                    <li key={l.label}><Link href={l.href} className="footer-link">{l.label}</Link></li>
-                  ))}
-                </ul>
-              </div>
-
-              <div>
-                <p style={{ fontFamily: D, fontWeight: 700, fontSize: '0.8125rem', color: '#ffffff', margin: '0 0 1rem', textTransform: 'uppercase', letterSpacing: '0.12em' }}>Company</p>
-                <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: 7 }}>
-                  {[
-                    { label: 'About Us',    href: '/about' },
-                    { label: 'How It Works', href: '/how-it-works' },
-                    { label: 'FAQ',         href: '/faq' },
-                    { label: 'Eco Printing', href: '/eco' },
-                    { label: 'Swatch Book', href: '/swatch-book' },
-                  ].map(l => (
-                    <li key={l.label}><Link href={l.href} className="footer-link">{l.label}</Link></li>
-                  ))}
-                </ul>
-              </div>
-
-              <div>
-                <p style={{ fontFamily: D, fontWeight: 700, fontSize: '0.8125rem', color: '#ffffff', margin: '0 0 1rem', textTransform: 'uppercase', letterSpacing: '0.12em' }}>Contact</p>
-                <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: 7 }}>
-                  <li><a href="mailto:hello@tintaprint.uk" className="footer-link">hello@tintaprint.uk</a></li>
-                </ul>
-                <div style={{ display: 'flex', gap: '1rem', marginTop: '1.25rem', alignItems: 'center' }}>
-                  <a href="#" aria-label="Instagram" style={{ color: 'rgba(255,255,255,0.55)', display: 'flex' }}>
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                      <rect x="2" y="2" width="20" height="20" rx="5" /><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" /><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-                    </svg>
-                  </a>
-                  <a href="#" aria-label="Facebook" style={{ color: 'rgba(255,255,255,0.55)', display: 'flex' }}>
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
-                    </svg>
-                  </a>
-                  <a href="#" aria-label="TikTok" style={{ color: 'rgba(255,255,255,0.55)', display: 'flex' }}>
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.15 8.15 0 0 0 4.77 1.52V6.76a4.85 4.85 0 0 1-1-.07z" />
-                    </svg>
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            {/* Bottom bar */}
-            <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: 20, display: 'flex', flexWrap: 'wrap', alignItems: 'flex-start', justifyContent: 'space-between', gap: 12 }}>
-              <div>
-                <p style={{ fontFamily: B, fontWeight: 400, fontSize: '0.8125rem', color: 'rgba(255,255,255,0.4)', margin: '0 0 2px' }}>
-                  © 2026 Tinta Print.
-                </p>
-                <p style={{ fontFamily: B, fontWeight: 400, fontSize: '0.8125rem', color: 'rgba(255,255,255,0.4)', margin: '0 0 2px' }}>
-                  All rights reserved.
-                </p>
-                <p style={{ fontFamily: B, fontWeight: 400, fontSize: '0.8125rem', color: 'rgba(255,255,255,0.25)', margin: 0 }}>
-                  Payments by Stripe.
-                </p>
-              </div>
-              <div style={{ display: 'flex', gap: '1.5rem' }}>
-                <Link href="/privacy-policy" style={{ fontFamily: B, fontWeight: 400, fontSize: '0.8125rem', color: 'rgba(255,255,255,0.4)', textDecoration: 'none' }}>Privacy Policy</Link>
-                <Link href="/terms-and-conditions" style={{ fontFamily: B, fontWeight: 400, fontSize: '0.8125rem', color: 'rgba(255,255,255,0.4)', textDecoration: 'none' }}>Terms & Conditions</Link>
-              </div>
-            </div>
+            <p className="section-label" style={{ marginBottom: '1rem' }}>Get In Touch</p>
+            <h2 style={{ fontFamily: D, fontWeight: 700, fontSize: 'clamp(2.5rem, 6vw, 5rem)', color: '#ffffff', margin: '0 0 1.25rem', letterSpacing: '0.04em', lineHeight: 1.05 }}>
+              Ready to print?
+            </h2>
+            <p style={{ fontFamily: B, fontSize: '1.0625rem', color: 'rgba(255,255,255,0.45)', margin: '0 0 2.5rem', maxWidth: 480, marginLeft: 'auto', marginRight: 'auto' }}>
+              Get a fast quote, no jargon, no phone calls required.
+            </p>
+            <Link href="/contact" className="btn-primary">Get a Quote</Link>
           </div>
-          <style>{`
-            @media (max-width: 900px) { .footer-cols { grid-template-columns: repeat(2, 1fr) !important; } }
-            @media (max-width: 560px) { .footer-cols { grid-template-columns: 1fr !important; } }
-          `}</style>
-        </footer>
+        </section>
 
       </main>
+      <Footer />
     </>
   )
 }

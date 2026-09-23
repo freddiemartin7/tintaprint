@@ -324,3 +324,159 @@ select.form-field option { background: #000000; color: #ffffff; }
 .pipeline-line { stroke-dasharray: 8 5; }
 .pipeline-icon-enter { opacity: 0; }
 .pipeline-icon-enter.visible { opacity: 1; }
+
+/* ── Nav inversion on scroll ── */
+.nav-root {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  background: #000000;
+  color: #ffffff;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.nav-root.scrolled {
+  background: #ffffff;
+  color: #000000;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+.nav-root .nav-link { color: #ffffff; }
+.nav-root.scrolled .nav-link { color: #000000; }
+.nav-root .nav-search-border { border-color: rgba(255,255,255,0.25); }
+.nav-root.scrolled .nav-search-border { border-color: rgba(0,0,0,0.25); }
+.nav-root .nav-search-input { color: #ffffff; background: transparent; }
+.nav-root.scrolled .nav-search-input { color: #000000; }
+.nav-root .nav-search-input::placeholder { color: rgba(255,255,255,0.35); }
+.nav-root.scrolled .nav-search-input::placeholder { color: rgba(0,0,0,0.35); }
+.nav-dropdown-inverted {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 240px;
+  background: #000000;
+  border: 1px solid rgba(255,255,255,0.12);
+  padding: 0.5rem 0;
+  padding-top: 12px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.15s ease, visibility 0.15s ease;
+  z-index: 100;
+}
+.nav-dropdown-inverted::before {
+  content: '';
+  position: absolute;
+  top: -12px;
+  left: 0;
+  right: 0;
+  height: 12px;
+}
+.nav-parent:hover .nav-dropdown-inverted,
+.nav-parent:focus-within .nav-dropdown-inverted {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+.nav-root.scrolled .nav-dropdown-inverted {
+  background: #ffffff;
+  border-color: rgba(0,0,0,0.12);
+}
+
+/* ── Search dropdown ── */
+.search-dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  background: #111111;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 12px;
+  overflow: hidden;
+  z-index: 200;
+  max-height: 280px;
+  overflow-y: auto;
+}
+.nav-root.scrolled .search-dropdown {
+  background: #f5f5f5;
+  border-color: rgba(0,0,0,0.1);
+}
+.search-dropdown-item {
+  display: block;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: 'Switzer', sans-serif;
+  font-size: 0.875rem;
+  color: #ffffff;
+  text-align: left;
+  text-decoration: none;
+}
+.nav-root.scrolled .search-dropdown-item { color: #000000; }
+.search-dropdown-item:hover { background: rgba(255,255,255,0.06); }
+.nav-root.scrolled .search-dropdown-item:hover { background: rgba(0,0,0,0.06); }
+
+/* ── 3D Box ── */
+.box-3d-scene {
+  perspective: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.box-3d {
+  width: 160px;
+  height: 160px;
+  position: relative;
+  transform-style: preserve-3d;
+  transform: rotateX(-15deg) rotateY(25deg);
+  animation: box-spin 12s linear infinite;
+}
+@keyframes box-spin {
+  0%   { transform: rotateX(-15deg) rotateY(25deg); }
+  50%  { transform: rotateX(-15deg) rotateY(205deg); }
+  100% { transform: rotateX(-15deg) rotateY(385deg); }
+}
+.box-3d-face {
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  background: rgba(255,255,255,0.95);
+  border: 1px solid rgba(255,255,255,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backface-visibility: hidden;
+}
+.box-front  { transform: translateZ(80px); }
+.box-back   { transform: rotateY(180deg) translateZ(80px); }
+.box-left   { transform: rotateY(-90deg) translateZ(80px); }
+.box-right  { transform: rotateY(90deg)  translateZ(80px); }
+.box-top    { transform: rotateX(90deg)  translateZ(80px); }
+.box-bottom { transform: rotateX(-90deg) translateZ(80px); }
+
+/* ── Package floating icons ── */
+@keyframes float-a {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+@keyframes float-b {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+@keyframes float-c {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+}
+@keyframes float-d {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+/* ── Section gradient (follow us + features) ── */
+.section-gradient-yellow-white {
+  background: linear-gradient(to bottom, #FFD700 0%, #ffffff 100%);
+}

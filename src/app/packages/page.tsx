@@ -139,7 +139,7 @@ export default function PackagesPage() {
       <main style={{ paddingTop: '4rem' }}>
 
         <section style={{ padding: '5rem 0 4rem', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
-          <div className="max-w-site">
+          <div className="max-w-site" style={{ textAlign: 'right' }}>
             <p className="section-label" style={{ marginBottom: '1.25rem' }}>Bundles</p>
             <h1 style={{ fontFamily: D, fontSize: 'clamp(3rem, 8vw, 7rem)', fontWeight: 700, color: '#ffffff', letterSpacing: '0.04em', lineHeight: 0.95, marginBottom: '1.5rem' }}>
               Print Packages.
