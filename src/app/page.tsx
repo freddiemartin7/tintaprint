@@ -91,8 +91,8 @@ function PackageIcon({ pkg }: { pkg: typeof PACKAGES[number] }) {
     >
       <Link href={pkg.href} style={{ textDecoration: 'none' }}>
         <div style={{ animationName: pkg.id === 'wedding' ? 'float-a' : pkg.id === 'salon' ? 'float-b' : pkg.id === 'events' ? 'float-c' : 'float-d', animationDuration: pkg.animDuration, animationTimingFunction: 'ease-in-out', animationIterationCount: 'infinite', display: 'inline-block' }}>
-          <p style={{ fontFamily: D, fontWeight: 700, fontSize: '0.875rem', color: '#ffffff', margin: '0 0 0.625rem', letterSpacing: '0.04em', whiteSpace: 'nowrap' }}>{pkg.label}</p>
-          <div style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 80, height: 80, borderRadius: '50%', border: `1.5px solid ${pkg.color}`, opacity: hovered ? 0.4 : 1, transition: 'opacity 0.25s ease' }}>
+          <p style={{ fontFamily: D, fontWeight: 700, fontSize: '0.875rem', color: '#000000', margin: '0 0 0.625rem', letterSpacing: '0.04em', whiteSpace: 'nowrap' }}>{pkg.label}</p>
+          <div style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 80, height: 80, borderRadius: '50%', border: `1.5px solid ${pkg.color}`, background: '#000000', opacity: hovered ? 0.4 : 1, transition: 'opacity 0.25s ease' }}>
             {pkg.icon}
           </div>
         </div>
@@ -118,7 +118,7 @@ export default function HomePage() {
       <main>
 
         {/* ── Section 1: Product Showcase Strip ── */}
-        <section style={{ paddingTop: 64, background: '#000000' }}>
+        <section style={{ paddingTop: 80, background: '#000000' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', minHeight: '70vh' }} className="showcase-grid">
             {[
               { name: 'Business Cards', isNew: false },
@@ -156,9 +156,9 @@ export default function HomePage() {
         </section>
 
         {/* ── Section 2: AI Assistant ── */}
-        <section id="ai-section" style={{ background: 'linear-gradient(135deg, #00c060 0%, #000000 100%)', padding: '6rem 0' }}>
+        <section id="ai-section" style={{ background: 'linear-gradient(to bottom, #00c060 0%, #ffffff 100%)', padding: '6rem 0' }}>
           <div className="max-w-site">
-            <div className="ai-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'start', borderBottom: '1px solid rgba(255,255,255,0.15)', paddingBottom: '4rem', marginBottom: '4rem' }}>
+            <div className="ai-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'start', borderBottom: '1px solid rgba(0,0,0,0.12)', paddingBottom: '4rem', marginBottom: '4rem' }}>
               <div>
                 <h2 style={{ fontFamily: D, fontWeight: 700, fontSize: 'clamp(2.5rem, 5vw, 4.5rem)', color: '#ffffff', margin: '0 0 1.25rem', letterSpacing: '0.04em', lineHeight: 1 }}>
                   Ask Tinta Ai
@@ -177,7 +177,7 @@ export default function HomePage() {
                   </div>
                 </div>
               </div>
-              <div className="ai-right" style={{ borderLeft: '1px solid rgba(255,255,255,0.15)', paddingLeft: '4rem' }}>
+              <div className="ai-right" style={{ borderLeft: '1px solid rgba(0,0,0,0.12)', paddingLeft: '4rem' }}>
                 <div className="rainbow-glow-wrapper" style={{ marginBottom: '1.25rem' }}>
                   <div className="rainbow-glow-ring" aria-hidden="true" />
                   <RadiantPromptInput
@@ -191,10 +191,10 @@ export default function HomePage() {
               </div>
             </div>
             <div style={{ textAlign: 'center', maxWidth: 620, margin: '0 auto' }}>
-              <h3 style={{ fontFamily: D, fontWeight: 700, fontSize: 'clamp(1.5rem, 3vw, 2rem)', color: '#ffffff', margin: '0 0 1rem', letterSpacing: '0.04em' }}>
+              <h3 style={{ fontFamily: D, fontWeight: 700, fontSize: 'clamp(1.5rem, 3vw, 2rem)', color: '#000000', margin: '0 0 1rem', letterSpacing: '0.04em' }}>
                 About Tinta
               </h3>
-              <p style={{ fontFamily: B, fontSize: '1rem', color: 'rgba(255,255,255,0.65)', lineHeight: 1.75, margin: 0 }}>
+              <p style={{ fontFamily: B, fontSize: '1rem', color: 'rgba(0,0,0,0.65)', lineHeight: 1.75, margin: 0 }}>
                 Tinta Print is a modern, AI-powered print brokerage based in Kent. We make professional print accessible to everyone — fast turnarounds, premium quality, delivered to your door. Powered by technology, driven by people.
               </p>
             </div>
@@ -221,7 +221,7 @@ export default function HomePage() {
                 View All Products →
               </Link>
             </div>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1px', background: 'rgba(255,255,255,0.06)' }} className="products-grid">
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1px', background: 'rgba(255,255,255,0.08)' }} className="products-grid">
               {[
                 { name: 'Business Cards', href: '/products/business-cards' },
                 { name: 'Flyers', href: '/products/flyers-leaflets' },
@@ -231,23 +231,22 @@ export default function HomePage() {
                 { name: 'Brochures', href: '/products/brochures-books' },
               ].map(product => (
                 <Link key={product.name} href={product.href} style={{
-                  background: '#ffffff',
-                  padding: '2.5rem',
+                  background: '#000000',
                   textDecoration: 'none',
                   display: 'flex',
                   flexDirection: 'column',
-                  gap: '2rem',
-                  filter: 'drop-shadow(0 4px 24px rgba(0,0,0,0.10))',
                   transition: 'filter 0.2s ease',
                 }}
-                onMouseEnter={e => (e.currentTarget.style.filter = 'drop-shadow(0 8px 32px rgba(0,0,0,0.18))')}
-                onMouseLeave={e => (e.currentTarget.style.filter = 'drop-shadow(0 4px 24px rgba(0,0,0,0.10))')}>
-                  <div style={{ height: 160, background: 'rgba(0,0,0,0.04)', borderRadius: 6, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <span style={{ fontFamily: B, fontSize: '0.75rem', color: 'rgba(0,0,0,0.2)' }}>Image</span>
+                onMouseEnter={e => (e.currentTarget.style.filter = 'brightness(1.4)')}
+                onMouseLeave={e => (e.currentTarget.style.filter = 'none')}>
+                  <div style={{ aspectRatio: '4/3', background: 'rgba(255,255,255,0.05)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <span style={{ fontFamily: B, fontSize: '0.75rem', color: 'rgba(255,255,255,0.15)' }}>Image</span>
                   </div>
-                  <h3 style={{ fontFamily: D, fontWeight: 700, fontSize: '1.25rem', color: '#000000', margin: 0, letterSpacing: '0.04em' }}>
-                    {product.name}
-                  </h3>
+                  <div style={{ padding: '1.25rem 1.5rem' }}>
+                    <h3 style={{ fontFamily: D, fontWeight: 700, fontSize: '1.0625rem', color: '#ffffff', margin: 0, letterSpacing: '0.04em' }}>
+                      {product.name}
+                    </h3>
+                  </div>
                 </Link>
               ))}
             </div>
@@ -256,10 +255,10 @@ export default function HomePage() {
         </section>
 
         {/* ── Section 4: Packages ── */}
-        <section style={{ padding: '7rem 0', background: '#000000', borderTop: '1px solid rgba(255,255,255,0.06)', overflow: 'hidden' }}>
+        <section style={{ padding: '7rem 0', background: 'linear-gradient(to bottom, #00BCD4 0%, #FFD700 100%)', borderTop: 'none', overflow: 'hidden' }}>
           <div className="max-w-site">
-            <p className="section-label" style={{ marginBottom: '1rem' }}>Print Bundles</p>
-            <h2 style={{ fontFamily: D, fontWeight: 700, fontSize: 'clamp(2rem, 5vw, 3.5rem)', color: '#ffffff', margin: '0 0 5rem', letterSpacing: '0.04em', lineHeight: 1 }}>
+            <p className="section-label" style={{ marginBottom: '1rem', color: '#000000' }}>Print Bundles</p>
+            <h2 style={{ fontFamily: D, fontWeight: 700, fontSize: 'clamp(2rem, 5vw, 3.5rem)', color: '#000000', margin: '0 0 5rem', letterSpacing: '0.04em', lineHeight: 1 }}>
               Packages.
             </h2>
 
@@ -292,16 +291,22 @@ export default function HomePage() {
             </div>
 
             <div style={{ textAlign: 'right', marginBottom: '4rem' }}>
-              <Link href="/build-your-own" className="btn-outline" style={{ height: 44, minHeight: 44, fontSize: '0.8125rem' }}>
+              <Link href="/build-your-own" style={{
+                display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+                height: 44, minHeight: 44, fontSize: '0.8125rem',
+                fontFamily: B, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase',
+                padding: '0 2rem', borderRadius: 9999, textDecoration: 'none',
+                border: '1.5px solid #000000', color: '#000000', background: 'transparent',
+              }}>
                 Build Your Own Package →
               </Link>
             </div>
 
             <div style={{ textAlign: 'center', maxWidth: 680, margin: '0 auto' }}>
-              <h3 style={{ fontFamily: D, fontWeight: 700, fontSize: 'clamp(1.5rem, 3vw, 2.25rem)', color: '#ffffff', margin: '0 0 1.25rem', letterSpacing: '0.04em' }}>
+              <h3 style={{ fontFamily: D, fontWeight: 700, fontSize: 'clamp(1.5rem, 3vw, 2.25rem)', color: '#000000', margin: '0 0 1.25rem', letterSpacing: '0.04em' }}>
                 Packages.
               </h3>
-              <p style={{ fontFamily: B, fontSize: '1rem', color: 'rgba(255,255,255,0.55)', lineHeight: 1.8, margin: 0 }}>
+              <p style={{ fontFamily: B, fontSize: '1rem', color: 'rgba(0,0,0,0.65)', lineHeight: 1.8, margin: 0 }}>
                 Ordering individual products is fine. But when you bundle them together, the real value appears — consistent branding across every touchpoint, better pricing, and a single point of contact for your entire print run. Our packages are designed around how real businesses actually operate, not how print suppliers prefer to sell.
               </p>
             </div>

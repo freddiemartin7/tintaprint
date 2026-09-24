@@ -31,9 +31,8 @@ export default function Footer() {
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.75rem' }}>
               <span style={{ fontFamily: B, fontSize: '0.75rem', color: 'rgba(255,255,255,0.3)', letterSpacing: '0.06em' }}>Secure payments by</span>
-              <svg width="38" height="16" viewBox="0 0 60 25" fill="none" aria-label="Stripe">
-                <path d="M5 10.2c0-1 .8-1.4 2.1-1.4 1.9 0 4.3.6 6.2 1.6V4.8C11.4 4 9.3 3.6 7.1 3.6 2.9 3.6 0 5.8 0 10.5c0 7.3 10 6.1 10 9.2 0 1.2-1 1.6-2.4 1.6C5.6 21.3 3 20.5 1 19.4v5.6c2.2 1 4.5 1.4 6.6 1.4 4.3 0 7.4-2.1 7.4-6.9-.1-7.8-10-6.4-10-9.3zm18.7-8.9l-5.7 1.2v4.7h-3.3V12h3.3v8.6c0 4 2.3 5.4 5.8 5.4 1.5 0 3-.2 4.2-.8v-4.7c-.8.4-4.3 1.3-4.3-1.6V12h4.3V7.2h-4.3V1.3zm9.2 10.9h-.1c-.4-1.4-1.5-5-1.6-5.6h-5.7l4.6 13.5-2.6 5.9h5.4l7.1-19.4h-5.6l-1.5 5.6zm13.2-5.9c-2 0-3.3.9-4 1.6l-.2-1.3H37v19.4h5.5V14c.4-.5 1.7-2 3.2-2 2.3 0 2.8 1.8 2.8 3.5v10.7h5.5V14.8c0-4.7-2.5-7.4-7.9-7.4zm14.9 0c-5.3 0-8.1 4-8.1 9.9s2.8 9.8 8.1 9.8c5.3 0 8.1-4 8.1-9.8S66.3 6.3 61 6.3zm0 15.1c-2.1 0-2.6-2.6-2.6-5.3 0-2.6.5-5.2 2.6-5.2s2.6 2.6 2.6 5.2c0 2.7-.5 5.3-2.6 5.3z" fill="rgba(255,255,255,0.45)"/>
-              </svg>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/images/STRIPE LOGO WHITE.svg" alt="Stripe" style={{ height: 16, width: 'auto' }} />
             </div>
             <a href="https://wetransfer.com" target="_blank" rel="noreferrer" className="btn-outline" style={{ height: 32, minHeight: 32, fontSize: '0.6875rem', padding: '0 0.875rem', letterSpacing: '0.08em' }}>
               WeTransfer

@@ -75,29 +75,17 @@ export default function Nav() {
 
   return (
     <>
-      <nav className={`nav-root${scrolled ? ' scrolled' : ''}`} style={{ height: 64 }}>
+      <nav className={`nav-root${scrolled ? ' scrolled' : ''}`} style={{ height: 80 }}>
         <div style={{ maxWidth: 1440, margin: '0 auto', padding: '0 2rem', height: '100%', display: 'flex', alignItems: 'center', gap: '2rem' }}>
 
           {/* Left: Logo + Wordmark */}
           <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '0.625rem', textDecoration: 'none', flexShrink: 0 }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src={scrolled ? '/images/logo-green-blackoutline.svg' : '/images/logo-green-whiteoutline.svg'}
+              src={scrolled ? '/images/logo-green-blackoutline.svg' : '/images/logo-green-whiteoutline-whitetext.svg'}
               alt="Tinta Print"
               style={{ height: 28, width: 'auto', transition: 'opacity 0.3s' }}
             />
-            {/* WORDMARK SVG PLACEHOLDER — insert wordmark SVG here once uploaded */}
-            <span style={{
-              fontFamily: D,
-              fontWeight: 700,
-              fontSize: '1.0625rem',
-              letterSpacing: '0.06em',
-              color: linkColor,
-              transition: 'color 0.3s ease',
-              whiteSpace: 'nowrap',
-            }}>
-              Tinta Print
-            </span>
           </Link>
 
           {/* Centre: Search bar */}
@@ -156,22 +144,20 @@ export default function Nav() {
           {/* Right: Nav items + CTA */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.25rem', marginLeft: 'auto', flexShrink: 0 }} className="desktop-nav">
             {[
-              { label: 'Shop All Products', items: shopDropdown },
-              { label: 'View Our Packages', items: packagesDropdown },
-              { label: 'Services We Offer', items: servicesDropdown },
+              { label: 'Shop All Products', href: '/products', items: shopDropdown },
+              { label: 'View Our Packages', href: '/packages', items: packagesDropdown },
+              { label: 'Services We Offer', href: '/services', items: servicesDropdown },
             ].map(nav => (
               <div key={nav.label} className="nav-parent" style={{ position: 'relative' }}>
-                <button style={{
+                <Link href={nav.href} style={{
                   display: 'flex',
                   flexDirection: 'column',
                   alignItems: 'center',
                   gap: '2px',
-                  background: 'none',
-                  border: 'none',
-                  cursor: 'pointer',
                   padding: '0 0.875rem',
-                  height: 64,
+                  height: 80,
                   justifyContent: 'center',
+                  textDecoration: 'none',
                 }}>
                   <span className="nav-link" style={{
                     fontFamily: B,
@@ -181,7 +167,7 @@ export default function Nav() {
                     whiteSpace: 'nowrap',
                   }}>{nav.label}</span>
                   <ChevronDown size={12} style={{ color: iconColor }} />
-                </button>
+                </Link>
                 <div className="nav-dropdown-inverted">
                   {nav.items.map(item => (
                     <Link key={item.label} href={item.href} style={{
