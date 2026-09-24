@@ -118,7 +118,7 @@ export default function HomePage() {
       <main>
 
         {/* ── Section 1: Product Showcase Strip ── */}
-        <section style={{ paddingTop: 80, background: '#000000' }}>
+        <section style={{ paddingTop: 120, background: '#000000' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', minHeight: '70vh' }} className="showcase-grid">
             {[
               { name: 'Business Cards', isNew: false },

@@ -75,7 +75,7 @@ export default function Nav() {
 
   return (
     <>
-      <nav className={`nav-root${scrolled ? ' scrolled' : ''}`} style={{ height: 80 }}>
+      <nav className={`nav-root${scrolled ? ' scrolled' : ''}`} style={{ height: 120 }}>
         <div style={{ maxWidth: 1440, margin: '0 auto', padding: '0 2rem', height: '100%', display: 'flex', alignItems: 'center', gap: '2rem' }}>
 
           {/* Left: Logo + Wordmark */}
@@ -84,24 +84,24 @@ export default function Nav() {
             <img
               src={scrolled ? '/images/logo-green-blackoutline.svg' : '/images/logo-green-whiteoutline-whitetext.svg'}
               alt="Tinta Print"
-              style={{ height: 28, width: 'auto', transition: 'opacity 0.3s' }}
+              style={{ height: 72, width: 'auto', transition: 'opacity 0.3s' }}
             />
           </Link>
 
           {/* Centre: Search bar */}
-          <div ref={searchRef} style={{ flex: 1, maxWidth: 380, position: 'relative' }}>
+          <div ref={searchRef} style={{ flex: 1, maxWidth: 520, position: 'relative' }}>
             <div className="nav-search-border" style={{
               display: 'flex',
               alignItems: 'center',
               gap: '0.5rem',
               border: '1px solid',
               borderRadius: 9999,
-              padding: '0 0.875rem',
-              height: 36,
+              padding: '0 1.25rem',
+              height: 52,
               background: 'transparent',
               transition: 'border-color 0.3s ease',
             }}>
-              <Search size={14} style={{ color: iconColor, flexShrink: 0 }} />
+              <Search size={18} style={{ color: iconColor, flexShrink: 0 }} />
               <input
                 className="nav-search-input"
                 type="text"
@@ -114,7 +114,7 @@ export default function Nav() {
                   border: 'none',
                   outline: 'none',
                   fontFamily: B,
-                  fontSize: '0.8125rem',
+                  fontSize: '1rem',
                   transition: 'color 0.3s ease',
                   background: 'transparent',
                 }}
@@ -153,20 +153,20 @@ export default function Nav() {
                   display: 'flex',
                   flexDirection: 'column',
                   alignItems: 'center',
-                  gap: '2px',
-                  padding: '0 0.875rem',
-                  height: 80,
+                  gap: '3px',
+                  padding: '0 1.125rem',
+                  height: 120,
                   justifyContent: 'center',
                   textDecoration: 'none',
                 }}>
                   <span className="nav-link" style={{
                     fontFamily: B,
                     fontWeight: 500,
-                    fontSize: '0.875rem',
+                    fontSize: '1.0625rem',
                     transition: 'color 0.3s ease',
                     whiteSpace: 'nowrap',
                   }}>{nav.label}</span>
-                  <ChevronDown size={12} style={{ color: iconColor }} />
+                  <ChevronDown size={15} style={{ color: iconColor }} />
                 </Link>
                 <div className="nav-dropdown-inverted">
                   {nav.items.map(item => (
@@ -189,11 +189,11 @@ export default function Nav() {
             ))}
 
             <Link href="/contact" className="btn-primary" style={{
-              marginLeft: '0.75rem',
-              height: 36,
-              minHeight: 36,
-              fontSize: '0.75rem',
-              padding: '0 1.25rem',
+              marginLeft: '1rem',
+              height: 52,
+              minHeight: 52,
+              fontSize: '0.875rem',
+              padding: '0 2rem',
               background: scrolled ? '#000000' : '#ffffff',
               color: scrolled ? '#ffffff' : '#000000',
               transition: 'background 0.3s ease, color 0.3s ease',
