@@ -104,26 +104,28 @@ function PackageRow({ pkg }: { pkg: typeof packageData[number] }) {
         transition: 'max-height 0.35s ease, opacity 0.3s ease',
         opacity: expanded ? 1 : 0,
       }}>
-        <div style={{ paddingBottom: '2.5rem', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.625rem' }}>
-            {pkg.tiers.map(tier => (
-              <p key={tier} style={{ fontFamily: B, fontWeight: 700, fontSize: '1.25rem', color: '#ffffff', margin: 0, lineHeight: 1.3 }}>
-                {tier}
-              </p>
-            ))}
-          </div>
+        <div style={{ paddingBottom: '2.5rem', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+          <p style={{ fontFamily: B, fontWeight: 700, fontSize: '0.875rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: '#ffffff', margin: 0 }}>
+            {pkg.tiers.join(' · ')}
+          </p>
+          <p style={{ fontFamily: B, fontWeight: 700, fontSize: '1.5rem', color: '#ffffff', margin: 0, textAlign: 'right' }}>
+            {pkg.price}
+          </p>
           <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
             <Link href="/contact" className="btn-primary" style={{ height: 44, minHeight: 44, fontSize: '0.8125rem' }}>
               Get a Quote
             </Link>
             <Link href={pkg.href} style={{
-              display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+              display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
               height: 44, minHeight: 44, fontSize: '0.8125rem', fontFamily: '"Switzer", sans-serif',
               fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase',
-              padding: '0 1.75rem', borderRadius: 9999, textDecoration: 'none',
-              border: '1.5px solid rgba(255,255,255,0.3)', color: '#ffffff', background: 'transparent',
+              padding: '0 1.25rem', borderRadius: 9999, textDecoration: 'none',
+              border: '1.5px solid rgba(255,255,255,0.4)', color: '#ffffff', background: 'transparent',
             }}>
               Find Out More
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
             </Link>
           </div>
         </div>

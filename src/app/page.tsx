@@ -60,7 +60,9 @@ export default function HomePage() {
         </section>
 
         {/* ── Section 2: AI Assistant ── */}
-        <section id="ai-section" style={{ background: 'linear-gradient(to bottom, #00c060 0%, #000000 100%)', padding: '6rem 0' }}>
+        <section id="ai-section" style={{ position: 'relative', overflow: 'hidden', background: '#16a34a', padding: '6rem 0' }}>
+          <div style={{ position: 'absolute', top: 0, right: 0, bottom: 0, left: 0, pointerEvents: 'none', zIndex: 0, background: 'radial-gradient(ellipse at 50% 0%, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 65%)' }} />
+          <div style={{ position: 'relative', zIndex: 10 }}>
           <div className="max-w-site">
             <div className="ai-grid" style={{ display: 'grid', gridTemplateColumns: '1fr auto 1fr', gap: '4rem', alignItems: 'center', marginBottom: '5rem' }}>
               {/* Left: heading + subtext + stars */}
@@ -114,6 +116,7 @@ export default function HomePage() {
               </p>
             </div>
           </div>
+          </div>
           <style>{`
             @media (max-width: 768px) {
               #ai-section .ai-grid { grid-template-columns: 1fr !important; gap: 2.5rem !important; }
@@ -122,16 +125,16 @@ export default function HomePage() {
         </section>
 
         {/* ── Section 3: Our Products ── */}
-        <section style={{ padding: '6rem 0', background: 'linear-gradient(to bottom, #000000 0%, #00BCD4 100%)', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+        <section style={{ padding: '6rem 0', background: '#ffffff' }}>
           <div className="max-w-site">
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '3rem', flexWrap: 'wrap', gap: '1rem' }}>
               <div>
-                <p className="section-label" style={{ marginBottom: '0.75rem' }}>What We Print</p>
-                <h2 style={{ fontFamily: D, fontWeight: 700, fontSize: 'clamp(2rem, 5vw, 3.5rem)', color: '#ffffff', margin: 0, letterSpacing: '0.04em', lineHeight: 1.05 }}>
+                <p className="section-label" style={{ marginBottom: '0.75rem', color: '#000000' }}>What We Print</p>
+                <h2 style={{ fontFamily: D, fontWeight: 700, fontSize: 'clamp(2rem, 5vw, 3.5rem)', color: '#000000', margin: 0, letterSpacing: '0.04em', lineHeight: 1.05 }}>
                   Our Products.
                 </h2>
               </div>
-              <Link href="/products" style={{ fontFamily: B, fontSize: '0.875rem', color: 'rgba(255,255,255,0.6)', textDecoration: 'none', whiteSpace: 'nowrap' }}>
+              <Link href="/products" style={{ fontFamily: B, fontSize: '0.875rem', color: 'rgba(0,0,0,0.5)', textDecoration: 'none', whiteSpace: 'nowrap' }}>
                 View All Products →
               </Link>
             </div>
@@ -151,10 +154,12 @@ export default function HomePage() {
                   flexDirection: 'column',
                   borderRadius: 10,
                   overflow: 'hidden',
-                  transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+                  border: '1px solid rgba(0,0,0,0.1)',
+                  boxShadow: '0 4px 6px -1px rgba(0,0,0,0.06)',
+                  transition: 'box-shadow 0.2s ease',
                 }}
-                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.transform = 'translateY(-3px)'; (e.currentTarget as HTMLElement).style.boxShadow = '0 8px 32px rgba(0,0,0,0.2)' }}
-                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.transform = 'none'; (e.currentTarget as HTMLElement).style.boxShadow = 'none' }}>
+                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.boxShadow = '0 10px 25px rgba(0,0,0,0.15)' }}
+                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.boxShadow = '0 4px 6px -1px rgba(0,0,0,0.06)' }}>
                   <div style={{ aspectRatio: '4/3', background: 'rgba(0,0,0,0.06)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                     <span style={{ fontSize: '2.5rem', color: 'rgba(0,0,0,0.12)', lineHeight: 1, fontWeight: 300 }}>+</span>
                   </div>
@@ -171,7 +176,7 @@ export default function HomePage() {
         </section>
 
         {/* ── Section 4: Packages ── */}
-        <section style={{ padding: '7rem 0', background: 'linear-gradient(to bottom, #00BCD4 0%, #ffffff 100%)' }}>
+        <section style={{ padding: '7rem 0', background: '#22d3ee' }}>
           <div className="max-w-site">
             <p className="section-label" style={{ marginBottom: '1rem', color: '#000000' }}>Print Bundles</p>
             <h2 style={{ fontFamily: D, fontWeight: 700, fontSize: 'clamp(2rem, 5vw, 3.5rem)', color: '#000000', margin: '0 0 3.5rem', letterSpacing: '0.04em', lineHeight: 1 }}>
@@ -208,7 +213,7 @@ export default function HomePage() {
         </section>
 
         {/* ── Section 5: Follow Us + Feature Boxes ── */}
-        <section style={{ padding: '6rem 0', background: 'linear-gradient(to bottom, #ffffff 0%, #FFD700 100%)' }}>
+        <section style={{ padding: '6rem 0', background: '#facc15' }}>
           <div className="max-w-site">
 
             <div style={{ marginBottom: '5rem' }}>
@@ -290,19 +295,6 @@ export default function HomePage() {
           `}</style>
         </section>
 
-        {/* ── Section 6: Contact CTA ── */}
-        <section style={{ padding: '6rem 0', background: '#000000', textAlign: 'center', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
-          <div className="max-w-site">
-            <p className="section-label" style={{ marginBottom: '1rem' }}>Get In Touch</p>
-            <h2 style={{ fontFamily: D, fontWeight: 700, fontSize: 'clamp(2.5rem, 6vw, 5rem)', color: '#ffffff', margin: '0 0 1.25rem', letterSpacing: '0.04em', lineHeight: 1.05 }}>
-              Ready to print?
-            </h2>
-            <p style={{ fontFamily: B, fontSize: '1.0625rem', color: 'rgba(255,255,255,0.45)', margin: '0 0 2.5rem', maxWidth: 480, marginLeft: 'auto', marginRight: 'auto' }}>
-              Get a fast quote, no jargon, no phone calls required.
-            </p>
-            <Link href="/contact" className="btn-primary">Get a Quote</Link>
-          </div>
-        </section>
 
       </main>
       <Footer />

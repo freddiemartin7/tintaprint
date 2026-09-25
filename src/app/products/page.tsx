@@ -48,21 +48,17 @@ export default function ProductsPage() {
                   display: 'block',
                   textDecoration: 'none',
                   position: 'relative',
-                  borderRadius: 10,
+                  borderRadius: 12,
                   overflow: 'hidden',
                   aspectRatio: '4/3',
-                  background: '#1a1a1a',
-                  transition: 'transform 0.2s ease',
+                  background: '#262626',
+                  cursor: 'pointer',
+                  transition: 'box-shadow 0.2s ease',
                 }}
-                onMouseEnter={e => (e.currentTarget as HTMLElement).style.transform = 'translateY(-3px)'}
-                onMouseLeave={e => (e.currentTarget as HTMLElement).style.transform = 'none'}>
-                  <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <span style={{ fontSize: '2.5rem', color: 'rgba(255,255,255,0.08)', lineHeight: 1, fontWeight: 300 }}>+</span>
-                  </div>
-                  <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 55%)' }} />
-                  <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '1.25rem 1.5rem' }}>
-                    <h3 style={{ fontFamily: D, fontWeight: 700, fontSize: '1.125rem', color: '#ffffff', letterSpacing: '0.04em', margin: 0, lineHeight: 1.2 }}>{p.title}</h3>
-                  </div>
+                onMouseEnter={e => (e.currentTarget as HTMLElement).style.boxShadow = '0 20px 40px rgba(0,0,0,0.4)'}
+                onMouseLeave={e => (e.currentTarget as HTMLElement).style.boxShadow = 'none'}>
+                  <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '40%', background: 'linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%)', pointerEvents: 'none', zIndex: 0 }} />
+                  <p style={{ position: 'absolute', bottom: '1rem', left: '1rem', fontFamily: D, fontWeight: 700, fontSize: '1.125rem', color: '#ffffff', margin: 0, letterSpacing: '0.04em', lineHeight: 1.2, zIndex: 10 }}>{p.title}</p>
                 </Link>
               ))}
             </div>
@@ -73,7 +69,7 @@ export default function ProductsPage() {
                 height: 56, fontSize: '0.875rem', fontFamily: B, fontWeight: 700,
                 letterSpacing: '0.1em', textTransform: 'uppercase', padding: '0 2.5rem',
                 borderRadius: 9999, textDecoration: 'none',
-                border: '1.5px solid #E91E8C', color: '#E91E8C', background: 'transparent',
+                border: '1.5px solid #d946ef', color: '#d946ef', background: 'transparent',
               }}>Get a Quote</Link>
             </div>
           </div>

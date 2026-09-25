@@ -1,5 +1,6 @@
 'use client'
 import { useState, useRef, useEffect } from 'react'
+import Image from 'next/image'
 import { X } from 'lucide-react'
 import RadiantPromptInput from './RadiantPromptInput'
 
@@ -157,8 +158,7 @@ export default function AIAssistant() {
               zIndex: 1,
             }}
           >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/images/logo-white-nooutline.svg" alt="" style={{ width: 26, height: 26, objectFit: 'contain' }} />
+            <Image src="/images/logo-green-blackoutline.svg" alt="Tinta AI" width={28} height={28} />
           </button>
         </div>
       ) : (
