@@ -60,33 +60,16 @@ export default function HomePage() {
         </section>
 
         {/* ── Section 2: AI Assistant ── */}
-        <section id="ai-section" style={{ background: 'linear-gradient(135deg, #00c060 0%, #000000 100%)', padding: '6rem 0' }}>
+        <section id="ai-section" style={{ background: 'linear-gradient(to bottom, #00c060 0%, #000000 100%)', padding: '6rem 0' }}>
           <div className="max-w-site">
-            <div className="ai-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'center', marginBottom: '5rem' }}>
-              {/* Left: large logo */}
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/images/logo-white-nooutline.svg" alt="Tinta Print" style={{ width: '100%', maxWidth: 340, height: 'auto' }} />
-              </div>
-              {/* Right: content */}
+            <div className="ai-grid" style={{ display: 'grid', gridTemplateColumns: '1fr auto 1fr', gap: '4rem', alignItems: 'center', marginBottom: '5rem' }}>
+              {/* Left: heading + subtext + stars */}
               <div>
                 <h2 style={{ fontFamily: D, fontWeight: 700, fontSize: 'clamp(2.5rem, 5vw, 4.5rem)', color: '#ffffff', margin: '0 0 1.25rem', letterSpacing: '0.04em', lineHeight: 1 }}>
                   Ask Tinta Ai
                 </h2>
                 <p style={{ fontFamily: B, fontSize: '1.0625rem', color: 'rgba(255,255,255,0.7)', lineHeight: 1.7, margin: '0 0 2rem', maxWidth: 420 }}>
                   Get instant answers on pricing, turnarounds, file specs and more. Our AI assistant knows print inside out.
-                </p>
-                <div className="rainbow-glow-wrapper" style={{ marginBottom: '1rem' }}>
-                  <div className="rainbow-glow-ring" aria-hidden="true" />
-                  <RadiantPromptInput
-                    placeholder="What size should my business cards be?"
-                    onSubmit={v => {
-                      window.dispatchEvent(new CustomEvent('openTintaAI', { detail: { message: v } }))
-                    }}
-                  />
-                </div>
-                <p style={{ fontFamily: B, fontSize: '0.8125rem', color: 'rgba(255,255,255,0.4)', margin: '0 0 2rem', lineHeight: 1.6 }}>
-                  Ask about pricing, file formats, turnaround times, or anything print-related.
                 </p>
                 <div>
                   <p style={{ fontFamily: B, fontWeight: 600, fontSize: '0.875rem', color: '#ffffff', margin: '0 0 0.5rem', letterSpacing: '0.06em' }}>5 Star Service</p>
@@ -99,10 +82,30 @@ export default function HomePage() {
                   </div>
                 </div>
               </div>
+              {/* Centre: large logo */}
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/images/logo-white-nooutline.svg" alt="Tinta Print" style={{ width: '100%', maxWidth: 340, height: 'auto' }} />
+              </div>
+              {/* Right: AI input + hint */}
+              <div>
+                <div className="rainbow-glow-wrapper" style={{ marginBottom: '1rem' }}>
+                  <div className="rainbow-glow-ring" aria-hidden="true" />
+                  <RadiantPromptInput
+                    placeholder="What size should my business cards be?"
+                    onSubmit={v => {
+                      window.dispatchEvent(new CustomEvent('openTintaAI', { detail: { message: v } }))
+                    }}
+                  />
+                </div>
+                <p style={{ fontFamily: B, fontSize: '0.8125rem', color: 'rgba(255,255,255,0.4)', margin: 0, lineHeight: 1.6 }}>
+                  Ask about pricing, file formats, turnaround times, or anything print-related.
+                </p>
+              </div>
             </div>
 
             {/* About Tinta */}
-            <div style={{ borderTop: '1px solid rgba(255,255,255,0.12)', paddingTop: '4rem', textAlign: 'center', maxWidth: 620, margin: '0 auto' }}>
+            <div style={{ paddingTop: '4rem', textAlign: 'center', maxWidth: 620, margin: '0 auto' }}>
               <h3 style={{ fontFamily: D, fontWeight: 700, fontSize: 'clamp(1.5rem, 3vw, 2rem)', color: '#ffffff', margin: '0 0 1rem', letterSpacing: '0.04em' }}>
                 About Tinta
               </h3>
@@ -202,42 +205,6 @@ export default function HomePage() {
             @media (max-width: 900px) { .packages-cards-grid { grid-template-columns: repeat(3, 1fr) !important; } }
             @media (max-width: 600px) { .packages-cards-grid { grid-template-columns: repeat(2, 1fr) !important; } }
           `}</style>
-        </section>
-
-        {/* ── Services Section ── */}
-        <section style={{ padding: '6rem 0', background: '#000000' }}>
-          <div className="max-w-site">
-            <p className="section-label" style={{ marginBottom: '1rem' }}>How We Help</p>
-            <h2 style={{ fontFamily: D, fontWeight: 700, fontSize: 'clamp(2rem, 5vw, 3.5rem)', color: '#ffffff', margin: '0 0 3rem', letterSpacing: '0.04em', lineHeight: 1 }}>
-              Services.
-            </h2>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.25rem' }} className="services-grid">
-              {[
-                { title: 'Design & Artwork', desc: 'From concept to print-ready files — our team brings your ideas to life with precision and style.', color: '#1a237e', href: '/services/design-artwork' },
-                { title: 'File Submission', desc: 'Not sure if your files are print-ready? We check, fix, and prepare your artwork for the press.', color: '#E65100', href: '/services/file-submission' },
-                { title: 'Installation', desc: 'Professional installation of large-format print, signage, and displays — anywhere in the UK.', color: '#b71c1c', href: '/services/installation' },
-              ].map(svc => (
-                <div key={svc.title} style={{ borderRadius: 12, overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
-                  <div style={{ background: svc.color, padding: '2.5rem 2rem', minHeight: 150, display: 'flex', flexDirection: 'column', justifyContent: 'flex-end' }}>
-                    <h3 style={{ fontFamily: D, fontWeight: 700, fontSize: '1.375rem', color: '#ffffff', margin: 0, letterSpacing: '0.04em', lineHeight: 1.2 }}>
-                      {svc.title}
-                    </h3>
-                  </div>
-                  <div style={{ background: '#111111', padding: '1.75rem 2rem', flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', gap: '1.5rem' }}>
-                    <p style={{ fontFamily: B, fontSize: '0.9375rem', color: 'rgba(255,255,255,0.6)', lineHeight: 1.7, margin: 0 }}>{svc.desc}</p>
-                    <Link href={svc.href} style={{
-                      display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-                      height: 40, fontSize: '0.75rem', fontFamily: B, fontWeight: 700,
-                      letterSpacing: '0.1em', textTransform: 'uppercase', padding: '0 1.25rem',
-                      borderRadius: 9999, textDecoration: 'none', alignSelf: 'flex-start',
-                      border: `1.5px solid ${svc.color}`, color: svc.color, background: 'transparent',
-                    }}>Find Out More</Link>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-          <style>{`@media (max-width: 768px) { .services-grid { grid-template-columns: 1fr !important; } }`}</style>
         </section>
 
         {/* ── Section 5: Follow Us + Feature Boxes ── */}

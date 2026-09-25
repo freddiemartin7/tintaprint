@@ -11,34 +11,37 @@ const packageData = [
   {
     name: 'Business',
     tagline: 'Launch and grow with confidence.',
-    desc: 'Everything a business needs to look professional, consistent, and memorable — from first impressions to everyday stationery.',
-    items: ['Business cards', 'Flyers', 'Letterheads', 'Compliment slips'],
+    tiers: ['Launch', 'Grow', 'Tinta'],
     price: 'From £49',
-    href: '/contact',
+    href: '/packages/business',
   },
   {
     name: 'Events',
     tagline: 'Print that makes the moment.',
-    desc: 'Complete print solutions for events of every size, from intimate gatherings to large-scale productions.',
-    items: ['Posters', 'Banners', 'Flyers', 'Programmes'],
+    tiers: ['Essential', 'Premium', 'Deluxe'],
     price: 'From £79',
-    href: '/contact',
+    href: '/packages/events',
   },
   {
     name: 'Salon & Beauty',
     tagline: 'Look the part, every day.',
-    desc: 'Designed for salons, spas and beauty businesses who want to make a lasting impression on every client.',
-    items: ['Loyalty cards', 'Appointment cards', 'Flyers', 'Gift vouchers'],
+    tiers: ['Essential', 'Premium', 'Deluxe'],
     price: 'From £59',
-    href: '/contact',
+    href: '/packages/salon',
   },
   {
     name: 'Wedding',
     tagline: 'Every detail, perfectly printed.',
-    desc: "From save the dates to on-the-day stationery — your wedding print, beautifully produced and all in one place.",
-    items: ['Invitations', 'Order of service', 'Place cards', 'Menus'],
+    tiers: ['Essential', 'Premium', 'Deluxe'],
     price: 'From £99',
-    href: '/contact',
+    href: '/packages/wedding',
+  },
+  {
+    name: 'Party',
+    tagline: 'Make every occasion memorable.',
+    tiers: ['Essential', 'Premium', 'Deluxe'],
+    price: 'From £49',
+    href: '/packages/party',
   },
 ]
 
@@ -52,7 +55,7 @@ function PackageRow({ pkg }: { pkg: typeof packageData[number] }) {
         style={{
           width: '100%',
           display: 'flex',
-          alignItems: 'center',
+          alignItems: 'flex-start',
           justifyContent: 'space-between',
           padding: '2.5rem 0',
           background: 'none',
@@ -63,79 +66,65 @@ function PackageRow({ pkg }: { pkg: typeof packageData[number] }) {
         }}
       >
         <div style={{ flex: 1 }}>
-          <div style={{ display: 'flex', alignItems: 'baseline', gap: '1.5rem', flexWrap: 'wrap', marginBottom: '0.5rem' }}>
-            <h2 style={{ fontFamily: D, fontWeight: 700, fontSize: 'clamp(1.75rem, 4vw, 3rem)', color: '#ffffff', margin: 0, letterSpacing: '0.04em', lineHeight: 1.05 }}>
-              {pkg.name}
-            </h2>
-            <span style={{ fontFamily: D, fontSize: '1.375rem', fontWeight: 700, color: '#ffffff', letterSpacing: '0.04em' }}>
-              {pkg.price}
-            </span>
-          </div>
-          <p style={{ fontFamily: B, fontSize: '1rem', color: 'rgba(255,255,255,0.55)', margin: 0, lineHeight: 1.6 }}>
+          <h2 style={{ fontFamily: D, fontWeight: 700, fontSize: 'clamp(1.75rem, 4vw, 3rem)', color: '#ffffff', margin: '0 0 0.5rem', letterSpacing: '0.04em', lineHeight: 1.05 }}>
+            {pkg.name}
+          </h2>
+          <p style={{ fontFamily: B, fontSize: '1rem', color: 'rgba(255,255,255,0.55)', margin: 0, lineHeight: 1.6, textAlign: 'right' }}>
             {pkg.tagline}
           </p>
         </div>
-        <span style={{
-          width: 40,
-          height: 40,
-          borderRadius: '50%',
-          border: '1px solid rgba(255,255,255,0.2)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          flexShrink: 0,
-          color: '#ffffff',
-          fontSize: '1.25rem',
-          lineHeight: 1,
-          fontWeight: 300,
-          transition: 'transform 0.25s ease',
-          transform: expanded ? 'rotate(45deg)' : 'none',
-        }}>
-          +
-        </span>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem', flexShrink: 0, paddingTop: '0.25rem' }}>
+          <span style={{ fontFamily: D, fontSize: '1.375rem', fontWeight: 700, color: '#ffffff', letterSpacing: '0.04em', whiteSpace: 'nowrap' }}>
+            {pkg.price}
+          </span>
+          <span style={{
+            width: 40,
+            height: 40,
+            borderRadius: '50%',
+            border: '1px solid rgba(255,255,255,0.2)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            flexShrink: 0,
+            color: '#ffffff',
+            fontSize: '1.25rem',
+            lineHeight: 1,
+            fontWeight: 300,
+            transition: 'transform 0.25s ease',
+            transform: expanded ? 'rotate(45deg)' : 'none',
+          }}>
+            +
+          </span>
+        </div>
       </button>
 
       <div style={{
-        maxHeight: expanded ? 600 : 0,
+        maxHeight: expanded ? 400 : 0,
         overflow: 'hidden',
         transition: 'max-height 0.35s ease, opacity 0.3s ease',
         opacity: expanded ? 1 : 0,
       }}>
-        <div style={{ paddingBottom: '2.5rem', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3rem', alignItems: 'start' }}>
-          <div>
-            <p style={{ fontFamily: B, fontSize: '0.9375rem', color: 'rgba(255,255,255,0.65)', lineHeight: 1.7, margin: '0 0 1.5rem' }}>
-              {pkg.desc}
-            </p>
-            <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-              <Link href={pkg.href} className="btn-primary" style={{ height: 44, minHeight: 44, fontSize: '0.8125rem' }}>
-                Get a Quote
-              </Link>
-              <Link href={pkg.href} style={{
-                display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-                height: 44, minHeight: 44, fontSize: '0.8125rem', fontFamily: '"Switzer", sans-serif',
-                fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase',
-                padding: '0 1.75rem', borderRadius: 9999, textDecoration: 'none',
-                border: '1.5px solid rgba(255,255,255,0.3)', color: '#ffffff', background: 'transparent',
-              }}>
-                Find Out More
-              </Link>
-            </div>
+        <div style={{ paddingBottom: '2.5rem', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.625rem' }}>
+            {pkg.tiers.map(tier => (
+              <p key={tier} style={{ fontFamily: B, fontWeight: 700, fontSize: '1.25rem', color: '#ffffff', margin: 0, lineHeight: 1.3 }}>
+                {tier}
+              </p>
+            ))}
           </div>
-          <div>
-            <p style={{ fontFamily: B, fontWeight: 600, fontSize: '0.6875rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.4)', margin: '0 0 1.25rem' }}>
-              What&apos;s included
-            </p>
-            <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: '0.875rem' }}>
-              {pkg.items.map(item => (
-                <li key={item} style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', fontFamily: B, fontSize: '1.125rem', fontWeight: 700, color: '#ffffff' }}>
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                    <circle cx="8" cy="8" r="7" stroke="rgba(255,255,255,0.2)" strokeWidth="1" />
-                    <path d="M5 8l2 2 4-4" stroke="#ffffff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                  {item}
-                </li>
-              ))}
-            </ul>
+          <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+            <Link href="/contact" className="btn-primary" style={{ height: 44, minHeight: 44, fontSize: '0.8125rem' }}>
+              Get a Quote
+            </Link>
+            <Link href={pkg.href} style={{
+              display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+              height: 44, minHeight: 44, fontSize: '0.8125rem', fontFamily: '"Switzer", sans-serif',
+              fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase',
+              padding: '0 1.75rem', borderRadius: 9999, textDecoration: 'none',
+              border: '1.5px solid rgba(255,255,255,0.3)', color: '#ffffff', background: 'transparent',
+            }}>
+              Find Out More
+            </Link>
           </div>
         </div>
       </div>
