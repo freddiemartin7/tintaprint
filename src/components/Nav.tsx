@@ -1,7 +1,7 @@
 'use client'
 import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
-import { Search, ChevronDown, X, Menu } from 'lucide-react'
+import { Search, ChevronDown, X, Menu, ShoppingCart } from 'lucide-react'
 
 const B = '"Switzer", sans-serif'
 const D = '"Aeonik Pro", sans-serif'
@@ -89,7 +89,7 @@ export default function Nav() {
           </Link>
 
           {/* Centre: Search bar */}
-          <div ref={searchRef} style={{ flex: 1, maxWidth: 520, position: 'relative' }}>
+          <div ref={searchRef} style={{ flex: 1, maxWidth: 360, position: 'relative' }}>
             <div className="nav-search-border" style={{
               display: 'flex',
               alignItems: 'center',
@@ -199,6 +199,9 @@ export default function Nav() {
               transition: 'background 0.3s ease, color 0.3s ease',
             }}>
               Get a Quote
+            </Link>
+            <Link href="/basket" aria-label="Basket" style={{ width: 44, height: 44, display: 'flex', alignItems: 'center', justifyContent: 'center', color: linkColor, textDecoration: 'none', marginLeft: '0.25rem', flexShrink: 0 }}>
+              <ShoppingCart size={22} />
             </Link>
           </div>
 

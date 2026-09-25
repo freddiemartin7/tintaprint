@@ -67,7 +67,7 @@ function PackageRow({ pkg }: { pkg: typeof packageData[number] }) {
             <h2 style={{ fontFamily: D, fontWeight: 700, fontSize: 'clamp(1.75rem, 4vw, 3rem)', color: '#ffffff', margin: 0, letterSpacing: '0.04em', lineHeight: 1.05 }}>
               {pkg.name}
             </h2>
-            <span style={{ fontFamily: B, fontSize: '0.8125rem', fontWeight: 500, color: 'rgba(255,255,255,0.4)', letterSpacing: '0.06em' }}>
+            <span style={{ fontFamily: D, fontSize: '1.375rem', fontWeight: 700, color: '#ffffff', letterSpacing: '0.04em' }}>
               {pkg.price}
             </span>
           </div>
@@ -106,9 +106,20 @@ function PackageRow({ pkg }: { pkg: typeof packageData[number] }) {
             <p style={{ fontFamily: B, fontSize: '0.9375rem', color: 'rgba(255,255,255,0.65)', lineHeight: 1.7, margin: '0 0 1.5rem' }}>
               {pkg.desc}
             </p>
-            <Link href={pkg.href} className="btn-primary" style={{ height: 44, minHeight: 44, fontSize: '0.8125rem' }}>
-              Get a Quote
-            </Link>
+            <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+              <Link href={pkg.href} className="btn-primary" style={{ height: 44, minHeight: 44, fontSize: '0.8125rem' }}>
+                Get a Quote
+              </Link>
+              <Link href={pkg.href} style={{
+                display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+                height: 44, minHeight: 44, fontSize: '0.8125rem', fontFamily: '"Switzer", sans-serif',
+                fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase',
+                padding: '0 1.75rem', borderRadius: 9999, textDecoration: 'none',
+                border: '1.5px solid rgba(255,255,255,0.3)', color: '#ffffff', background: 'transparent',
+              }}>
+                Find Out More
+              </Link>
+            </div>
           </div>
           <div>
             <p style={{ fontFamily: B, fontWeight: 600, fontSize: '0.6875rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.4)', margin: '0 0 1.25rem' }}>
@@ -116,7 +127,7 @@ function PackageRow({ pkg }: { pkg: typeof packageData[number] }) {
             </p>
             <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: '0.875rem' }}>
               {pkg.items.map(item => (
-                <li key={item} style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', fontFamily: B, fontSize: '1rem', color: '#ffffff' }}>
+                <li key={item} style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', fontFamily: B, fontSize: '1.125rem', fontWeight: 700, color: '#ffffff' }}>
                   <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                     <circle cx="8" cy="8" r="7" stroke="rgba(255,255,255,0.2)" strokeWidth="1" />
                     <path d="M5 8l2 2 4-4" stroke="#ffffff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />

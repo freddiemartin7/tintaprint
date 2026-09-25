@@ -1,7 +1,8 @@
 'use client'
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
+import ReCAPTCHA from 'react-google-recaptcha'
 
 const D = '"Aeonik Pro", sans-serif'
 const B = '"Switzer", sans-serif'
@@ -12,21 +13,29 @@ const enquiryTypes = ['General Enquiry','Quote Request','Order Update','Design Q
 export default function ContactPage() {
   const [status, setStatus] = useState<'idle'|'loading'|'success'|'error'>('idle')
   const [form, setForm] = useState({ name:'', ref:'', email:'', phone:'', product:'', enquiry:'', requirements:'' })
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null)
+  const recaptchaRef = useRef<ReCAPTCHA>(null)
 
   const set = (k: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement|HTMLSelectElement|HTMLTextAreaElement>) =>
     setForm(f => ({ ...f, [k]: e.target.value }))
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    if (!captchaToken) return
     setStatus('loading')
     try {
-      const res = await fetch('https://formspree.io/f/mnjevgqq', {
+      const res = await fetch('/api/contact', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({ ...form, _subject: `Contact — ${form.enquiry || 'New Enquiry'}` }),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...form, captchaToken }),
       })
-      setStatus(res.ok ? 'success' : 'error')
-      if (res.ok) setForm({ name:'', ref:'', email:'', phone:'', product:'', enquiry:'', requirements:'' })
+      const ok = res.ok
+      setStatus(ok ? 'success' : 'error')
+      if (ok) {
+        setForm({ name:'', ref:'', email:'', phone:'', product:'', enquiry:'', requirements:'' })
+        setCaptchaToken(null)
+        recaptchaRef.current?.reset()
+      }
     } catch { setStatus('error') }
   }
 
@@ -106,8 +115,17 @@ export default function ContactPage() {
                   <textarea value={form.requirements} onChange={set('requirements')} rows={6} style={{ ...inputStyle, resize: 'vertical' }} placeholder="Tell us about your print requirements, quantities, and any special finishes…" />
                 </div>
                 {status === 'error' && <p style={{ fontFamily: B, fontSize: '0.875rem', color: '#ff6b6b', marginBottom: '1rem' }}>Something went wrong. Please try again or email hello@tintaprint.uk.</p>}
+                <div style={{ marginBottom: '1.5rem' }}>
+                  <ReCAPTCHA
+                    ref={recaptchaRef}
+                    sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY ?? ''}
+                    theme="dark"
+                    onChange={token => setCaptchaToken(token)}
+                    onExpired={() => setCaptchaToken(null)}
+                  />
+                </div>
                 <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-                  <button type="submit" disabled={status === 'loading'} className="btn-primary" style={{ opacity: status === 'loading' ? 0.6 : 1 }}>
+                  <button type="submit" disabled={status === 'loading' || !captchaToken} className="btn-primary" style={{ opacity: (status === 'loading' || !captchaToken) ? 0.5 : 1 }}>
                     {status === 'loading' ? 'Sending…' : 'Send Message'}
                   </button>
                 </div>

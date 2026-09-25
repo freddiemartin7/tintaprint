@@ -11,12 +11,12 @@ export default function Footer() {
 
           {/* Col 1: Contact */}
           <div>
-            <p style={{ fontFamily: D, fontWeight: 700, fontSize: '0.875rem', color: '#ffffff', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '1.5rem' }}>Contact Us</p>
+            <p style={{ fontFamily: D, fontWeight: 700, fontSize: '1rem', color: '#4CAF50', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '1.5rem' }}>Contact Us</p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.625rem', marginBottom: '1.75rem' }}>
-              <span style={{ fontFamily: B, fontSize: '0.875rem', color: 'rgba(255,255,255,0.5)' }}>Phone: placeholder</span>
-              <span style={{ fontFamily: B, fontSize: '0.875rem', color: 'rgba(255,255,255,0.5)' }}>Email: hello@tintaprint.uk</span>
-              <span style={{ fontFamily: B, fontSize: '0.875rem', color: 'rgba(255,255,255,0.5)' }}>Hours: 9am – 5pm</span>
-              <span style={{ fontFamily: B, fontSize: '0.875rem', color: 'rgba(255,255,255,0.5)' }}>Days: Mon – Fri</span>
+              <span style={{ fontFamily: B, fontSize: '1rem', color: 'rgba(255,255,255,0.85)' }}>Phone: placeholder</span>
+              <span style={{ fontFamily: B, fontSize: '1rem', color: 'rgba(255,255,255,0.85)' }}>Email: hello@tintaprint.uk</span>
+              <span style={{ fontFamily: B, fontSize: '1rem', color: 'rgba(255,255,255,0.85)' }}>Hours: 9am – 5pm</span>
+              <span style={{ fontFamily: B, fontSize: '1rem', color: 'rgba(255,255,255,0.85)' }}>Days: Mon – Fri</span>
             </div>
             <div style={{ display: 'flex', gap: '0.75rem', marginBottom: '1.75rem' }}>
               {[
@@ -34,14 +34,14 @@ export default function Footer() {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src="/images/STRIPE LOGO WHITE.svg" alt="Stripe" style={{ height: 16, width: 'auto' }} />
             </div>
-            <a href="https://wetransfer.com" target="_blank" rel="noreferrer" className="btn-outline" style={{ height: 32, minHeight: 32, fontSize: '0.6875rem', padding: '0 0.875rem', letterSpacing: '0.08em' }}>
+            <a href="https://wetransfer.com" target="_blank" rel="noreferrer" className="btn-outline" style={{ height: 32, minHeight: 32, fontSize: '0.6875rem', padding: '0 0.875rem', letterSpacing: '0.08em', background: '#00BCD4', color: '#ffffff', borderColor: '#00BCD4' }}>
               WeTransfer
             </a>
           </div>
 
           {/* Col 2: Our Products */}
           <div>
-            <p style={{ fontFamily: D, fontWeight: 700, fontSize: '0.875rem', color: '#ffffff', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '1.5rem' }}>Our Products</p>
+            <p style={{ fontFamily: D, fontWeight: 700, fontSize: '1rem', color: '#4CAF50', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '1.5rem' }}>Our Products</p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
               {[
                 { label: 'Products', href: '/products' },
@@ -53,7 +53,7 @@ export default function Footer() {
 
           {/* Col 3: Services */}
           <div>
-            <p style={{ fontFamily: D, fontWeight: 700, fontSize: '0.875rem', color: '#ffffff', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '1.5rem' }}>Services</p>
+            <p style={{ fontFamily: D, fontWeight: 700, fontSize: '1rem', color: '#4CAF50', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '1.5rem' }}>Services</p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
               {[
                 { label: 'File Submission Guide', href: '/services/file-submission' },
@@ -67,7 +67,7 @@ export default function Footer() {
 
           {/* Col 4: About */}
           <div>
-            <p style={{ fontFamily: D, fontWeight: 700, fontSize: '0.875rem', color: '#ffffff', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '1.5rem' }}>About</p>
+            <p style={{ fontFamily: D, fontWeight: 700, fontSize: '1rem', color: '#4CAF50', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '1.5rem' }}>About</p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
               {[
                 { label: 'About Tinta Print', href: '/about' },

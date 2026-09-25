@@ -229,9 +229,9 @@ select.form-field option { background: #000000; color: #ffffff; }
 
 /* ── Footer links ── */
 .footer-link {
-  color: rgba(255, 255, 255, 0.55);
+  color: rgba(255, 255, 255, 0.85);
   font-family: 'Switzer', sans-serif;
-  font-size: 0.875rem;
+  font-size: 1rem;
   text-decoration: none;
 }
 .footer-link:hover { color: #ffffff; }
@@ -341,6 +341,7 @@ select.form-field option { background: #000000; color: #ffffff; }
   background: #ffffff;
   color: #000000;
   border-bottom: 1px solid rgba(0,0,0,0.08);
+  box-shadow: 0 2px 16px rgba(0,0,0,0.10);
 }
 .nav-root .nav-link { color: #ffffff; }
 .nav-root.scrolled .nav-link { color: #000000; }
