@@ -140,15 +140,11 @@ export default function PackagesPage() {
       <Nav />
       <main style={{ paddingTop: '4rem' }}>
 
-        <section style={{ padding: '5rem 0 4rem', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
+        <section style={{ padding: '2.5rem 0 2rem', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
           <div className="max-w-site" style={{ textAlign: 'right' }}>
-            <p className="section-label" style={{ marginBottom: '1.25rem' }}>Bundles</p>
-            <h1 style={{ fontFamily: D, fontSize: 'clamp(3rem, 8vw, 7rem)', fontWeight: 700, color: '#ffffff', letterSpacing: '0.04em', lineHeight: 0.95, marginBottom: '1.5rem' }}>
+            <h1 style={{ fontFamily: D, fontSize: 'clamp(2.5rem, 6vw, 5rem)', fontWeight: 700, color: '#ffffff', letterSpacing: '0.04em', lineHeight: 0.95, margin: 0 }}>
               Print Packages.
             </h1>
-            <p style={{ fontFamily: B, fontSize: 'clamp(1rem, 2vw, 1.2rem)', color: 'rgba(255,255,255,0.5)', maxWidth: '560px', lineHeight: 1.65 }}>
-              Everything you need, bundled together. Designed to save you time and give you consistency across every touchpoint.
-            </p>
           </div>
         </section>
 

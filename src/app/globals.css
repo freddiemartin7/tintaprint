@@ -176,13 +176,34 @@ a, button {
 /* ── Mobile nav ── */
 .mobile-nav {
   position: fixed;
-  inset: 0;
-  background: #000000;
-  z-index: 200;
-  display: none;
+  top: 0;
+  right: 0;
+  width: 100%;
+  max-width: 360px;
+  height: 100vh;
+  background: #111111;
+  z-index: 9999;
+  transform: translateX(110%);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   overflow-y: auto;
+  box-shadow: -8px 0 40px rgba(0,0,0,0.5);
 }
-.mobile-nav.open { display: block; }
+.mobile-nav.open {
+  transform: translateX(0);
+}
+.mobile-nav-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 9998;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.mobile-nav-backdrop.open {
+  opacity: 1;
+  pointer-events: auto;
+}
 
 /* ── Product cards ── */
 .product-card {

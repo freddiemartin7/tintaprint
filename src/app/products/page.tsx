@@ -27,16 +27,11 @@ export default function ProductsPage() {
       <Nav />
       <main style={{ paddingTop: '4rem', background: '#000000' }}>
 
-        <section style={{ padding: '5rem 0 4rem', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
+        <section style={{ padding: '2.5rem 0 2rem', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
           <div className="max-w-site">
-            <p style={{ fontFamily: B, fontWeight: 600, fontSize: '0.6875rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.4)', marginBottom: '1rem' }}>What We Print</p>
-            <h1 style={{ fontFamily: D, fontSize: 'clamp(3rem, 8vw, 7rem)', fontWeight: 700, color: '#ffffff', letterSpacing: '0.04em', lineHeight: 0.95, marginBottom: '1.5rem' }}>
-              Products &amp;{' '}
-              <span>Services.</span>
+            <h1 style={{ fontFamily: D, fontSize: 'clamp(2.5rem, 6vw, 5rem)', fontWeight: 700, color: '#ffffff', letterSpacing: '0.04em', lineHeight: 0.95, margin: 0 }}>
+              Products.
             </h1>
-            <p style={{ fontFamily: B, fontWeight: 300, fontSize: '1.125rem', color: 'rgba(255,255,255,0.5)', maxWidth: '560px', lineHeight: 1.65 }}>
-              From a single business card to a full exhibition fit-out — we handle it all.
-            </p>
           </div>
         </section>
 

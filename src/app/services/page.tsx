@@ -45,10 +45,9 @@ export default function ServicesPage() {
     <>
       <Nav />
       <main style={{ paddingTop: '4rem', background: '#ffffff' }}>
-        <div style={{ padding: '5rem 0 4rem', borderBottom: '1px solid rgba(0,0,0,0.08)', textAlign: 'right', background: '#ffffff' }}>
+        <div style={{ padding: '2.5rem 0 2rem', borderBottom: '1px solid rgba(0,0,0,0.08)', textAlign: 'right', background: '#ffffff' }}>
           <div className="max-w-site">
-            <p className="section-label" style={{ marginBottom: '1rem', color: '#000000' }}>What We Do</p>
-            <h1 style={{ fontFamily: D, fontWeight: 700, fontSize: 'clamp(3rem, 8vw, 7rem)', color: '#00BCD4', letterSpacing: '0.04em', lineHeight: 0.95, margin: 0 }}>
+            <h1 style={{ fontFamily: D, fontWeight: 700, fontSize: 'clamp(2.5rem, 6vw, 5rem)', color: '#00BCD4', letterSpacing: '0.04em', lineHeight: 0.95, margin: 0 }}>
               Services.
             </h1>
           </div>

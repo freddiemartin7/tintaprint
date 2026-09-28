@@ -84,12 +84,12 @@ export default function Nav() {
             <img
               src={scrolled ? '/images/logo-green-blackoutline.svg' : '/images/logo-green-whiteoutline-whitetext.svg'}
               alt="Tinta Print"
-              style={{ height: 64, width: 'auto', transition: 'opacity 0.3s' }}
+              style={{ height: 64, width: 'auto', minWidth: 64, minHeight: 64, transition: 'opacity 0.3s', display: 'block' }}
             />
           </Link>
 
           {/* Centre: Search bar */}
-          <div ref={searchRef} style={{ flex: 1, maxWidth: 260, position: 'relative' }}>
+          <div ref={searchRef} style={{ flex: scrolled ? 2 : 1, maxWidth: scrolled ? 420 : 260, position: 'relative', transition: 'flex 0.3s ease, max-width 0.3s ease' }}>
             <div className="nav-search-border" style={{
               display: 'flex',
               alignItems: 'center',
@@ -190,8 +190,10 @@ export default function Nav() {
 
             <Link href="/contact" className="btn-primary" style={{
               marginLeft: '1rem',
-              padding: '0.5rem 1rem',
-              fontSize: '0.875rem',
+              padding: '0 0.875rem',
+              fontSize: '0.75rem',
+              height: 36,
+              minHeight: 36,
               background: scrolled ? '#000000' : '#ffffff',
               color: scrolled ? '#ffffff' : '#000000',
               transition: 'background 0.3s ease, color 0.3s ease',
@@ -199,8 +201,9 @@ export default function Nav() {
               Get a Quote
             </Link>
             <a href="/basket" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: 36, height: 36, borderRadius: '50%', border: '1.5px solid currentColor', marginLeft: '0.5rem', textDecoration: 'none', color: linkColor, flexShrink: 0 }}>
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-1.421 2.032-2.982 2.032-4.5 0-.797-.224-1.545-.618-2.183M7.5 14.25L5.106 5.272M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
               </svg>
             </a>
           </div>
@@ -209,13 +212,14 @@ export default function Nav() {
           <button
             className="mobile-menu-btn"
             onClick={() => setMobileOpen(true)}
-            style={{ display: 'none', background: 'none', border: 'none', cursor: 'pointer', color: linkColor, marginLeft: 'auto' }}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', color: linkColor, marginLeft: 'auto' }}
           >
             <Menu size={22} />
           </button>
         </div>
       </nav>
 
+      <div className={`mobile-nav-backdrop${mobileOpen ? ' open' : ''}`} onClick={() => setMobileOpen(false)} />
       {/* Mobile nav */}
       <div className={`mobile-nav${mobileOpen ? ' open' : ''}`}>
         <div style={{ padding: '1.25rem 1.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
@@ -243,6 +247,11 @@ export default function Nav() {
       </div>
 
       <style>{`
+        @media (min-width: 901px) {
+          .mobile-nav { display: none !important; }
+          .mobile-nav-backdrop { display: none !important; }
+          .mobile-menu-btn { display: none !important; }
+        }
         @media (max-width: 900px) {
           .desktop-nav { display: none !important; }
           .mobile-menu-btn { display: flex !important; }
