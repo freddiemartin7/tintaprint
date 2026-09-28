@@ -19,9 +19,9 @@ export default function PackagesPage() {
       <Nav />
       <main style={{ paddingTop: '4rem' }}>
 
-        <section style={{ padding: '5rem 0 4rem', borderBottom: '1px solid rgba(255,255,255,0.12)', background: '#16a34a', textAlign: 'right' }}>
+        <section style={{ padding: '4rem 0 3rem', borderBottom: '1px solid rgba(255,255,255,0.12)', background: '#ffffff', textAlign: 'right' }}>
           <div className="max-w-site">
-            <h1 style={{ fontFamily: '"urca", sans-serif', fontSize: 'clamp(3rem, 8vw, 7rem)', fontWeight: 700, color: '#ffffff', letterSpacing: '0.04em', lineHeight: 0.95, margin: 0 }}>
+            <h1 style={{ fontFamily: '"urca", sans-serif', fontSize: 'clamp(2rem, 4vw, 3.5rem)', fontWeight: 700, color: '#16a34a', letterSpacing: '0.04em', lineHeight: 0.95, margin: 0 }}>
               Print Packages.
             </h1>
           </div>
