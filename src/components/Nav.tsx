@@ -188,6 +188,17 @@ export default function Nav() {
               </div>
             ))}
 
+            {!scrolled && (
+              <div style={{ position: 'relative' }}>
+                <a href="/shipping" style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', fontFamily: '"Switzer", sans-serif', fontWeight: 600, fontSize: '0.875rem', color: '#ffffff', textDecoration: 'none', letterSpacing: '0.01em', whiteSpace: 'nowrap', padding: '0 0.75rem', height: 120, justifyContent: 'center' }}>
+                  Delivery
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                    <path d="M2 4l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </a>
+              </div>
+            )}
+
             <Link href="/contact" className="btn-primary" style={{
               marginLeft: '1rem',
               padding: '0 0.875rem',

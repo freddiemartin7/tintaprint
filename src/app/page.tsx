@@ -64,29 +64,19 @@ export default function HomePage() {
           <div style={{ position: 'absolute', top: 0, right: 0, bottom: 0, left: 0, pointerEvents: 'none', zIndex: 0, background: 'radial-gradient(ellipse at 50% 0%, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 65%)' }} />
           <div style={{ position: 'relative', zIndex: 10 }}>
             <div className="max-w-site">
-              <div className="ai-split-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2.5rem', alignItems: 'stretch' }}>
+              <div className="ai-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'stretch' }}>
 
-                {/* LEFT: Image card */}
-                <div style={{
-                  background: '#ffffff',
-                  borderRadius: 16,
-                  overflow: 'hidden',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  minHeight: 480,
-                  boxShadow: '0 4px 24px rgba(0,0,0,0.12)',
-                }}>
-                  <div style={{ flex: 1, background: 'rgba(0,0,0,0.06)', display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: 380 }}>
-                    <span style={{ fontFamily: B, fontSize: '0.75rem', color: 'rgba(0,0,0,0.25)' }}>Image</span>
-                  </div>
+                {/* LEFT: large white card */}
+                <div style={{ background: '#ffffff', borderRadius: 16, minHeight: 480, display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 8px 40px rgba(0,0,0,0.18)' }}>
+                  <span style={{ fontFamily: B, fontSize: '0.75rem', color: 'rgba(0,0,0,0.2)' }}>Image</span>
                 </div>
 
-                {/* RIGHT: Ask Tinta Ai */}
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', padding: '3rem 2rem' }}>
-                  <h2 style={{ fontFamily: D, fontWeight: 700, fontSize: 'clamp(2rem, 3.5vw, 3.5rem)', color: '#ffffff', margin: '0 0 2rem', letterSpacing: '0.04em', lineHeight: 1 }}>
+                {/* RIGHT: heading + input + stars */}
+                <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', textAlign: 'center', gap: '1.5rem' }}>
+                  <h2 style={{ fontFamily: D, fontWeight: 700, fontSize: 'clamp(2.5rem, 5vw, 4.5rem)', color: '#ffffff', margin: 0, letterSpacing: '0.04em', lineHeight: 1 }}>
                     Ask Tinta Ai
                   </h2>
-                  <div className="rainbow-glow-wrapper" style={{ marginBottom: '1.25rem', width: '100%', maxWidth: 440 }}>
+                  <div className="rainbow-glow-wrapper">
                     <div className="rainbow-glow-ring" aria-hidden="true" />
                     <RadiantPromptInput
                       placeholder="What size should my business cards be?"
@@ -95,17 +85,14 @@ export default function HomePage() {
                       }}
                     />
                   </div>
-                  <p style={{ fontFamily: B, fontSize: '0.9375rem', color: 'rgba(255,255,255,0.7)', lineHeight: 1.7, margin: '0 0 2rem', maxWidth: 380 }}>
+                  <p style={{ fontFamily: B, fontSize: '1.0625rem', color: 'rgba(255,255,255,0.7)', lineHeight: 1.7, margin: 0 }}>
                     Get instant answers on pricing, turnarounds, file specs and more. Our AI assistant knows print inside out.
                   </p>
-                  <p style={{ fontFamily: B, fontSize: '1rem', color: 'rgba(255,255,255,0.65)', lineHeight: 1.75, margin: '0 0 2rem', maxWidth: 380 }}>
-                    Tinta Print is a modern, AI-powered print brokerage based in Kent. We make professional print accessible to everyone — fast turnarounds, premium quality, delivered to your door. Powered by technology, driven by people.
-                  </p>
-                  <div>
-                    <p style={{ fontFamily: B, fontWeight: 600, fontSize: '0.875rem', color: '#ffffff', margin: '0 0 0.5rem', letterSpacing: '0.06em' }}>5 Star Service</p>
-                    <div style={{ display: 'flex', gap: '0.25rem', justifyContent: 'center' }}>
+                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem' }}>
+                    <p style={{ fontFamily: B, fontWeight: 600, fontSize: '0.875rem', color: '#ffffff', margin: 0, letterSpacing: '0.06em' }}>5 Star Service</p>
+                    <div style={{ display: 'flex', gap: '0.25rem' }}>
                       {[1,2,3,4,5].map(i => (
-                        <svg key={i} width="18" height="18" viewBox="0 0 20 20" fill="#FFD700" aria-hidden="true">
+                        <svg key={i} width="20" height="20" viewBox="0 0 20 20" fill="#FFD700" aria-hidden="true">
                           <path d="M10 1l2.5 5 5.5.8-4 3.9.9 5.3L10 13.4l-4.9 2.6.9-5.3L2 7.8l5.5-.8z"/>
                         </svg>
                       ))}
@@ -118,7 +105,7 @@ export default function HomePage() {
           </div>
           <style>{`
             @media (max-width: 768px) {
-              .ai-split-grid { grid-template-columns: 1fr !important; }
+              .ai-grid { grid-template-columns: 1fr !important; }
             }
           `}</style>
         </section>
@@ -283,7 +270,7 @@ export default function HomePage() {
 
             <div className="feature-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem' }}>
               {[
-                { title: 'Delivery', btn: 'Learn More', href: '/delivery', deliveryCard: true },
+                { title: 'Delivery', btn: 'Learn More', href: '/shipping', deliveryCard: true },
                 { title: 'Eco', btn: 'Find Out More', href: '/eco', deliveryCard: false },
                 { title: 'About Us', btn: 'Meet Us', href: '/about', deliveryCard: false },
               ].map(card => (
@@ -303,19 +290,10 @@ export default function HomePage() {
                     <h3 style={{ fontFamily: D, fontWeight: 700, fontSize: '1.375rem', color: '#000000', margin: '0 0 1rem', letterSpacing: '0.04em' }}>
                       {card.title}
                     </h3>
-                    {card.deliveryCard && (
-                      <div style={{ marginBottom: '1.25rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                        {[
-                          { label: 'Standard', desc: '3–5 working days' },
-                          { label: 'Priority', desc: '1–2 working days' },
-                          { label: 'Fastt', desc: 'Same or next day' },
-                        ].map(d => (
-                          <div key={d.label} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0.5rem 0', borderBottom: '1px solid rgba(0,0,0,0.06)' }}>
-                            <span style={{ fontFamily: B, fontWeight: 700, fontSize: '0.8125rem', color: '#000000' }}>{d.label}</span>
-                            <span style={{ fontFamily: B, fontSize: '0.8125rem', color: 'rgba(0,0,0,0.45)' }}>{d.desc}</span>
-                          </div>
-                        ))}
-                      </div>
+                    {card.title === 'Delivery' && (
+                      <p style={{ fontFamily: B, fontSize: '0.8125rem', color: 'rgba(0,0,0,0.55)', margin: '0 0 1.25rem', lineHeight: 1.6 }}>
+                        Standard · Priority · Fastt
+                      </p>
                     )}
                     <Link href={card.href} style={{
                       display: 'inline-flex', alignItems: 'center', justifyContent: 'center',

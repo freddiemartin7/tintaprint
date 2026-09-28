@@ -27,10 +27,11 @@ export default function ProductsPage() {
       <Nav />
       <main style={{ paddingTop: '4rem', background: '#000000' }}>
 
-        <section style={{ padding: '2.5rem 0 2rem', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
+        <section style={{ padding: '5rem 0 4rem', borderBottom: '1px solid rgba(255,255,255,0.12)', background: '#16a34a', textAlign: 'right' }}>
           <div className="max-w-site">
-            <h1 style={{ fontFamily: D, fontSize: 'clamp(2.5rem, 6vw, 5rem)', fontWeight: 700, color: '#ffffff', letterSpacing: '0.04em', lineHeight: 0.95, margin: 0 }}>
-              Products.
+            <h1 style={{ fontFamily: D, fontSize: 'clamp(3rem, 8vw, 7rem)', fontWeight: 700, color: '#ffffff', letterSpacing: '0.04em', lineHeight: 0.95, margin: 0 }}>
+              Products &amp;{' '}
+              <span>Services.</span>
             </h1>
           </div>
         </section>

@@ -7,6 +7,10 @@ export const metadata: Metadata = {
   description:
     "Whatever you need printed — Tinta Print delivers premium quality, fast turnaround, and zero hassle. Business cards, banners, brochures & more.",
   keywords: "print, business cards, banners, brochures, UK printing",
+  icons: [
+    { rel: 'icon', url: '/favicon-light.svg', media: '(prefers-color-scheme: light)' },
+    { rel: 'icon', url: '/favicon-dark.svg', media: '(prefers-color-scheme: dark)' },
+  ],
 };
 
 export default function RootLayout({

@@ -1,138 +1,17 @@
 'use client'
-import { useState } from 'react'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
-import Link from 'next/link'
 
 const D = '"Aeonik Pro", sans-serif'
 const B = '"Switzer", sans-serif'
 
-const packageData = [
-  {
-    name: 'Business',
-    tagline: 'Launch and grow with confidence.',
-    tiers: ['Launch', 'Grow', 'Tinta'],
-    price: 'From £49',
-    href: '/packages/business',
-  },
-  {
-    name: 'Events',
-    tagline: 'Print that makes the moment.',
-    tiers: ['Essential', 'Premium', 'Deluxe'],
-    price: 'From £79',
-    href: '/packages/events',
-  },
-  {
-    name: 'Salon & Beauty',
-    tagline: 'Look the part, every day.',
-    tiers: ['Essential', 'Premium', 'Deluxe'],
-    price: 'From £59',
-    href: '/packages/salon',
-  },
-  {
-    name: 'Wedding',
-    tagline: 'Every detail, perfectly printed.',
-    tiers: ['Essential', 'Premium', 'Deluxe'],
-    price: 'From £99',
-    href: '/packages/wedding',
-  },
-  {
-    name: 'Party',
-    tagline: 'Make every occasion memorable.',
-    tiers: ['Essential', 'Premium', 'Deluxe'],
-    price: 'From £49',
-    href: '/packages/party',
-  },
+const packages = [
+  { name: 'Business',     tiers: ['Launch', 'Grow', 'Tinta'],        href: '/packages/business' },
+  { name: 'Events',       tiers: ['Essential', 'Premium', 'Deluxe'],  href: '/packages/events' },
+  { name: 'Salon & Beauty', tiers: ['Essential', 'Premium', 'Deluxe'], href: '/packages/salon' },
+  { name: 'Wedding',      tiers: ['Essential', 'Premium', 'Deluxe'],  href: '/packages/wedding' },
+  { name: 'Party',        tiers: ['Essential', 'Premium', 'Deluxe'],  href: '/packages/party' },
 ]
-
-function PackageRow({ pkg }: { pkg: typeof packageData[number] }) {
-  const [expanded, setExpanded] = useState(false)
-
-  return (
-    <div style={{ borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
-      <button
-        onClick={() => setExpanded(e => !e)}
-        style={{
-          width: '100%',
-          display: 'flex',
-          alignItems: 'flex-start',
-          justifyContent: 'space-between',
-          padding: '2.5rem 0',
-          background: 'none',
-          border: 'none',
-          cursor: 'pointer',
-          textAlign: 'left',
-          gap: '2rem',
-        }}
-      >
-        <div style={{ flex: 1 }}>
-          <h2 style={{ fontFamily: D, fontWeight: 700, fontSize: 'clamp(1.75rem, 4vw, 3rem)', color: '#ffffff', margin: '0 0 0.5rem', letterSpacing: '0.04em', lineHeight: 1.05 }}>
-            {pkg.name}
-          </h2>
-          <p style={{ fontFamily: B, fontSize: '1rem', color: 'rgba(255,255,255,0.55)', margin: 0, lineHeight: 1.6, textAlign: 'right' }}>
-            {pkg.tagline}
-          </p>
-        </div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem', flexShrink: 0, paddingTop: '0.25rem' }}>
-          <span style={{ fontFamily: D, fontSize: '1.375rem', fontWeight: 700, color: '#ffffff', letterSpacing: '0.04em', whiteSpace: 'nowrap' }}>
-            {pkg.price}
-          </span>
-          <span style={{
-            width: 40,
-            height: 40,
-            borderRadius: '50%',
-            border: '1px solid rgba(255,255,255,0.2)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            flexShrink: 0,
-            color: '#ffffff',
-            fontSize: '1.25rem',
-            lineHeight: 1,
-            fontWeight: 300,
-            transition: 'transform 0.25s ease',
-            transform: expanded ? 'rotate(45deg)' : 'none',
-          }}>
-            +
-          </span>
-        </div>
-      </button>
-
-      <div style={{
-        maxHeight: expanded ? 400 : 0,
-        overflow: 'hidden',
-        transition: 'max-height 0.35s ease, opacity 0.3s ease',
-        opacity: expanded ? 1 : 0,
-      }}>
-        <div style={{ paddingBottom: '2.5rem', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-          <p style={{ fontFamily: B, fontWeight: 700, fontSize: '0.875rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: '#ffffff', margin: 0 }}>
-            {pkg.tiers.join(' · ')}
-          </p>
-          <p style={{ fontFamily: B, fontWeight: 700, fontSize: '1.5rem', color: '#ffffff', margin: 0, textAlign: 'right' }}>
-            {pkg.price}
-          </p>
-          <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-            <Link href="/contact" className="btn-primary" style={{ height: 44, minHeight: 44, fontSize: '0.8125rem' }}>
-              Get a Quote
-            </Link>
-            <Link href={pkg.href} style={{
-              display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
-              height: 44, minHeight: 44, fontSize: '0.8125rem', fontFamily: '"Switzer", sans-serif',
-              fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase',
-              padding: '0 1.25rem', borderRadius: 9999, textDecoration: 'none',
-              border: '1.5px solid rgba(255,255,255,0.4)', color: '#ffffff', background: 'transparent',
-            }}>
-              Find Out More
-              <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
-                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </Link>
-          </div>
-        </div>
-      </div>
-    </div>
-  )
-}
 
 export default function PackagesPage() {
   return (
@@ -140,32 +19,62 @@ export default function PackagesPage() {
       <Nav />
       <main style={{ paddingTop: '4rem' }}>
 
-        <section style={{ padding: '2.5rem 0 2rem', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
-          <div className="max-w-site" style={{ textAlign: 'right' }}>
-            <h1 style={{ fontFamily: D, fontSize: 'clamp(2.5rem, 6vw, 5rem)', fontWeight: 700, color: '#ffffff', letterSpacing: '0.04em', lineHeight: 0.95, margin: 0 }}>
+        <section style={{ padding: '5rem 0 4rem', borderBottom: '1px solid rgba(255,255,255,0.12)', background: '#16a34a', textAlign: 'right' }}>
+          <div className="max-w-site">
+            <h1 style={{ fontFamily: D, fontSize: 'clamp(3rem, 8vw, 7rem)', fontWeight: 700, color: '#ffffff', letterSpacing: '0.04em', lineHeight: 0.95, margin: 0 }}>
               Print Packages.
             </h1>
           </div>
         </section>
 
-        <section style={{ padding: '0 0 6rem' }}>
+        <section style={{ padding: '4rem 0 6rem', background: '#000000' }}>
           <div className="max-w-site">
-            {packageData.map(pkg => (
-              <PackageRow key={pkg.name} pkg={pkg} />
-            ))}
-          </div>
-        </section>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.25rem' }} className="packages-page-grid">
+              {[...packages, null].map((pkg, i) => {
+                if (!pkg) return (
+                  <div key="empty" style={{ borderRadius: 10, background: 'rgba(255,255,255,0.03)', border: '1px dashed rgba(255,255,255,0.08)', minHeight: 280 }} />
+                )
+                return (
+                  <div
+                    key={pkg.name}
+                    style={{ position: 'relative', borderRadius: 10, overflow: 'hidden', background: '#1a1a1a', border: '1px solid rgba(255,255,255,0.08)', cursor: 'pointer', minHeight: 280, display: 'flex', flexDirection: 'column' }}
+                    onMouseEnter={e => {
+                      const overlay = (e.currentTarget as HTMLElement).querySelector('.pkg-overlay') as HTMLElement
+                      if (overlay) overlay.style.opacity = '1'
+                    }}
+                    onMouseLeave={e => {
+                      const overlay = (e.currentTarget as HTMLElement).querySelector('.pkg-overlay') as HTMLElement
+                      if (overlay) overlay.style.opacity = '0'
+                    }}
+                  >
+                    <div style={{ flex: 1, display: 'flex', alignItems: 'flex-end', padding: '1.5rem' }}>
+                      <h2 style={{ fontFamily: D, fontWeight: 700, fontSize: 'clamp(1.5rem, 3vw, 2rem)', color: '#ffffff', margin: 0, letterSpacing: '0.04em', lineHeight: 1.1 }}>
+                        {pkg.name}
+                      </h2>
+                    </div>
+                    <div className="pkg-overlay" style={{ position: 'absolute', inset: 0, background: 'rgba(22,163,74,0.92)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '0.75rem', opacity: 0, transition: 'opacity 0.25s ease', padding: '2rem' }}>
+                      <p style={{ fontFamily: B, fontWeight: 700, fontSize: '0.75rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.7)', margin: 0 }}>
+                        {pkg.tiers.join(' · ')}
+                      </p>
+                      <h2 style={{ fontFamily: D, fontWeight: 700, fontSize: '1.75rem', color: '#ffffff', margin: 0, letterSpacing: '0.04em', textAlign: 'center' }}>
+                        {pkg.name}
+                      </h2>
+                      <a href={pkg.href} style={{ marginTop: '0.5rem', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', height: 40, padding: '0 1.5rem', borderRadius: 9999, background: '#ffffff', color: '#16a34a', fontFamily: B, fontWeight: 700, fontSize: '0.8125rem', letterSpacing: '0.08em', textTransform: 'uppercase', textDecoration: 'none' }}>
+                        Find Out More
+                      </a>
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
 
-        <section style={{ padding: '5rem 0', background: '#111111', textAlign: 'center' }}>
-          <div className="max-w-site">
-            <h2 style={{ fontFamily: D, fontWeight: 700, fontSize: 'clamp(2rem, 5vw, 4rem)', color: '#ffffff', letterSpacing: '0.04em', margin: '0 0 1rem', lineHeight: 1.05 }}>
-              Need something bespoke?
-            </h2>
-            <p style={{ fontFamily: B, fontSize: '1rem', color: 'rgba(255,255,255,0.5)', margin: '0 0 2.5rem', maxWidth: 480, marginLeft: 'auto', marginRight: 'auto', lineHeight: 1.65 }}>
-              Can&apos;t find exactly what you need? Get in touch and we&apos;ll put together a custom package just for you.
-            </p>
-            <Link href="/contact" className="btn-primary">Build Your Own</Link>
+            <div style={{ marginTop: '3rem', textAlign: 'center' }}>
+              <a href="/contact" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', height: 52, padding: '0 2.5rem', borderRadius: 9999, border: '1.5px solid rgba(255,255,255,0.3)', color: '#ffffff', fontFamily: B, fontWeight: 700, fontSize: '0.875rem', letterSpacing: '0.1em', textTransform: 'uppercase', textDecoration: 'none', background: 'transparent' }}>
+                Need Something Bespoke? Get in Touch
+              </a>
+            </div>
           </div>
+          <style>{`@media (max-width: 768px) { .packages-page-grid { grid-template-columns: 1fr !important; } }`}</style>
         </section>
 
       </main>

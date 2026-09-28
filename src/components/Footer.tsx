@@ -14,7 +14,7 @@ export default function Footer() {
             <p style={{ fontFamily: D, fontWeight: 700, fontSize: '1rem', color: '#4CAF50', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '1.5rem' }}>Contact Us</p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.625rem', marginBottom: '1.75rem' }}>
               <span style={{ fontFamily: B, fontSize: '1rem', color: 'rgba(255,255,255,0.85)' }}>Phone: placeholder</span>
-              <span style={{ fontFamily: B, fontSize: '1rem', color: 'rgba(255,255,255,0.85)' }}>Email: hello@tintaprint.uk</span>
+              <span style={{ fontFamily: B, fontSize: '1rem', color: 'rgba(255,255,255,0.85)' }}>Email: print@tintaprint.uk</span>
               <span style={{ fontFamily: B, fontSize: '1rem', color: 'rgba(255,255,255,0.85)' }}>Hours: 9am – 5pm</span>
               <span style={{ fontFamily: B, fontSize: '1rem', color: 'rgba(255,255,255,0.85)' }}>Days: Mon – Fri</span>
             </div>
