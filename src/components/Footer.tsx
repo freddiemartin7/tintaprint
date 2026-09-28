@@ -1,8 +1,5 @@
 import Link from 'next/link'
 
-const D = '"Aeonik Pro", sans-serif'
-const B = '"Switzer", sans-serif'
-
 export default function Footer() {
   return (
     <footer style={{ background: '#000000', borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: '4rem' }}>
@@ -11,12 +8,12 @@ export default function Footer() {
 
           {/* Col 1: Contact */}
           <div>
-            <p style={{ fontFamily: D, fontWeight: 700, fontSize: '1rem', color: '#4CAF50', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '1.5rem' }}>Contact Us</p>
+            <p style={{ fontFamily: '"ballinger", sans-serif', fontWeight: 700, fontStyle: 'italic', fontSize: '1rem', color: '#16a34a', textTransform: 'none', marginBottom: '1.5rem' }}>Contact Us</p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.625rem', marginBottom: '1.75rem' }}>
-              <span style={{ fontFamily: B, fontSize: '1rem', color: 'rgba(255,255,255,0.85)' }}>Phone: placeholder</span>
-              <span style={{ fontFamily: B, fontSize: '1rem', color: 'rgba(255,255,255,0.85)' }}>Email: print@tintaprint.uk</span>
-              <span style={{ fontFamily: B, fontSize: '1rem', color: 'rgba(255,255,255,0.85)' }}>Hours: 9am – 5pm</span>
-              <span style={{ fontFamily: B, fontSize: '1rem', color: 'rgba(255,255,255,0.85)' }}>Days: Mon – Fri</span>
+              <span style={{ fontFamily: '"ballinger", sans-serif', fontWeight: 400, fontSize: '1rem', color: 'rgba(255,255,255,0.85)' }}>Phone: placeholder</span>
+              <span style={{ fontFamily: '"ballinger", sans-serif', fontWeight: 400, fontSize: '1rem', color: 'rgba(255,255,255,0.85)' }}>Email: print@tintaprint.uk</span>
+              <span style={{ fontFamily: '"ballinger", sans-serif', fontWeight: 400, fontSize: '1rem', color: 'rgba(255,255,255,0.85)' }}>Hours: 9am – 5pm</span>
+              <span style={{ fontFamily: '"ballinger", sans-serif', fontWeight: 400, fontSize: '1rem', color: 'rgba(255,255,255,0.85)' }}>Days: Mon – Fri</span>
             </div>
             <div style={{ display: 'flex', gap: '0.75rem', marginBottom: '1.75rem' }}>
               {[
@@ -30,30 +27,30 @@ export default function Footer() {
               ))}
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.75rem' }}>
-              <span style={{ fontFamily: B, fontSize: '0.75rem', color: 'rgba(255,255,255,0.3)', letterSpacing: '0.06em' }}>Secure payments by</span>
+              <span style={{ fontFamily: '"ballinger", sans-serif', fontWeight: 300, fontSize: '0.75rem', color: 'rgba(255,255,255,0.3)', letterSpacing: '0.06em' }}>Secure payments by</span>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src="/images/STRIPE LOGO WHITE.svg" alt="Stripe" style={{ height: 16, width: 'auto' }} />
             </div>
-            <a href="https://wetransfer.com" target="_blank" rel="noreferrer" style={{ fontFamily: B, fontSize: '0.875rem', color: '#22d3ee', textDecoration: 'none', letterSpacing: '0.04em' }}>
+            <a href="https://wetransfer.com" target="_blank" rel="noreferrer" style={{ fontFamily: '"ballinger", sans-serif', fontWeight: 400, fontSize: '0.875rem', color: '#22d3ee', textDecoration: 'none', letterSpacing: '0.04em' }}>
               WeTransfer ↗
             </a>
           </div>
 
           {/* Col 2: Our Products */}
           <div>
-            <p style={{ fontFamily: D, fontWeight: 700, fontSize: '1rem', color: '#4CAF50', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '1.5rem' }}>Our Products</p>
+            <p style={{ fontFamily: '"ballinger", sans-serif', fontWeight: 700, fontStyle: 'italic', fontSize: '1rem', color: '#16a34a', textTransform: 'none', marginBottom: '1.5rem' }}>Our Products</p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
               {[
                 { label: 'Products', href: '/products' },
                 { label: 'Packages', href: '/packages' },
                 { label: 'Digital', href: '/digital-products' },
-              ].map(l => <Link key={l.label} href={l.href} className="footer-link">{l.label}</Link>)}
+              ].map(l => <Link key={l.label} href={l.href} className="footer-link" style={{ fontFamily: '"ballinger", sans-serif', fontWeight: 400 }}>{l.label}</Link>)}
             </div>
           </div>
 
           {/* Col 3: Services */}
           <div>
-            <p style={{ fontFamily: D, fontWeight: 700, fontSize: '1rem', color: '#4CAF50', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '1.5rem' }}>Services</p>
+            <p style={{ fontFamily: '"ballinger", sans-serif', fontWeight: 700, fontStyle: 'italic', fontSize: '1rem', color: '#16a34a', textTransform: 'none', marginBottom: '1.5rem' }}>Services</p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
               {[
                 { label: 'File Submission Guide', href: '/services/file-submission' },
@@ -61,13 +58,13 @@ export default function Footer() {
                 { label: 'Low Res AI Render Fix', href: '/services/file-submission' },
                 { label: 'Installation', href: '/services/installation' },
                 { label: 'Tinta Ai', href: '/#ai-section' },
-              ].map(l => <Link key={l.label} href={l.href} className="footer-link">{l.label}</Link>)}
+              ].map(l => <Link key={l.label} href={l.href} className="footer-link" style={{ fontFamily: '"ballinger", sans-serif', fontWeight: 400 }}>{l.label}</Link>)}
             </div>
           </div>
 
           {/* Col 4: About */}
           <div>
-            <p style={{ fontFamily: D, fontWeight: 700, fontSize: '1rem', color: '#4CAF50', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '1.5rem' }}>About</p>
+            <p style={{ fontFamily: '"ballinger", sans-serif', fontWeight: 700, fontStyle: 'italic', fontSize: '1rem', color: '#16a34a', textTransform: 'none', marginBottom: '1.5rem' }}>About</p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
               {[
                 { label: 'About Tinta Print', href: '/about' },
@@ -79,14 +76,14 @@ export default function Footer() {
                 { label: 'Cookie Policy', href: '/cookie-policy' },
                 { label: 'Shipping & Delivery', href: '/shipping' },
                 { label: 'T&C', href: '/terms-and-conditions' },
-              ].map(l => <Link key={l.label} href={l.href} className="footer-link">{l.label}</Link>)}
+              ].map(l => <Link key={l.label} href={l.href} className="footer-link" style={{ fontFamily: '"ballinger", sans-serif', fontWeight: 400 }}>{l.label}</Link>)}
             </div>
           </div>
         </div>
 
         <div style={{ padding: '1.75rem 0', display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
-          <p style={{ fontFamily: B, fontSize: '0.8125rem', color: 'rgba(255,255,255,0.3)', margin: 0 }}>© 2026 Tinta Print</p>
-          <p style={{ fontFamily: B, fontSize: '0.8125rem', color: 'rgba(255,255,255,0.3)', margin: 0 }}>All Rights Reserved</p>
+          <p style={{ fontFamily: '"ballinger", sans-serif', fontWeight: 300, fontSize: '0.8125rem', color: 'rgba(255,255,255,0.3)', margin: 0 }}>© 2026 Tinta Print</p>
+          <p style={{ fontFamily: '"ballinger", sans-serif', fontWeight: 300, fontSize: '0.8125rem', color: 'rgba(255,255,255,0.3)', margin: 0 }}>All Rights Reserved</p>
         </div>
       </div>
       <style>{`

@@ -2,8 +2,8 @@ import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import Link from 'next/link'
 
-const D = '"Aeonik Pro", sans-serif'
-const B = '"Switzer", sans-serif'
+const D = '"quara-web", sans-serif'
+const B = '"quara-web", sans-serif'
 
 export const metadata = {
   title: 'Digital Products | Tinta Print',

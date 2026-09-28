@@ -21,7 +21,7 @@ export default function PackagesPage() {
 
         <section style={{ padding: '5rem 0 4rem', borderBottom: '1px solid rgba(255,255,255,0.12)', background: '#16a34a', textAlign: 'right' }}>
           <div className="max-w-site">
-            <h1 style={{ fontFamily: D, fontSize: 'clamp(3rem, 8vw, 7rem)', fontWeight: 700, color: '#ffffff', letterSpacing: '0.04em', lineHeight: 0.95, margin: 0 }}>
+            <h1 style={{ fontFamily: '"urca", sans-serif', fontSize: 'clamp(3rem, 8vw, 7rem)', fontWeight: 700, color: '#ffffff', letterSpacing: '0.04em', lineHeight: 0.95, margin: 0 }}>
               Print Packages.
             </h1>
           </div>
@@ -48,18 +48,18 @@ export default function PackagesPage() {
                     }}
                   >
                     <div style={{ flex: 1, display: 'flex', alignItems: 'flex-end', padding: '1.5rem' }}>
-                      <h2 style={{ fontFamily: D, fontWeight: 700, fontSize: 'clamp(1.5rem, 3vw, 2rem)', color: '#ffffff', margin: 0, letterSpacing: '0.04em', lineHeight: 1.1 }}>
+                      <h2 style={{ fontFamily: '"urca", sans-serif', fontWeight: 600, fontSize: 'clamp(1.5rem, 3vw, 2rem)', color: '#ffffff', margin: 0, letterSpacing: '0.04em', lineHeight: 1.1 }}>
                         {pkg.name}
                       </h2>
                     </div>
                     <div className="pkg-overlay" style={{ position: 'absolute', inset: 0, background: 'rgba(22,163,74,0.92)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '0.75rem', opacity: 0, transition: 'opacity 0.25s ease', padding: '2rem' }}>
-                      <p style={{ fontFamily: B, fontWeight: 700, fontSize: '0.75rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.7)', margin: 0 }}>
+                      <p style={{ fontFamily: '"urca", sans-serif', fontWeight: 300, fontSize: '0.75rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.7)', margin: 0 }}>
                         {pkg.tiers.join(' · ')}
                       </p>
-                      <h2 style={{ fontFamily: D, fontWeight: 700, fontSize: '1.75rem', color: '#ffffff', margin: 0, letterSpacing: '0.04em', textAlign: 'center' }}>
+                      <h2 style={{ fontFamily: '"urca", sans-serif', fontWeight: 600, fontSize: '1.75rem', color: '#ffffff', margin: 0, letterSpacing: '0.04em', textAlign: 'center' }}>
                         {pkg.name}
                       </h2>
-                      <a href={pkg.href} style={{ marginTop: '0.5rem', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', height: 40, padding: '0 1.5rem', borderRadius: 9999, background: '#ffffff', color: '#16a34a', fontFamily: B, fontWeight: 700, fontSize: '0.8125rem', letterSpacing: '0.08em', textTransform: 'uppercase', textDecoration: 'none' }}>
+                      <a href={pkg.href} style={{ marginTop: '0.5rem', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', height: 40, padding: '0 1.5rem', borderRadius: 9999, background: '#ffffff', color: '#16a34a', fontFamily: '"urca", sans-serif', fontWeight: 400, fontSize: '0.8125rem', letterSpacing: '0.08em', textTransform: 'uppercase', textDecoration: 'none' }}>
                         Find Out More
                       </a>
                     </div>

@@ -20,6 +20,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="stylesheet" href="https://use.typekit.net/pmz6frf.css" />
+      </head>
       <body style={{ fontFamily: "'Switzer', sans-serif", background: '#000000', color: '#ffffff' }}>
         {children}
         <AIAssistant />

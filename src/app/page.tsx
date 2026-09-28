@@ -42,7 +42,7 @@ export default function HomePage() {
                     {product.name}
                   </h2>
                   {product.isNew && (
-                    <span style={{ fontFamily: B, fontWeight: 700, fontSize: '0.625rem', letterSpacing: '0.15em', textTransform: 'uppercase', background: '#ffffff', color: '#000000', padding: '2px 7px', borderRadius: 9999, flexShrink: 0, marginTop: 2 }}>
+                    <span style={{ fontFamily: '"komu-new-d", sans-serif', fontWeight: 700, fontSize: '0.625rem', letterSpacing: '0.15em', textTransform: 'uppercase', background: '#ffffff', color: '#000000', padding: '2px 7px', borderRadius: 9999, flexShrink: 0, marginTop: 2 }}>
                       NEW!
                     </span>
                   )}
@@ -167,12 +167,12 @@ export default function HomePage() {
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '1.5rem', flexWrap: 'wrap', gap: '1rem' }}>
               <div>
                 <p className="section-label" style={{ marginBottom: '0.75rem', color: '#000000' }}>Print Bundles</p>
-                <h2 style={{ fontFamily: D, fontWeight: 700, fontSize: 'clamp(2rem, 5vw, 3.5rem)', color: '#000000', margin: 0, letterSpacing: '0.04em', lineHeight: 1.05 }}>
+                <h2 style={{ fontFamily: '"urca", sans-serif', fontWeight: 700, fontSize: 'clamp(2rem, 5vw, 3.5rem)', color: '#000000', margin: 0, letterSpacing: '0.04em', lineHeight: 1.05 }}>
                   Packages.
                 </h2>
               </div>
             </div>
-            <p style={{ fontFamily: B, fontSize: '1rem', color: 'rgba(0,0,0,0.55)', lineHeight: 1.7, margin: '0 0 3rem', maxWidth: 560 }}>
+            <p style={{ fontFamily: '"urca", sans-serif', fontWeight: 400, fontSize: '1rem', color: 'rgba(0,0,0,0.55)', lineHeight: 1.7, margin: '0 0 3rem', maxWidth: 560 }}>
               Everything you need, bundled together. Our packages are designed for specific industries — saving you time, money and the hassle of ordering piece by piece.
             </p>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.25rem' }} className="packages-home-grid">
@@ -198,13 +198,13 @@ export default function HomePage() {
                     <span style={{ fontSize: '2.5rem', color: 'rgba(0,0,0,0.12)', lineHeight: 1, fontWeight: 300 }}>+</span>
                   </div>
                   <div style={{ padding: '1.25rem 1.5rem', flex: 1, display: 'flex', flexDirection: 'column' }}>
-                    <h3 style={{ fontFamily: D, fontWeight: 700, fontSize: '1.0625rem', color: '#000000', margin: '0 0 0.5rem', letterSpacing: '0.04em' }}>
+                    <h3 style={{ fontFamily: '"urca", sans-serif', fontWeight: 600, fontSize: '1.0625rem', color: '#000000', margin: '0 0 0.5rem', letterSpacing: '0.04em' }}>
                       {pkg.name}
                     </h3>
-                    <p style={{ fontFamily: B, fontSize: '0.8125rem', color: 'rgba(0,0,0,0.45)', margin: '0 0 1rem' }}>
+                    <p style={{ fontFamily: '"urca", sans-serif', fontWeight: 300, fontSize: '0.8125rem', color: 'rgba(0,0,0,0.45)', margin: '0 0 1rem' }}>
                       {pkg.tiers.join(' · ')}
                     </p>
-                    <span style={{ fontFamily: B, fontWeight: 700, fontSize: '0.6875rem', color: pkg.color, letterSpacing: '0.08em', textTransform: 'uppercase', marginTop: 'auto' }}>
+                    <span style={{ fontFamily: '"urca", sans-serif', fontWeight: 400, fontSize: '0.6875rem', color: pkg.color, letterSpacing: '0.08em', textTransform: 'uppercase', marginTop: 'auto' }}>
                       Find Out More →
                     </span>
                   </div>
