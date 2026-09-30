@@ -31,8 +31,9 @@ export default function Footer() {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src="/images/STRIPE LOGO WHITE.svg" alt="Stripe" style={{ height: 16, width: 'auto' }} />
             </div>
-            <a href="https://wetransfer.com" target="_blank" rel="noreferrer" style={{ fontFamily: '"ballinger", sans-serif', fontWeight: 400, fontSize: '0.875rem', color: '#22d3ee', textDecoration: 'none', letterSpacing: '0.04em' }}>
-              WeTransfer ↗
+            <a href="https://wetransfer.com" target="_blank" rel="noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: '#1fb8c3', color: '#ffffff', borderRadius: 9999, padding: '0.6rem 1.5rem', textDecoration: 'none', fontFamily: '"ballinger", sans-serif', fontWeight: 400, fontSize: '0.875rem' }}>
+              <span style={{ background: '#ffffff', color: '#1fb8c3', fontWeight: 700, fontSize: '0.65rem', borderRadius: 4, padding: '1px 3px', lineHeight: 1.2 }}>we</span>
+              Send with WeTransfer
             </a>
           </div>
 

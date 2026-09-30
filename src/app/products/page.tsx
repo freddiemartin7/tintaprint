@@ -28,8 +28,8 @@ export default function ProductsPage() {
       <main style={{ paddingTop: '4rem', background: '#000000' }}>
 
         <section style={{ padding: '4rem 0 3rem', borderBottom: '1px solid rgba(255,255,255,0.12)', background: '#ffffff', textAlign: 'right' }}>
-          <div className="max-w-site">
-            <h1 style={{ fontFamily: D, fontSize: 'clamp(2rem, 4vw, 3.5rem)', fontWeight: 700, color: '#16a34a', letterSpacing: '0.04em', lineHeight: 0.95, margin: 0 }}>
+          <div className="max-w-site" style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
+            <h1 style={{ fontFamily: D, fontSize: 'clamp(1.5rem, 3vw, 2.5rem)', fontWeight: 700, color: '#16a34a', letterSpacing: '0.04em', lineHeight: 0.95, margin: 0 }}>
               Products &amp;{' '}
               <span>Services.</span>
             </h1>
@@ -65,7 +65,7 @@ export default function ProductsPage() {
                 height: 56, fontSize: '0.875rem', fontFamily: B, fontWeight: 700,
                 letterSpacing: '0.1em', textTransform: 'uppercase', padding: '0 2.5rem',
                 borderRadius: 9999, textDecoration: 'none',
-                border: '1.5px solid #d946ef', color: '#d946ef', background: 'transparent',
+                border: '1.5px solid #000000', color: '#000000', background: '#ffffff',
               }}>Get a Quote</Link>
             </div>
           </div>

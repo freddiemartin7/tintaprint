@@ -42,7 +42,7 @@ export default function HomePage() {
                     {product.name}
                   </h2>
                   {product.isNew && (
-                    <span style={{ fontFamily: '"komu-new-d", sans-serif', fontWeight: 700, fontSize: '0.625rem', letterSpacing: '0.15em', textTransform: 'uppercase', background: '#ffffff', color: '#000000', padding: '2px 7px', borderRadius: 9999, flexShrink: 0, marginTop: 2 }}>
+                    <span style={{ fontFamily: '"komu-new-d", sans-serif', fontWeight: 700, fontSize: '2.5rem', letterSpacing: '0.15em', textTransform: 'uppercase', background: '#ffffff', color: '#000000', padding: '8px 28px', borderRadius: 9999, flexShrink: 0, lineHeight: 1 }}>
                       NEW!
                     </span>
                   )}
@@ -88,16 +88,6 @@ export default function HomePage() {
                   <p style={{ fontFamily: B, fontSize: '1.0625rem', color: 'rgba(255,255,255,0.7)', lineHeight: 1.7, margin: 0 }}>
                     Get instant answers on pricing, turnarounds, file specs and more. Our AI assistant knows print inside out.
                   </p>
-                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem' }}>
-                    <p style={{ fontFamily: B, fontWeight: 600, fontSize: '0.875rem', color: '#ffffff', margin: 0, letterSpacing: '0.06em' }}>5 Star Service</p>
-                    <div style={{ display: 'flex', gap: '0.25rem' }}>
-                      {[1,2,3,4,5].map(i => (
-                        <svg key={i} width="20" height="20" viewBox="0 0 20 20" fill="#FFD700" aria-hidden="true">
-                          <path d="M10 1l2.5 5 5.5.8-4 3.9.9 5.3L10 13.4l-4.9 2.6.9-5.3L2 7.8l5.5-.8z"/>
-                        </svg>
-                      ))}
-                    </div>
-                  </div>
                 </div>
 
               </div>
@@ -115,7 +105,6 @@ export default function HomePage() {
           <div className="max-w-site">
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '3rem', flexWrap: 'wrap', gap: '1rem' }}>
               <div>
-                <p className="section-label" style={{ marginBottom: '0.75rem', color: '#000000' }}>What We Print</p>
                 <h2 style={{ fontFamily: D, fontWeight: 700, fontSize: 'clamp(2rem, 5vw, 3.5rem)', color: '#000000', margin: 0, letterSpacing: '0.04em', lineHeight: 1.05 }}>
                   Our Products.
                 </h2>
@@ -166,7 +155,6 @@ export default function HomePage() {
           <div className="max-w-site">
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '1.5rem', flexWrap: 'wrap', gap: '1rem' }}>
               <div>
-                <p className="section-label" style={{ marginBottom: '0.75rem', color: '#000000' }}>Print Bundles</p>
                 <h2 style={{ fontFamily: '"urca", sans-serif', fontWeight: 700, fontSize: 'clamp(2rem, 5vw, 3.5rem)', color: '#000000', margin: 0, letterSpacing: '0.04em', lineHeight: 1.05 }}>
                   Packages.
                 </h2>
