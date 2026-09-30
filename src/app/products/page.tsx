@@ -27,7 +27,7 @@ export default function ProductsPage() {
       <Nav />
       <main style={{ paddingTop: '4rem', background: '#000000' }}>
 
-        <section style={{ padding: '4rem 0 3rem', borderBottom: '1px solid rgba(255,255,255,0.12)', background: '#ffffff', textAlign: 'right' }}>
+        <section style={{ padding: '4rem 0 3rem', borderBottom: '1px solid rgba(255,255,255,0.12)', background: '#ffffff', textAlign: 'right', display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
           <div className="max-w-site" style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
             <h1 style={{ fontFamily: D, fontSize: 'clamp(1.5rem, 3vw, 2.5rem)', fontWeight: 700, color: '#16a34a', letterSpacing: '0.04em', lineHeight: 0.95, margin: 0 }}>
               Products &amp;{' '}

@@ -37,12 +37,12 @@ export default function HomePage() {
                 padding: '2rem 1.5rem',
                 gap: '1.25rem',
               }}>
-                <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'nowrap' }}>
                   <h2 style={{ fontFamily: D, fontWeight: 700, fontSize: 'clamp(1.125rem, 1.8vw, 1.5rem)', color: '#ffffff', margin: 0, letterSpacing: '0.03em', lineHeight: 1.2 }}>
                     {product.name}
                   </h2>
                   {product.isNew && (
-                    <span style={{ fontFamily: '"komu-new-d", sans-serif', fontWeight: 700, fontSize: '2.5rem', letterSpacing: '0.15em', textTransform: 'uppercase', background: '#ffffff', color: '#000000', padding: '8px 28px', borderRadius: 9999, flexShrink: 0, lineHeight: 1 }}>
+                    <span style={{ fontFamily: '"komu-new-d", sans-serif', fontWeight: 700, fontSize: '0.7rem', letterSpacing: '0.15em', textTransform: 'uppercase', background: '#ffffff', color: '#000000', padding: '0.25rem 0.6rem', borderRadius: 9999, flexShrink: 0, lineHeight: 1 }}>
                       NEW!
                     </span>
                   )}

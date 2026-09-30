@@ -89,7 +89,7 @@ export default function Nav() {
           </Link>
 
           {/* Centre: Search bar */}
-          <div ref={searchRef} style={{ flex: scrolled ? 2 : 1, maxWidth: scrolled ? 420 : 260, position: 'relative', transition: 'flex 0.3s ease, max-width 0.3s ease' }}>
+          <div ref={searchRef} style={{ flex: scrolled ? 2 : 1, maxWidth: scrolled ? 420 : 340, minWidth: scrolled ? undefined : '320px', position: 'relative', transition: 'flex 0.3s ease, max-width 0.3s ease' }}>
             <div className="nav-search-border" style={{
               display: 'flex',
               alignItems: 'center',
