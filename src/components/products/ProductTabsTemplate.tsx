@@ -33,6 +33,7 @@ export interface ProductTabData {
 export default function ProductTabsTemplate({ data }: { data: ProductTabData }) {
   const [activeTab, setActiveTab] = useState(0)
   const [hoveredTab, setHoveredTab] = useState<number | null>(null)
+  const [activeImage, setActiveImage] = useState(0)
 
   return (
     <main style={{ paddingTop: '4rem' }}>
@@ -166,18 +167,29 @@ export default function ProductTabsTemplate({ data }: { data: ProductTabData }) 
                     </div>
                   </div>
                 </RevealWrapper>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                  {[1, 2, 3].map((n, ni) => (
-                    <RevealWrapper key={n} direction="right" delay={0.1 + ni * 0.08}>
-                      <div style={{ background: 'rgba(255,255,255,0.03)', border: data.image && n === 1 ? 'none' : '1px solid rgba(255,255,255,0.07)', borderRadius: 8, height: 140, overflow: 'hidden', position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                        {data.image && n === 1
-                          // eslint-disable-next-line @next/next/no-img-element
-                          ? <img src={data.image} alt={data.name} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
-                          : <span style={{ fontFamily: B, fontSize: '0.8125rem', color: 'rgba(255,255,255,0.2)', letterSpacing: '0.06em' }}>Image {n}</span>
-                        }
-                      </div>
-                    </RevealWrapper>
-                  ))}
+                <div style={{ borderRadius: 8, overflow: 'hidden', border: '1px solid rgba(255,255,255,0.1)', background: 'rgba(255,255,255,0.03)' }}>
+                  <div style={{ aspectRatio: '4/3', position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    {data.image && activeImage === 0
+                      // eslint-disable-next-line @next/next/no-img-element
+                      ? <img src={data.image} alt={data.name} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
+                      : <span style={{ fontFamily: B, fontSize: '0.8125rem', color: 'rgba(255,255,255,0.2)', letterSpacing: '0.06em' }}>Image {activeImage + 1}</span>
+                    }
+                    <button
+                      onClick={() => setActiveImage(i => (i - 1 + 3) % 3)}
+                      style={{ position: 'absolute', left: 10, top: '50%', transform: 'translateY(-50%)', background: 'rgba(0,0,0,0.55)', border: '1px solid rgba(255,255,255,0.15)', borderRadius: '50%', width: 34, height: 34, display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', color: '#ffffff', fontSize: '1.25rem', lineHeight: 1, zIndex: 2 }}
+                      aria-label="Previous image"
+                    >‹</button>
+                    <button
+                      onClick={() => setActiveImage(i => (i + 1) % 3)}
+                      style={{ position: 'absolute', right: 10, top: '50%', transform: 'translateY(-50%)', background: 'rgba(0,0,0,0.55)', border: '1px solid rgba(255,255,255,0.15)', borderRadius: '50%', width: 34, height: 34, display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', color: '#ffffff', fontSize: '1.25rem', lineHeight: 1, zIndex: 2 }}
+                      aria-label="Next image"
+                    >›</button>
+                  </div>
+                  <div style={{ display: 'flex', justifyContent: 'center', gap: 6, padding: '0.625rem 0' }}>
+                    {[0, 1, 2].map(i => (
+                      <button key={i} onClick={() => setActiveImage(i)} style={{ width: 6, height: 6, borderRadius: '50%', background: i === activeImage ? '#ffffff' : 'rgba(255,255,255,0.25)', border: 'none', cursor: 'pointer', padding: 0, transition: 'background 0.2s ease' }} aria-label={`View image ${i + 1}`} />
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>

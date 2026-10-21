@@ -15,6 +15,10 @@ const packages5 = [
   { name: 'Events',         color: '#00695C', tiers: ['Essentials', 'Complete', 'Signature'],   href: '/packages#events' },
 ]
 
+const homeProductImages: Record<string, string> = {
+  'Business Cards': '/images/products/bc-filmore.png',
+}
+
 export default function HomePage() {
   return (
     <>
@@ -25,7 +29,7 @@ export default function HomePage() {
         <section style={{ paddingTop: 120, background: '#000000' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', minHeight: '70vh' }} className="showcase-grid">
             {[
-              { name: 'Business Cards', isNew: false, image: '/images/products/bc-filmore.png' },
+              { name: 'Business Cards', isNew: false, image: undefined },
               { name: 'Banners', isNew: false, image: undefined },
               { name: 'Flyers', isNew: false, image: undefined },
               { name: 'Digital Products', isNew: true, image: undefined },
@@ -139,8 +143,12 @@ export default function HomePage() {
                 }}
                 onMouseEnter={e => { (e.currentTarget as HTMLElement).style.boxShadow = '0 10px 25px rgba(0,0,0,0.15)' }}
                 onMouseLeave={e => { (e.currentTarget as HTMLElement).style.boxShadow = '0 4px 6px -1px rgba(0,0,0,0.06)' }}>
-                  <div style={{ aspectRatio: '4/3', background: 'rgba(0,0,0,0.06)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <span style={{ fontSize: '2.5rem', color: 'rgba(0,0,0,0.12)', lineHeight: 1, fontWeight: 300 }}>+</span>
+                  <div style={{ aspectRatio: '4/3', background: 'rgba(0,0,0,0.06)', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
+                    {homeProductImages[product.name]
+                      // eslint-disable-next-line @next/next/no-img-element
+                      ? <img src={homeProductImages[product.name]} alt={product.name} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
+                      : <span style={{ fontSize: '2.5rem', color: 'rgba(0,0,0,0.12)', lineHeight: 1, fontWeight: 300 }}>+</span>
+                    }
                   </div>
                   <div style={{ padding: '1.25rem 1.5rem' }}>
                     <h3 style={{ fontFamily: D, fontWeight: 700, fontSize: '1.0625rem', color: '#000000', margin: 0, letterSpacing: '0.04em' }}>
