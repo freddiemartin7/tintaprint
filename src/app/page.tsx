@@ -143,12 +143,8 @@ export default function HomePage() {
                 }}
                 onMouseEnter={e => { (e.currentTarget as HTMLElement).style.boxShadow = '0 10px 25px rgba(0,0,0,0.15)' }}
                 onMouseLeave={e => { (e.currentTarget as HTMLElement).style.boxShadow = '0 4px 6px -1px rgba(0,0,0,0.06)' }}>
-                  <div style={{ aspectRatio: '4/3', background: 'rgba(0,0,0,0.06)', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
-                    {homeProductImages[product.name]
-                      // eslint-disable-next-line @next/next/no-img-element
-                      ? <img src={homeProductImages[product.name]} alt={product.name} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
-                      : <span style={{ fontSize: '2.5rem', color: 'rgba(0,0,0,0.12)', lineHeight: 1, fontWeight: 300 }}>+</span>
-                    }
+                  <div style={{ aspectRatio: '4/3', background: 'rgba(0,0,0,0.06)', backgroundImage: product.name === 'Business Cards' ? 'url(/images/products/bc-filmore.png)' : 'none', backgroundSize: 'cover', backgroundPosition: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    {product.name !== 'Business Cards' && <span style={{ fontSize: '2.5rem', color: 'rgba(0,0,0,0.12)', lineHeight: 1, fontWeight: 300 }}>+</span>}
                   </div>
                   <div style={{ padding: '1.25rem 1.5rem' }}>
                     <h3 style={{ fontFamily: D, fontWeight: 700, fontSize: '1.0625rem', color: '#000000', margin: 0, letterSpacing: '0.04em' }}>
