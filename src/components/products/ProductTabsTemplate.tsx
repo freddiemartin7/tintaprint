@@ -27,6 +27,7 @@ export interface ProductTabData {
   tabs: TabSpec[]
   globalPricingNote?: string
   backgroundType?: BackgroundType
+  image?: string
 }
 
 export default function ProductTabsTemplate({ data }: { data: ProductTabData }) {
@@ -168,8 +169,12 @@ export default function ProductTabsTemplate({ data }: { data: ProductTabData }) 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
                   {[1, 2, 3].map((n, ni) => (
                     <RevealWrapper key={n} direction="right" delay={0.1 + ni * 0.08}>
-                      <div style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 8, height: 140, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                        <span style={{ fontFamily: B, fontSize: '0.8125rem', color: 'rgba(255,255,255,0.2)', letterSpacing: '0.06em' }}>Image {n}</span>
+                      <div style={{ background: 'rgba(255,255,255,0.03)', border: data.image && n === 1 ? 'none' : '1px solid rgba(255,255,255,0.07)', borderRadius: 8, height: 140, overflow: 'hidden', position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        {data.image && n === 1
+                          // eslint-disable-next-line @next/next/no-img-element
+                          ? <img src={data.image} alt={data.name} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
+                          : <span style={{ fontFamily: B, fontSize: '0.8125rem', color: 'rgba(255,255,255,0.2)', letterSpacing: '0.06em' }}>Image {n}</span>
+                        }
                       </div>
                     </RevealWrapper>
                   ))}

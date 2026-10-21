@@ -12,6 +12,7 @@ const data: ProductTabData = {
   name: 'Business Cards',
   tagline: 'Your first impression, perfected. Premium stocks, precision print, luxury finishes.',
   backgroundType: 'particles-drift',
+  image: '/images/products/bc-filmore.png',
   tabs: [
     {
       label: 'Standard',

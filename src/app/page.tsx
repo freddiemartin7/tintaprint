@@ -25,10 +25,10 @@ export default function HomePage() {
         <section style={{ paddingTop: 120, background: '#000000' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', minHeight: '70vh' }} className="showcase-grid">
             {[
-              { name: 'Business Cards', isNew: false },
-              { name: 'Banners', isNew: false },
-              { name: 'Flyers', isNew: false },
-              { name: 'Digital Products', isNew: true },
+              { name: 'Business Cards', isNew: false, image: '/images/products/bc-filmore.png' },
+              { name: 'Banners', isNew: false, image: undefined },
+              { name: 'Flyers', isNew: false, image: undefined },
+              { name: 'Digital Products', isNew: true, image: undefined },
             ].map((product, i) => (
               <div key={product.name} style={{
                 borderRight: i < 3 ? '1px solid rgba(255,255,255,0.07)' : 'none',
@@ -47,8 +47,12 @@ export default function HomePage() {
                     </span>
                   )}
                 </div>
-                <div style={{ flex: 1, background: 'rgba(255,255,255,0.04)', borderRadius: 8, minHeight: 280, display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1px dashed rgba(255,255,255,0.08)' }}>
-                  <span style={{ fontFamily: B, fontSize: '0.75rem', color: 'rgba(255,255,255,0.15)' }}>Ad image</span>
+                <div style={{ flex: 1, borderRadius: 8, minHeight: 280, overflow: 'hidden', position: 'relative', background: 'rgba(255,255,255,0.04)', display: 'flex', alignItems: 'center', justifyContent: 'center', border: product.image ? 'none' : '1px dashed rgba(255,255,255,0.08)' }}>
+                  {product.image
+                    // eslint-disable-next-line @next/next/no-img-element
+                    ? <img src={product.image} alt={product.name} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
+                    : <span style={{ fontFamily: B, fontSize: '0.75rem', color: 'rgba(255,255,255,0.15)' }}>Ad image</span>
+                  }
                 </div>
                 <Link href={product.name === 'Digital Products' ? '/digital-products' : `/products/${product.name.toLowerCase().replace(/ /g, '-')}`} className="btn-outline" style={{ height: 40, minHeight: 40, fontSize: '0.75rem', alignSelf: 'flex-start', padding: '0 1.25rem' }}>
                   Shop

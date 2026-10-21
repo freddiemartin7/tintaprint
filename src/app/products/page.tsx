@@ -21,6 +21,10 @@ const allProducts = [
   { title: 'Canvas Prints',             href: '/products/canvas-prints' },
 ]
 
+const productImages: Record<string, string> = {
+  'Business Cards': '/images/products/bc-filmore.png',
+}
+
 export default function ProductsPage() {
   return (
     <>
@@ -52,7 +56,11 @@ export default function ProductsPage() {
                 }}
                 onMouseEnter={e => (e.currentTarget as HTMLElement).style.boxShadow = '0 20px 40px rgba(0,0,0,0.4)'}
                 onMouseLeave={e => (e.currentTarget as HTMLElement).style.boxShadow = 'none'}>
-                  <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '40%', background: 'linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%)', pointerEvents: 'none', zIndex: 0 }} />
+                  {productImages[p.title] && (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img src={productImages[p.title]} alt={p.title} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0 }} />
+                  )}
+                  <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '40%', background: 'linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%)', pointerEvents: 'none', zIndex: 1 }} />
                   <p style={{ position: 'absolute', bottom: '1rem', left: '1rem', fontFamily: D, fontWeight: 700, fontSize: '1.125rem', color: '#ffffff', margin: 0, letterSpacing: '0.04em', lineHeight: 1.2, zIndex: 10 }}>{p.title}</p>
                 </Link>
               ))}
